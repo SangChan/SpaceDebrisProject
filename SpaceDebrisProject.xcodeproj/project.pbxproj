@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		631497751B2551260068A0FF /* Satellite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631497741B2551260068A0FF /* Satellite.swift */; };
+		631497771B2551570068A0FF /* Planet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631497761B2551570068A0FF /* Planet.swift */; };
+		631497791B2551750068A0FF /* Debri.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631497781B2551750068A0FF /* Debri.swift */; };
 		63BDC3D01B23FB0800CA99E5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BDC3CF1B23FB0800CA99E5 /* AppDelegate.swift */; };
 		63BDC3D21B23FB0800CA99E5 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 63BDC3D11B23FB0800CA99E5 /* GameScene.sks */; };
 		63BDC3D41B23FB0800CA99E5 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BDC3D31B23FB0800CA99E5 /* GameScene.swift */; };
@@ -28,6 +31,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		631497741B2551260068A0FF /* Satellite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Satellite.swift; sourceTree = "<group>"; };
+		631497761B2551570068A0FF /* Planet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Planet.swift; sourceTree = "<group>"; };
+		631497781B2551750068A0FF /* Debri.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Debri.swift; sourceTree = "<group>"; };
 		63BDC3CA1B23FB0800CA99E5 /* SpaceDebrisProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpaceDebrisProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63BDC3CE1B23FB0800CA99E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		63BDC3CF1B23FB0800CA99E5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -60,6 +66,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6314976F1B2550AA0068A0FF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				631497741B2551260068A0FF /* Satellite.swift */,
+				631497761B2551570068A0FF /* Planet.swift */,
+				631497781B2551750068A0FF /* Debri.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		63BDC3C11B23FB0800CA99E5 = {
 			isa = PBXGroup;
 			children = (
@@ -81,6 +97,7 @@
 		63BDC3CC1B23FB0800CA99E5 /* SpaceDebrisProject */ = {
 			isa = PBXGroup;
 			children = (
+				6314976F1B2550AA0068A0FF /* Model */,
 				63BDC3CF1B23FB0800CA99E5 /* AppDelegate.swift */,
 				63BDC3D11B23FB0800CA99E5 /* GameScene.sks */,
 				63BDC3D31B23FB0800CA99E5 /* GameScene.swift */,
@@ -220,8 +237,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				63BDC3D41B23FB0800CA99E5 /* GameScene.swift in Sources */,
+				631497751B2551260068A0FF /* Satellite.swift in Sources */,
 				63BDC3D61B23FB0800CA99E5 /* GameViewController.swift in Sources */,
 				63BDC3D01B23FB0800CA99E5 /* AppDelegate.swift in Sources */,
+				631497791B2551750068A0FF /* Debri.swift in Sources */,
+				631497771B2551570068A0FF /* Planet.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -419,6 +439,7 @@
 				63BDC3EF1B23FB0800CA99E5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		63BDC3F01B23FB0800CA99E5 /* Build configuration list for PBXNativeTarget "SpaceDebrisProjectTests" */ = {
 			isa = XCConfigurationList;
@@ -427,6 +448,7 @@
 				63BDC3F21B23FB0800CA99E5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

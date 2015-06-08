@@ -10,6 +10,7 @@
 		631497751B2551260068A0FF /* Satellite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631497741B2551260068A0FF /* Satellite.swift */; };
 		631497771B2551570068A0FF /* Planet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631497761B2551570068A0FF /* Planet.swift */; };
 		631497791B2551750068A0FF /* Debri.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631497781B2551750068A0FF /* Debri.swift */; };
+		6314977A1B25595A0068A0FF /* Satellite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631497741B2551260068A0FF /* Satellite.swift */; };
 		63BDC3D01B23FB0800CA99E5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BDC3CF1B23FB0800CA99E5 /* AppDelegate.swift */; };
 		63BDC3D21B23FB0800CA99E5 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 63BDC3D11B23FB0800CA99E5 /* GameScene.sks */; };
 		63BDC3D41B23FB0800CA99E5 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BDC3D31B23FB0800CA99E5 /* GameScene.swift */; };
@@ -249,6 +250,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6314977A1B25595A0068A0FF /* Satellite.swift in Sources */,
 				63BDC3EA1B23FB0800CA99E5 /* SpaceDebrisProjectTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

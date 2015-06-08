@@ -9,6 +9,8 @@
 import SpriteKit
 
 class GameScene: SKScene {
+    
+    let mers = Satellite(imageNamed: "bubble.png");
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
         let myLabel = SKLabelNode(fontNamed:"Chalkduster")

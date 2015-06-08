@@ -33,4 +33,8 @@ class SpaceDebrisProjectTests: XCTestCase {
         }
     }
     
+    func testCreateSatellite() {
+        let mers = Satellite();
+    }
+    
 }

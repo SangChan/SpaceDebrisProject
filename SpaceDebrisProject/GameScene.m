@@ -10,6 +10,7 @@
 
 @interface GameScene () {
     SKShapeNode *planet;
+    SKShapeNode *satellite;
 }
 
 @end
@@ -18,9 +19,15 @@
 
 -(void)didMoveToView:(SKView *)view {
     /* Setup your scene here */
+    self.physicsWorld.gravity =  CGVectorMake(0.0, 0.0);
+    
     [self initPlanet];
     [self initSatellite];
     [self initDebris];
+    
+    SKAction *action = [SKAction rotateByAngle:M_PI duration:10];
+    [planet runAction:[SKAction repeatActionForever:action]];
+
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
@@ -54,22 +61,35 @@
 
     [planet setFillColor:[UIColor blueColor]];
     
-
     planet.position = CGPointMake(centerPos.x,centerPos.y);
     
-    SKShapeNode *point = [SKShapeNode shapeNodeWithCircleOfRadius:10.0];
+    SKShapeNode *point = [SKShapeNode shapeNodeWithCircleOfRadius:5.0];
     [point setFillColor:[UIColor whiteColor]];
-    point.position = CGPointMake(0,planet.frame.size.height/2);
+    point.position = CGPointMake(0,planet.frame.size.height/2 - 9.0);
     [planet addChild:point];
     
-    SKAction *action = [SKAction rotateByAngle:M_PI duration:10];
-    [planet runAction:[SKAction repeatActionForever:action]];
+    planet.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:5.0];
     
     [self addChild:planet];
 }
 
 -(void)initSatellite {
-
+    CGPoint centerPos = CGPointMake(self.size.width * 0.5, self.size.height * 0.5 );
+    satellite = [SKShapeNode shapeNodeWithRectOfSize:CGSizeMake(10.0,10.0) cornerRadius:2.5];
+    
+    satellite.position = CGPointMake(centerPos.x, centerPos.y + planet.frame.size.width/2 + 10);
+    
+    [satellite setFillColor:[UIColor redColor]];
+    
+    satellite.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(10.0, 10.0)];
+    
+    [self addChild:satellite];
+    
+    SKPhysicsJointLimit *joint = [SKPhysicsJointLimit jointWithBodyA:planet.physicsBody bodyB:satellite.physicsBody anchorA:CGPointMake(planet.frame.origin.x, planet.frame.origin.y) anchorB:CGPointMake(satellite.frame.origin.x, satellite.frame.origin.y)];
+    joint.maxLength = 10.0;
+    [self.physicsWorld addJoint:joint];
+    
+    [satellite.physicsBody applyForce:CGVectorMake(1.0, 1.0)];
 }
 
 -(void)initDebris {

@@ -25,9 +25,9 @@
     [self initSatellite];
     [self initDebris];
     
-    SKAction *action = [SKAction rotateByAngle:M_PI duration:10];
-    [planet runAction:[SKAction repeatActionForever:action]];
-
+//    SKAction *action = [SKAction rotateByAngle:M_PI duration:10];
+//    [planet runAction:[SKAction repeatActionForever:action]];
+    planet.physicsBody.angularVelocity = 1.0;
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
@@ -52,6 +52,8 @@
 
 -(void)update:(CFTimeInterval)currentTime {
     /* Called before each frame is rendered */
+    planet.physicsBody.angularVelocity = 1.0;
+    
 }
 
 -(void)initPlanet {
@@ -68,32 +70,40 @@
     point.position = CGPointMake(0,planet.frame.size.height/2 - 9.0);
     [planet addChild:point];
     
-    planet.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:5.0];
-    
+    planet.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:50.0];
+    planet.physicsBody.dynamic = true;
+    planet.physicsBody.density = 100;
     [self addChild:planet];
 }
 
 -(void)initSatellite {
     CGPoint centerPos = CGPointMake(self.size.width * 0.5, self.size.height * 0.5 );
-    satellite = [SKShapeNode shapeNodeWithRectOfSize:CGSizeMake(10.0,10.0) cornerRadius:2.5];
+    satellite = [SKShapeNode shapeNodeWithRectOfSize:CGSizeMake(10.0,10.0)];
     
-    satellite.position = CGPointMake(centerPos.x, centerPos.y + planet.frame.size.width/2 + 10);
+    satellite.position = CGPointMake(centerPos.x, centerPos.y - planet.frame.size.width/2 - 45);
     
     [satellite setFillColor:[UIColor redColor]];
     
     satellite.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(10.0, 10.0)];
-    
+    satellite.physicsBody.dynamic = true;
+    satellite.physicsBody.density = 1;
     [self addChild:satellite];
     
-    SKPhysicsJointLimit *joint = [SKPhysicsJointLimit jointWithBodyA:planet.physicsBody bodyB:satellite.physicsBody anchorA:CGPointMake(planet.frame.origin.x, planet.frame.origin.y) anchorB:CGPointMake(satellite.frame.origin.x, satellite.frame.origin.y)];
-    joint.maxLength = 10.0;
-    [self.physicsWorld addJoint:joint];
+    SKPhysicsJointLimit *limitJoint = [SKPhysicsJointLimit jointWithBodyA:planet.physicsBody bodyB:satellite.physicsBody anchorA:planet.frame.origin anchorB:satellite.frame.origin];
+    [limitJoint setMaxLength:1.0];
+    [self.physicsWorld addJoint:limitJoint];
     
-    [satellite.physicsBody applyForce:CGVectorMake(1.0, 1.0)];
+    //[satellite.physicsBody applyForce:CGVectorMake(1.0, 1.0)];
+    
+    SKPhysicsJointPin *pinJoint = [SKPhysicsJointPin jointWithBodyA:planet.physicsBody bodyB:satellite.physicsBody anchor:satellite.frame.origin];
+
+    [self.physicsWorld addJoint:pinJoint];
+    
+    
 }
 
 -(void)initDebris {
     
 }
-     
+
 @end

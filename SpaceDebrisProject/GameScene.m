@@ -11,6 +11,7 @@
 @interface GameScene () {
     SKShapeNode *planet;
     SKShapeNode *satellite;
+    SKShapeNode *debris;
 }
 
 @end
@@ -93,8 +94,6 @@
     [limitJoint setMaxLength:1.0];
     [self.physicsWorld addJoint:limitJoint];
     
-    //[satellite.physicsBody applyForce:CGVectorMake(1.0, 1.0)];
-    
     SKPhysicsJointPin *pinJoint = [SKPhysicsJointPin jointWithBodyA:planet.physicsBody bodyB:satellite.physicsBody anchor:satellite.frame.origin];
 
     [self.physicsWorld addJoint:pinJoint];
@@ -103,6 +102,18 @@
 }
 
 -(void)initDebris {
+    //CGPoint centerPos = CGPointMake(self.size.width * 0.5, self.size.height * 0.5 );
+    debris = [SKShapeNode shapeNodeWithRectOfSize:CGSizeMake(13.0, 7.0)];
+    
+    debris.position = CGPointMake(0.0, 0.0);
+    [debris setFillColor:[UIColor brownColor]];
+    
+    debris.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:debris.frame.size];
+    debris.physicsBody.dynamic = true;
+    debris.physicsBody.density = 1;
+    [self addChild:debris];
+    
+    [debris.physicsBody applyForce:CGVectorMake(planet.frame.origin.x / 30.0, planet.frame.origin.y / 30.0)];
     
 }
 

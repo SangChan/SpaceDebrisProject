@@ -58,6 +58,7 @@
 -(void)update:(CFTimeInterval)currentTime {
     /* Called before each frame is rendered */
     _planet.physicsBody.angularVelocity = 1.0;
+    _planet.position = CGPointMake(self.size.width * 0.5, self.size.height * 0.5 );
 }
 
 -(void)initPlanet {
@@ -75,7 +76,7 @@
     [_planet addChild:point];
     
     _planet.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:50.0];
-    _planet.physicsBody.dynamic = true;
+    _planet.physicsBody.dynamic = YES;
     _planet.physicsBody.density = 100;
     [self addChild:_planet];
 }
@@ -89,7 +90,7 @@
     [_satellite setFillColor:[UIColor redColor]];
     
     _satellite.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(10.0, 10.0)];
-    _satellite.physicsBody.dynamic = true;
+    _satellite.physicsBody.dynamic = YES;
     _satellite.physicsBody.density = 1;
     [self addChild:_satellite];
     
@@ -112,7 +113,7 @@
     [_debris setFillColor:[UIColor brownColor]];
     
     _debris.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:_debris.frame.size];
-    _debris.physicsBody.dynamic = true;
+    _debris.physicsBody.dynamic = YES;
     _debris.physicsBody.density = 1;
     [self addChild:_debris];
     NSLog(@"planet x= %f, y= %f. debris x= %f, y =%f", _planet.position.x, _planet.position.y, _debris.position.x, _debris.position.y);

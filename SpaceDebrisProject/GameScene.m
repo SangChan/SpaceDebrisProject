@@ -26,10 +26,12 @@
     _startTime = 0.0;
     [self initPlanet];
     [self initSatellite];
-    [self initDebris];
+    SKAction *wait = [SKAction waitForDuration:1.0];
+    SKAction *creatDebris = [SKAction performSelector:@selector(initDebris) onTarget:self];
+    SKAction *perform = [SKAction repeatActionForever:[SKAction sequence:@[wait,creatDebris]]];
+    [self runAction:perform];
+    //[self initDebris];
     
-//    SKAction *action = [SKAction rotateByAngle:M_PI duration:10];
-//    [planet runAction:[SKAction repeatActionForever:action]];
     _planet.physicsBody.angularVelocity = 1.0;
 }
 
@@ -56,15 +58,6 @@
 -(void)update:(CFTimeInterval)currentTime {
     /* Called before each frame is rendered */
     _planet.physicsBody.angularVelocity = 1.0;
-    if (_startTime == 0.0)
-        _startTime = currentTime;
-    _currentTime = currentTime;
-    NSLog(@"%f",_currentTime-_startTime);
-    int second = _currentTime - _startTime;
-    double restVlaue = _currentTime - _startTime - (float)second;
-    if (second%5 == 0 && restVlaue < 0.02) {
-        [self initDebris];
-    }
 }
 
 -(void)initPlanet {
@@ -113,17 +106,20 @@
 
 -(void)initDebris {
     //CGPoint centerPos = CGPointMake(self.size.width * 0.5, self.size.height * 0.5 );
+    int xFactor = arc4random_uniform(INT16_MAX) % 6;
     _debris = [SKShapeNode shapeNodeWithRectOfSize:CGSizeMake(13.0, 7.0)];
-    
-    _debris.position = CGPointMake(0.0, 0.0);
+    _debris.position = CGPointMake((self.size.width / 6) * xFactor,  0.0);
     [_debris setFillColor:[UIColor brownColor]];
     
     _debris.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:_debris.frame.size];
     _debris.physicsBody.dynamic = true;
     _debris.physicsBody.density = 1;
     [self addChild:_debris];
+    NSLog(@"planet x= %f, y= %f. debris x= %f, y =%f", _planet.position.x, _planet.position.y, _debris.position.x, _debris.position.y);
     
-    [_debris.physicsBody applyForce:CGVectorMake(_planet.frame.origin.x / 20.0, _planet.frame.origin.y / 20.0)];
+    CGVector throwVector = CGVectorMake(_planet.position.x - _debris.position.x, _planet.position.y - _debris.position.y);
+    NSLog(@"vector = %f,%f", throwVector.dx, throwVector.dy);
+    [_debris.physicsBody applyForce:throwVector];
     
 }
 

@@ -9,9 +9,11 @@
 #import "GameScene.h"
 
 @interface GameScene () {
-    SKShapeNode *planet;
-    SKShapeNode *satellite;
-    SKShapeNode *debris;
+    SKShapeNode *_planet;
+    SKShapeNode *_satellite;
+    SKShapeNode *_debris;
+    CFTimeInterval _startTime;
+    CFTimeInterval _currentTime;
 }
 
 @end
@@ -21,14 +23,14 @@
 -(void)didMoveToView:(SKView *)view {
     /* Setup your scene here */
     self.physicsWorld.gravity =  CGVectorMake(0.0, 0.0);
-    
+    _startTime = 0.0;
     [self initPlanet];
     [self initSatellite];
     [self initDebris];
     
 //    SKAction *action = [SKAction rotateByAngle:M_PI duration:10];
 //    [planet runAction:[SKAction repeatActionForever:action]];
-    planet.physicsBody.angularVelocity = 1.0;
+    _planet.physicsBody.angularVelocity = 1.0;
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
@@ -53,48 +55,56 @@
 
 -(void)update:(CFTimeInterval)currentTime {
     /* Called before each frame is rendered */
-    planet.physicsBody.angularVelocity = 1.0;
-    
+    _planet.physicsBody.angularVelocity = 1.0;
+    if (_startTime == 0.0)
+        _startTime = currentTime;
+    _currentTime = currentTime;
+    NSLog(@"%f",_currentTime-_startTime);
+    int second = _currentTime - _startTime;
+    double restVlaue = _currentTime - _startTime - (float)second;
+    if (second%5 == 0 && restVlaue < 0.02) {
+        [self initDebris];
+    }
 }
 
 -(void)initPlanet {
     CGPoint centerPos = CGPointMake(self.size.width * 0.5, self.size.height * 0.5 );
     
-    planet = [SKShapeNode shapeNodeWithCircleOfRadius:50.0];
+    _planet = [SKShapeNode shapeNodeWithCircleOfRadius:50.0];
 
-    [planet setFillColor:[UIColor blueColor]];
+    [_planet setFillColor:[UIColor blueColor]];
     
-    planet.position = CGPointMake(centerPos.x,centerPos.y);
+    _planet.position = CGPointMake(centerPos.x,centerPos.y);
     
     SKShapeNode *point = [SKShapeNode shapeNodeWithCircleOfRadius:5.0];
     [point setFillColor:[UIColor whiteColor]];
-    point.position = CGPointMake(0,planet.frame.size.height/2 - 9.0);
-    [planet addChild:point];
+    point.position = CGPointMake(0,_planet.frame.size.height/2 - 9.0);
+    [_planet addChild:point];
     
-    planet.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:50.0];
-    planet.physicsBody.dynamic = true;
-    planet.physicsBody.density = 100;
-    [self addChild:planet];
+    _planet.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:50.0];
+    _planet.physicsBody.dynamic = true;
+    _planet.physicsBody.density = 100;
+    [self addChild:_planet];
 }
 
 -(void)initSatellite {
     CGPoint centerPos = CGPointMake(self.size.width * 0.5, self.size.height * 0.5 );
-    satellite = [SKShapeNode shapeNodeWithRectOfSize:CGSizeMake(10.0,10.0)];
+    _satellite = [SKShapeNode shapeNodeWithRectOfSize:CGSizeMake(10.0,10.0)];
     
-    satellite.position = CGPointMake(centerPos.x, centerPos.y - planet.frame.size.width/2 - 45);
+    _satellite.position = CGPointMake(centerPos.x, centerPos.y - _planet.frame.size.width/2 - 45);
     
-    [satellite setFillColor:[UIColor redColor]];
+    [_satellite setFillColor:[UIColor redColor]];
     
-    satellite.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(10.0, 10.0)];
-    satellite.physicsBody.dynamic = true;
-    satellite.physicsBody.density = 1;
-    [self addChild:satellite];
+    _satellite.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(10.0, 10.0)];
+    _satellite.physicsBody.dynamic = true;
+    _satellite.physicsBody.density = 1;
+    [self addChild:_satellite];
     
-    SKPhysicsJointLimit *limitJoint = [SKPhysicsJointLimit jointWithBodyA:planet.physicsBody bodyB:satellite.physicsBody anchorA:planet.frame.origin anchorB:satellite.frame.origin];
+    SKPhysicsJointLimit *limitJoint = [SKPhysicsJointLimit jointWithBodyA:_planet.physicsBody bodyB:_satellite.physicsBody anchorA:_planet.frame.origin anchorB:_satellite.frame.origin];
     [limitJoint setMaxLength:1.0];
     [self.physicsWorld addJoint:limitJoint];
     
-    SKPhysicsJointPin *pinJoint = [SKPhysicsJointPin jointWithBodyA:planet.physicsBody bodyB:satellite.physicsBody anchor:satellite.frame.origin];
+    SKPhysicsJointPin *pinJoint = [SKPhysicsJointPin jointWithBodyA:_planet.physicsBody bodyB:_satellite.physicsBody anchor:_satellite.frame.origin];
 
     [self.physicsWorld addJoint:pinJoint];
     
@@ -103,17 +113,17 @@
 
 -(void)initDebris {
     //CGPoint centerPos = CGPointMake(self.size.width * 0.5, self.size.height * 0.5 );
-    debris = [SKShapeNode shapeNodeWithRectOfSize:CGSizeMake(13.0, 7.0)];
+    _debris = [SKShapeNode shapeNodeWithRectOfSize:CGSizeMake(13.0, 7.0)];
     
-    debris.position = CGPointMake(0.0, 0.0);
-    [debris setFillColor:[UIColor brownColor]];
+    _debris.position = CGPointMake(0.0, 0.0);
+    [_debris setFillColor:[UIColor brownColor]];
     
-    debris.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:debris.frame.size];
-    debris.physicsBody.dynamic = true;
-    debris.physicsBody.density = 1;
-    [self addChild:debris];
+    _debris.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:_debris.frame.size];
+    _debris.physicsBody.dynamic = true;
+    _debris.physicsBody.density = 1;
+    [self addChild:_debris];
     
-    [debris.physicsBody applyForce:CGVectorMake(planet.frame.origin.x / 30.0, planet.frame.origin.y / 30.0)];
+    [_debris.physicsBody applyForce:CGVectorMake(_planet.frame.origin.x / 20.0, _planet.frame.origin.y / 20.0)];
     
 }
 

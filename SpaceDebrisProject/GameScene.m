@@ -109,7 +109,7 @@
     //CGPoint centerPos = CGPointMake(self.size.width * 0.5, self.size.height * 0.5 );
     int xFactor = arc4random_uniform(INT16_MAX) % 6;
     _debris = [SKShapeNode shapeNodeWithRectOfSize:CGSizeMake(13.0, 7.0)];
-    _debris.position = CGPointMake((self.size.width / 6) * xFactor,  0.0);
+    _debris.position = CGPointMake((self.size.width / 6) * xFactor,  self.size.height);
     [_debris setFillColor:[UIColor brownColor]];
     
     _debris.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:_debris.frame.size];

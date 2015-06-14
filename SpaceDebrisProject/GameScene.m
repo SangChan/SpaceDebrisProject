@@ -124,11 +124,5 @@
     
 }
 
--(CGFloat)getYPostionUsingXPosition:(CGFloat)xPosition {
-    CGFloat powLength = (self.size.width/2.0 * self.size.width/2.0) + (self.size.height/2.0*self.size.height/2.0);
-    CGFloat yPosition = sqrt(fabsf(powLength - xPosition * xPosition));
-    return yPosition;
-}
-
 
 @end

@@ -104,12 +104,12 @@
     
     
 }
-
 -(void)initDebris {
     //CGPoint centerPos = CGPointMake(self.size.width * 0.5, self.size.height * 0.5 );
-    int xFactor = arc4random_uniform(INT16_MAX) % 180;
+    float radian = (float)rand() / RAND_MAX*2*M_PI;
     _debris = [SKShapeNode shapeNodeWithRectOfSize:CGSizeMake(13.0, 7.0)];
-    _debris.position = CGPointMake((self.size.width / 180) * xFactor, [self getYPostionUsingXPosition:(self.size.width / 180) * xFactor]);
+    CGFloat radius =  sqrt((self.size.width/2.0 * self.size.width/2.0) + (self.size.height/2.0*self.size.height/2.0));
+    _debris.position = CGPointMake(radius*cos(radian)+self.size.width/3.0, radius*sin(radian)+self.size.height/2.0);
     [_debris setFillColor:[UIColor brownColor]];
     
     _debris.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:_debris.frame.size];

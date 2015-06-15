@@ -55,6 +55,20 @@
     }*/
 }
 
+-(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
+    
+}
+
+-(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+    [self resetController];
+}
+
+-(void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event {
+    [self resetController];
+}
+
+
+
 -(void)update:(CFTimeInterval)currentTime {
     /* Called before each frame is rendered */
     _planet.physicsBody.angularVelocity = 1.0;
@@ -121,6 +135,10 @@
     CGVector throwVector = CGVectorMake(_planet.position.x - _debris.position.x, _planet.position.y - _debris.position.y);
     NSLog(@"vector = %f,%f", throwVector.dx, throwVector.dy);
     [_debris.physicsBody applyForce:throwVector];
+    
+}
+
+-(void)resetController {
     
 }
 

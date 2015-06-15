@@ -7,13 +7,15 @@
 //
 
 #import "GameScene.h"
+#define SK_DEGREES_TO_RADIANS(__ANGLE__) ((__ANGLE__) * 0.01745329252f)
 
 @interface GameScene () {
     SKShapeNode *_planet;
-    SKShapeNode *_satellite;
+    SKSpriteNode *_satellite;
     SKShapeNode *_debris;
     CFTimeInterval _startTime;
     CFTimeInterval _currentTime;
+    BOOL _isTracking;
 }
 
 @end
@@ -38,25 +40,31 @@
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     /* Called when a touch begins */
     
-    /*for (UITouch *touch in touches) {
+    for (UITouch *touch in touches) {
         CGPoint location = [touch locationInNode:self];
-        
-        SKSpriteNode *sprite = [SKSpriteNode spriteNodeWithImageNamed:@"Spaceship"];
-        
-        sprite.xScale = 0.5;
-        sprite.yScale = 0.5;
-        sprite.position = location;
-        
-        SKAction *action = [SKAction rotateByAngle:M_PI duration:1];
-        
-        [sprite runAction:[SKAction repeatActionForever:action]];
-        
-        [self addChild:sprite];
-    }*/
+        if (_isTracking == NO) {
+            _isTracking = YES;
+            
+            float deltaX = location.x - _satellite.position.x;
+            float deltaY = location.y - _satellite.position.y;
+            _satellite.physicsBody.angularVelocity = 0.0;
+            float angle = atan2f(deltaY, deltaX);
+            _satellite.zRotation = angle - SK_DEGREES_TO_RADIANS(-90.0f);
+        }
+    }
 }
 
 -(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
-    
+    for (UITouch *touch in touches) {
+        CGPoint location = [touch locationInNode:self];
+        if (_isTracking == YES) {
+            float deltaX = location.x - _satellite.position.x;
+            float deltaY = location.y - _satellite.position.y;
+            _satellite.physicsBody.angularVelocity = 0.0;
+            float angle = atan2f(deltaY, deltaX);
+            _satellite.zRotation = angle - SK_DEGREES_TO_RADIANS(-90.0f);
+        }
+    }
 }
 
 -(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
@@ -96,25 +104,32 @@
 }
 
 -(void)initSatellite {
+    _isTracking = NO;
     CGPoint centerPos = CGPointMake(self.size.width * 0.5, self.size.height * 0.5 );
-    _satellite = [SKShapeNode shapeNodeWithRectOfSize:CGSizeMake(10.0,10.0)];
+    _satellite = [SKSpriteNode spriteNodeWithColor:[UIColor redColor] size:CGSizeMake(10.0,10.0)];
+    //[SKShapeNode shapeNodeWithRectOfSize:CGSizeMake(10.0,10.0)];
     
     _satellite.position = CGPointMake(centerPos.x, centerPos.y - _planet.frame.size.width/2 - 45);
+    _satellite.anchorPoint = CGPointMake(0.5, 0.5);
     
-    [_satellite setFillColor:[UIColor redColor]];
+    SKShapeNode *point = [SKShapeNode shapeNodeWithCircleOfRadius:2.0];
+    [point setFillColor:[UIColor whiteColor]];
+    point.position = CGPointMake(0,_satellite.frame.size.height/2 - 9.0);
+    [_satellite addChild:point];
     
     _satellite.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(10.0, 10.0)];
     _satellite.physicsBody.dynamic = YES;
     _satellite.physicsBody.density = 1;
     [self addChild:_satellite];
     
-    SKPhysicsJointLimit *limitJoint = [SKPhysicsJointLimit jointWithBodyA:_planet.physicsBody bodyB:_satellite.physicsBody anchorA:_planet.frame.origin anchorB:_satellite.frame.origin];
+    CGPoint middleOfSatellite = CGPointMake(_satellite.frame.origin.x + (_satellite.frame.size.width / 2.0),_satellite.frame.origin.y + (_satellite.frame.size.height / 2.0));
+    
+    SKPhysicsJointLimit *limitJoint = [SKPhysicsJointLimit jointWithBodyA:_planet.physicsBody bodyB:_satellite.physicsBody anchorA:_planet.frame.origin anchorB:middleOfSatellite];
     [limitJoint setMaxLength:1.0];
     [self.physicsWorld addJoint:limitJoint];
     
-    SKPhysicsJointPin *pinJoint = [SKPhysicsJointPin jointWithBodyA:_planet.physicsBody bodyB:_satellite.physicsBody anchor:_satellite.frame.origin];
-
-    [self.physicsWorld addJoint:pinJoint];
+//    SKPhysicsJointPin *pinJoint = [SKPhysicsJointPin jointWithBodyA:_planet.physicsBody bodyB:_satellite.physicsBody anchor:_satellite.frame.origin];
+//    [self.physicsWorld addJoint:pinJoint];
     
     
 }
@@ -139,7 +154,8 @@
 }
 
 -(void)resetController {
-    
+    _isTracking = NO;
+    _satellite.physicsBody.angularVelocity = 0.0;
 }
 
 

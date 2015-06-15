@@ -122,14 +122,16 @@
     _satellite.physicsBody.density = 1;
     [self addChild:_satellite];
     
-    CGPoint middleOfSatellite = CGPointMake(_satellite.frame.origin.x + (_satellite.frame.size.width / 2.0),_satellite.frame.origin.y + (_satellite.frame.size.height / 2.0));
     
-    SKPhysicsJointLimit *limitJoint = [SKPhysicsJointLimit jointWithBodyA:_planet.physicsBody bodyB:_satellite.physicsBody anchorA:_planet.frame.origin anchorB:middleOfSatellite];
+    CGPoint middleOfPlanet = CGPointMake(_planet.frame.origin.x + (_planet.frame.size.width * 0.5),_planet.frame.origin.y + (_planet.frame.size.height * 0.5));
+    CGPoint middleOfSatellite = CGPointMake(_satellite.frame.origin.x + (_satellite.frame.size.width * 0.5),_satellite.frame.origin.y + (_satellite.frame.size.height * 0.5));
+    
+    SKPhysicsJointLimit *limitJoint = [SKPhysicsJointLimit jointWithBodyA:_planet.physicsBody bodyB:_satellite.physicsBody anchorA:middleOfPlanet anchorB:middleOfSatellite];
     [limitJoint setMaxLength:1.0];
     [self.physicsWorld addJoint:limitJoint];
     
-//    SKPhysicsJointPin *pinJoint = [SKPhysicsJointPin jointWithBodyA:_planet.physicsBody bodyB:_satellite.physicsBody anchor:_satellite.frame.origin];
-//    [self.physicsWorld addJoint:pinJoint];
+    SKPhysicsJointPin *pinJoint = [SKPhysicsJointPin jointWithBodyA:_planet.physicsBody bodyB:_satellite.physicsBody anchor:middleOfSatellite];
+    [self.physicsWorld addJoint:pinJoint];
     
     
 }

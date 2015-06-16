@@ -106,8 +106,9 @@
 
 -(void)initDebris {
     //CGPoint centerPos = CGPointMake(self.size.width * 0.5, self.size.height * 0.5 );
-    float radian = (float)rand() / RAND_MAX*2*M_PI;
+    float radian = [self randomFromMin:0.0 Max:M_PI];//(float)rand()/RAND_MAX*2*M_PI;
     _debris = [SKShapeNode shapeNodeWithRectOfSize:CGSizeMake(13.0, 7.0)];
+    NSLog(@"radian = %f",radian);
     CGFloat radius =  sqrt((self.size.width/2.0 * self.size.width/2.0) + (self.size.height/2.0*self.size.height/2.0));
     _debris.position = CGPointMake(radius*cos(radian)+self.size.width/3.0, radius*sin(radian)+self.size.height/2.0);
     [_debris setFillColor:[UIColor brownColor]];
@@ -118,7 +119,7 @@
     [self addChild:_debris];
     NSLog(@"planet x= %f, y= %f. debris x= %f, y =%f", _planet.position.x, _planet.position.y, _debris.position.x, _debris.position.y);
     
-    CGVector throwVector = CGVectorMake(_planet.position.x - _debris.position.x, _planet.position.y - _debris.position.y);
+    CGVector throwVector = CGVectorMake((_planet.position.x - _debris.position.x) *0.5, (_planet.position.y - _debris.position.y) *0.5);
     NSLog(@"vector = %f,%f", throwVector.dx, throwVector.dy);
     [_debris.physicsBody applyForce:throwVector];
     
@@ -157,5 +158,8 @@
     [self.physicsWorld addJoint:pinJoint];
 }
 
+-(float)randomFromMin:(float)min Max:(float)max{
+    return (float) rand()/RAND_MAX * (max - min) + min;
+}
 
 @end

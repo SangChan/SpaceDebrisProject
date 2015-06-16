@@ -16,6 +16,9 @@
 		63BDC3DB1B23FB0800CA99E5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63BDC3DA1B23FB0800CA99E5 /* Images.xcassets */; };
 		63BDC3DE1B23FB0800CA99E5 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63BDC3DC1B23FB0800CA99E5 /* LaunchScreen.xib */; };
 		63BDC3EA1B23FB0800CA99E5 /* SpaceDebrisProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BDC3E91B23FB0800CA99E5 /* SpaceDebrisProjectTests.swift */; };
+		63DAD0321B2FF7D60082F8FE /* Satellite.m in Sources */ = {isa = PBXBuildFile; fileRef = 63DAD0311B2FF7D60082F8FE /* Satellite.m */; };
+		63DAD0351B2FF8BB0082F8FE /* Planet.m in Sources */ = {isa = PBXBuildFile; fileRef = 63DAD0341B2FF8BB0082F8FE /* Planet.m */; };
+		63DAD0381B2FF8CA0082F8FE /* Debris.m in Sources */ = {isa = PBXBuildFile; fileRef = 63DAD0371B2FF8CA0082F8FE /* Debris.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +48,12 @@
 		63BDC3E31B23FB0800CA99E5 /* SpaceDebrisProjectTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpaceDebrisProjectTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		63BDC3E81B23FB0800CA99E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		63BDC3E91B23FB0800CA99E5 /* SpaceDebrisProjectTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceDebrisProjectTests.swift; sourceTree = "<group>"; };
+		63DAD0301B2FF7D60082F8FE /* Satellite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Satellite.h; sourceTree = "<group>"; };
+		63DAD0311B2FF7D60082F8FE /* Satellite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Satellite.m; sourceTree = "<group>"; };
+		63DAD0331B2FF8BB0082F8FE /* Planet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Planet.h; sourceTree = "<group>"; };
+		63DAD0341B2FF8BB0082F8FE /* Planet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Planet.m; sourceTree = "<group>"; };
+		63DAD0361B2FF8CA0082F8FE /* Debris.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Debris.h; sourceTree = "<group>"; };
+		63DAD0371B2FF8CA0082F8FE /* Debris.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Debris.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +77,12 @@
 		6314976F1B2550AA0068A0FF /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				63DAD0301B2FF7D60082F8FE /* Satellite.h */,
+				63DAD0311B2FF7D60082F8FE /* Satellite.m */,
+				63DAD0331B2FF8BB0082F8FE /* Planet.h */,
+				63DAD0341B2FF8BB0082F8FE /* Planet.m */,
+				63DAD0361B2FF8CA0082F8FE /* Debris.h */,
+				63DAD0371B2FF8CA0082F8FE /* Debris.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -239,8 +254,11 @@
 			files = (
 				631497BB1B2585BC0068A0FF /* GameViewController.m in Sources */,
 				631497B51B25859D0068A0FF /* AppDelegate.m in Sources */,
+				63DAD0321B2FF7D60082F8FE /* Satellite.m in Sources */,
+				63DAD0381B2FF8CA0082F8FE /* Debris.m in Sources */,
 				631497BD1B2586390068A0FF /* main.m in Sources */,
 				631497B81B2585AE0068A0FF /* GameScene.m in Sources */,
+				63DAD0351B2FF8BB0082F8FE /* Planet.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,6 +7,7 @@
 //
 
 #import "GameScene.h"
+#import "Satellite.h"
 #define SK_DEGREES_TO_RADIANS(__ANGLE__) ((__ANGLE__) * 0.01745329252f)
 
 @interface GameScene () {
@@ -28,6 +29,8 @@
     _startTime = 0.0;
     [self initPlanet];
     [self initSatellite];
+    
+    _isTracking = NO;
     SKAction *wait = [SKAction waitForDuration:1.0];
     SKAction *creatDebris = [SKAction performSelector:@selector(initDebris) onTarget:self];
     SKAction *perform = [SKAction repeatActionForever:[SKAction sequence:@[wait,creatDebris]]];
@@ -103,8 +106,33 @@
     [self addChild:_planet];
 }
 
--(void)initSatellite {
+
+-(void)initDebris {
+    //CGPoint centerPos = CGPointMake(self.size.width * 0.5, self.size.height * 0.5 );
+    float radian = (float)rand() / RAND_MAX*2*M_PI;
+    _debris = [SKShapeNode shapeNodeWithRectOfSize:CGSizeMake(13.0, 7.0)];
+    CGFloat radius =  sqrt((self.size.width/2.0 * self.size.width/2.0) + (self.size.height/2.0*self.size.height/2.0));
+    _debris.position = CGPointMake(radius*cos(radian)+self.size.width/3.0, radius*sin(radian)+self.size.height/2.0);
+    [_debris setFillColor:[UIColor brownColor]];
+    
+    _debris.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:_debris.frame.size];
+    _debris.physicsBody.dynamic = YES;
+    _debris.physicsBody.density = 1;
+    [self addChild:_debris];
+    NSLog(@"planet x= %f, y= %f. debris x= %f, y =%f", _planet.position.x, _planet.position.y, _debris.position.x, _debris.position.y);
+    
+    CGVector throwVector = CGVectorMake(_planet.position.x - _debris.position.x, _planet.position.y - _debris.position.y);
+    NSLog(@"vector = %f,%f", throwVector.dx, throwVector.dy);
+    [_debris.physicsBody applyForce:throwVector];
+    
+}
+
+-(void)resetController {
     _isTracking = NO;
+    _satellite.physicsBody.angularVelocity = 0.0;
+}
+
+-(void)initSatellite {
     CGPoint centerPos = CGPointMake(self.size.width * 0.5, self.size.height * 0.5 );
     _satellite = [SKSpriteNode spriteNodeWithColor:[UIColor redColor] size:CGSizeMake(10.0,10.0)];
     //[SKShapeNode shapeNodeWithRectOfSize:CGSizeMake(10.0,10.0)];
@@ -132,32 +160,6 @@
     
     SKPhysicsJointPin *pinJoint = [SKPhysicsJointPin jointWithBodyA:_planet.physicsBody bodyB:_satellite.physicsBody anchor:middleOfSatellite];
     [self.physicsWorld addJoint:pinJoint];
-    
-    
-}
--(void)initDebris {
-    //CGPoint centerPos = CGPointMake(self.size.width * 0.5, self.size.height * 0.5 );
-    float radian = (float)rand() / RAND_MAX*2*M_PI;
-    _debris = [SKShapeNode shapeNodeWithRectOfSize:CGSizeMake(13.0, 7.0)];
-    CGFloat radius =  sqrt((self.size.width/2.0 * self.size.width/2.0) + (self.size.height/2.0*self.size.height/2.0));
-    _debris.position = CGPointMake(radius*cos(radian)+self.size.width/3.0, radius*sin(radian)+self.size.height/2.0);
-    [_debris setFillColor:[UIColor brownColor]];
-    
-    _debris.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:_debris.frame.size];
-    _debris.physicsBody.dynamic = YES;
-    _debris.physicsBody.density = 1;
-    [self addChild:_debris];
-    NSLog(@"planet x= %f, y= %f. debris x= %f, y =%f", _planet.position.x, _planet.position.y, _debris.position.x, _debris.position.y);
-    
-    CGVector throwVector = CGVectorMake(_planet.position.x - _debris.position.x, _planet.position.y - _debris.position.y);
-    NSLog(@"vector = %f,%f", throwVector.dx, throwVector.dy);
-    [_debris.physicsBody applyForce:throwVector];
-    
-}
-
--(void)resetController {
-    _isTracking = NO;
-    _satellite.physicsBody.angularVelocity = 0.0;
 }
 
 

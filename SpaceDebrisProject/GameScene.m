@@ -8,6 +8,7 @@
 
 #import "GameScene.h"
 #import "Satellite.h"
+#import "Planet.h"
 #define SK_DEGREES_TO_RADIANS(__ANGLE__) ((__ANGLE__) * 0.01745329252f)
 
 @interface GameScene () {
@@ -29,13 +30,11 @@
     _startTime = 0.0;
     [self initPlanet];
     [self initSatellite];
-    
     _isTracking = NO;
     SKAction *wait = [SKAction waitForDuration:1.0];
     SKAction *creatDebris = [SKAction performSelector:@selector(initDebris) onTarget:self];
     SKAction *perform = [SKAction repeatActionForever:[SKAction sequence:@[wait,creatDebris]]];
     [self runAction:perform];
-    //[self initDebris];
     
     _planet.physicsBody.angularVelocity = 1.0;
 }
@@ -88,9 +87,7 @@
 
 -(void)initPlanet {
     CGPoint centerPos = CGPointMake(self.size.width * 0.5, self.size.height * 0.5 );
-    
     _planet = [SKShapeNode shapeNodeWithCircleOfRadius:50.0];
-
     [_planet setFillColor:[UIColor blueColor]];
     
     _planet.position = CGPointMake(centerPos.x,centerPos.y);
@@ -134,9 +131,7 @@
 
 -(void)initSatellite {
     CGPoint centerPos = CGPointMake(self.size.width * 0.5, self.size.height * 0.5 );
-    _satellite = [SKSpriteNode spriteNodeWithColor:[UIColor redColor] size:CGSizeMake(10.0,10.0)];
-    //[SKShapeNode shapeNodeWithRectOfSize:CGSizeMake(10.0,10.0)];
-    
+    _satellite = [[Satellite alloc]initWithColor:[UIColor redColor] size:CGSizeMake(10.0,10.0)];
     _satellite.position = CGPointMake(centerPos.x, centerPos.y - _planet.frame.size.width/2 - 45);
     _satellite.anchorPoint = CGPointMake(0.5, 0.5);
     

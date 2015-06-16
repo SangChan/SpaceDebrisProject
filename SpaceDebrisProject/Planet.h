@@ -8,6 +8,6 @@
 
 #import <SpriteKit/SpriteKit.h>
 
-@interface Planet : SKSpriteNode
+@interface Planet : SKShapeNode
 
 @end

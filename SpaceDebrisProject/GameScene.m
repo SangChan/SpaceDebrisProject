@@ -106,7 +106,7 @@
 
 -(void)initDebris {
     //CGPoint centerPos = CGPointMake(self.size.width * 0.5, self.size.height * 0.5 );
-    float radian = [self randomFromMin:0.0 Max:M_PI];//(float)rand()/RAND_MAX*2*M_PI;
+    float radian = [self randomFromMin:0.0 toMax:M_PI];//(float)rand()/RAND_MAX*2*M_PI;
     _debris = [SKShapeNode shapeNodeWithRectOfSize:CGSizeMake(13.0, 7.0)];
     NSLog(@"radian = %f",radian);
     CGFloat radius =  sqrt((self.size.width/2.0 * self.size.width/2.0) + (self.size.height/2.0*self.size.height/2.0));

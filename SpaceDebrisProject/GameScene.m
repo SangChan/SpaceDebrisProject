@@ -158,7 +158,7 @@
     [self.physicsWorld addJoint:pinJoint];
 }
 
--(float)randomFromMin:(float)min Max:(float)max{
+-(float)randomFromMin:(float)min toMax:(float)max{
     return (float) rand()/RAND_MAX * (max - min) + min;
 }
 

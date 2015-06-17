@@ -141,6 +141,23 @@
     point.position = CGPointMake(0,_satellite.frame.size.height/2 - 9.0);
     [_satellite addChild:point];
     
+//    SKShapeNode *line1 = [SKShapeNode shapeNodeWithRectOfSize:CGSizeMake(20.0, 0.1)];
+//    [line1 setFillColor:[UIColor whiteColor]];
+//    line1.position = CGPointMake(0, -_satellite.frame.size.height);
+//    line1.zRotation = M_PI*0.5;
+//    [_satellite addChild:line1];
+    
+    SKSpriteNode *line1 = [SKSpriteNode spriteNodeWithColor:[UIColor whiteColor] size:CGSizeMake(20.0, 1.0)];
+    line1.anchorPoint = CGPointMake(0, 0);
+    line1.position = CGPointMake(0, 0);
+    line1.zRotation = -M_PI * 0.25;
+    [_satellite addChild:line1];
+    SKSpriteNode *line2 = [SKSpriteNode spriteNodeWithColor:[UIColor whiteColor] size:CGSizeMake(20.0, 1.0)];
+    line2.anchorPoint = CGPointMake(0, 0);
+    line2.position = CGPointMake(0, 0);
+    line2.zRotation = -M_PI * 0.75;
+    [_satellite addChild:line2];
+    
     _satellite.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(10.0, 10.0)];
     _satellite.physicsBody.dynamic = YES;
     _satellite.physicsBody.density = 1;

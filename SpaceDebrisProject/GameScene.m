@@ -193,16 +193,11 @@ static const uint32_t DEBRIS    = 0x1 << 2;
 -(void)didBeginContact:(SKPhysicsContact *)contact
 {
     NSLog(@"collison impulse : %f, contact normal vector.dx : %f , dy : %f",contact.collisionImpulse, contact.contactNormal.dx, contact.contactNormal.dy);
-//    if (contact.bodyA.categoryBitMask == wall && contact.bodyB.categoryBitMask == bubble) {
-//        if (contact.collisionImpulse > 90.0) {
-//            [contact.bodyA.node runAction:ppiyongSoundAction];
-//        }
-//    }
-//    else if (contact.bodyA.categoryBitMask == bubble && contact.bodyA.categoryBitMask == contact.bodyB.categoryBitMask) {
-//        if (contact.collisionImpulse > 30.0) {
-//            [contact.bodyA.node runAction:ppyockSoundAction];
-//        }
-//    }
+    if (contact.bodyA.categoryBitMask == DEBRIS && contact.bodyB.categoryBitMask == PLANET) {
+        //TODO : BANG BANG KA-BOOOOOOM!
+        contact.bodyA.velocity = CGVectorMake(0.0, 0.0);
+        [contact.bodyA.node removeFromParent];
+    }
 }
 
 

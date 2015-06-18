@@ -11,6 +11,10 @@
 #import "Planet.h"
 #define SK_DEGREES_TO_RADIANS(__ANGLE__) ((__ANGLE__) * 0.01745329252f)
 
+static const uint32_t PLANET    = 0x1 << 0;
+static const uint32_t SATELLITE = 0x1 << 1;
+static const uint32_t DEBRIS    = 0x1 << 2;
+
 @interface GameScene () {
     SKShapeNode *_planet;
     SKSpriteNode *_satellite;
@@ -27,6 +31,7 @@
 -(void)didMoveToView:(SKView *)view {
     /* Setup your scene here */
     self.physicsWorld.gravity =  CGVectorMake(0.0, 0.0);
+    self.physicsWorld.contactDelegate = self;
     _startTime = 0.0;
     [self initPlanet];
     [self initSatellite];
@@ -100,15 +105,18 @@
     _planet.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:50.0];
     _planet.physicsBody.dynamic = YES;
     _planet.physicsBody.density = 100;
+    _planet.physicsBody.usesPreciseCollisionDetection = YES;
+    _planet.physicsBody.categoryBitMask = PLANET;
+    _planet.physicsBody.collisionBitMask = DEBRIS;
+    _planet.physicsBody.contactTestBitMask = DEBRIS;
     [self addChild:_planet];
 }
 
 
 -(void)initDebris {
-    //CGPoint centerPos = CGPointMake(self.size.width * 0.5, self.size.height * 0.5 );
-    float radian = [self randomFromMin:0.0 toMax:M_PI];//(float)rand()/RAND_MAX*2*M_PI;
+    float radian = [self randomFromMin:0.0 toMax:M_PI];
     _debris = [SKShapeNode shapeNodeWithRectOfSize:CGSizeMake(13.0, 7.0)];
-    NSLog(@"radian = %f",radian);
+    //NSLog(@"radian = %f",radian);
     CGFloat radius =  sqrt((self.size.width/2.0 * self.size.width/2.0) + (self.size.height/2.0*self.size.height/2.0));
     _debris.position = CGPointMake(radius*cos(radian)+self.size.width/3.0, radius*sin(radian)+self.size.height/2.0);
     [_debris setFillColor:[UIColor brownColor]];
@@ -116,11 +124,16 @@
     _debris.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:_debris.frame.size];
     _debris.physicsBody.dynamic = YES;
     _debris.physicsBody.density = 1;
+    _debris.physicsBody.usesPreciseCollisionDetection = YES;
+    _debris.physicsBody.categoryBitMask = DEBRIS;
+    _debris.physicsBody.collisionBitMask = PLANET | SATELLITE;
+    _debris.physicsBody.contactTestBitMask = PLANET | SATELLITE;
+
     [self addChild:_debris];
-    NSLog(@"planet x= %f, y= %f. debris x= %f, y =%f", _planet.position.x, _planet.position.y, _debris.position.x, _debris.position.y);
+    //NSLog(@"planet x= %f, y= %f. debris x= %f, y =%f", _planet.position.x, _planet.position.y, _debris.position.x, _debris.position.y);
     
     CGVector throwVector = CGVectorMake((_planet.position.x - _debris.position.x) *0.5, (_planet.position.y - _debris.position.y) *0.5);
-    NSLog(@"vector = %f,%f", throwVector.dx, throwVector.dy);
+    //NSLog(@"vector = %f,%f", throwVector.dx, throwVector.dy);
     [_debris.physicsBody applyForce:throwVector];
     
 }
@@ -141,12 +154,6 @@
     point.position = CGPointMake(0,_satellite.frame.size.height/2 - 9.0);
     [_satellite addChild:point];
     
-//    SKShapeNode *line1 = [SKShapeNode shapeNodeWithRectOfSize:CGSizeMake(20.0, 0.1)];
-//    [line1 setFillColor:[UIColor whiteColor]];
-//    line1.position = CGPointMake(0, -_satellite.frame.size.height);
-//    line1.zRotation = M_PI*0.5;
-//    [_satellite addChild:line1];
-    
     SKSpriteNode *line1 = [SKSpriteNode spriteNodeWithColor:[UIColor whiteColor] size:CGSizeMake(20.0, 1.0)];
     line1.anchorPoint = CGPointMake(0, 0);
     line1.position = CGPointMake(0, 0);
@@ -161,6 +168,10 @@
     _satellite.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(10.0, 10.0)];
     _satellite.physicsBody.dynamic = YES;
     _satellite.physicsBody.density = 1;
+    _satellite.physicsBody.usesPreciseCollisionDetection = YES;
+    _satellite.physicsBody.categoryBitMask = SATELLITE;
+    _satellite.physicsBody.collisionBitMask = PLANET | DEBRIS;
+    _satellite.physicsBody.contactTestBitMask = PLANET | DEBRIS;
     [self addChild:_satellite];
     
     
@@ -178,5 +189,21 @@
 -(float)randomFromMin:(float)min toMax:(float)max{
     return (float) rand()/RAND_MAX * (max - min) + min;
 }
+
+-(void)didBeginContact:(SKPhysicsContact *)contact
+{
+    NSLog(@"collison impulse : %f, contact normal vector.dx : %f , dy : %f",contact.collisionImpulse, contact.contactNormal.dx, contact.contactNormal.dy);
+//    if (contact.bodyA.categoryBitMask == wall && contact.bodyB.categoryBitMask == bubble) {
+//        if (contact.collisionImpulse > 90.0) {
+//            [contact.bodyA.node runAction:ppiyongSoundAction];
+//        }
+//    }
+//    else if (contact.bodyA.categoryBitMask == bubble && contact.bodyA.categoryBitMask == contact.bodyB.categoryBitMask) {
+//        if (contact.collisionImpulse > 30.0) {
+//            [contact.bodyA.node runAction:ppyockSoundAction];
+//        }
+//    }
+}
+
 
 @end

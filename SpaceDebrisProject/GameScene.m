@@ -218,9 +218,29 @@ static const uint32_t DEBRIS    = 0x1 << 2;
     NSLog(@"collison impulse : %f, contact normal vector.dx : %f , dy : %f",contact.collisionImpulse, contact.contactNormal.dx, contact.contactNormal.dy);
     if (contact.bodyA.categoryBitMask == DEBRIS && contact.bodyB.categoryBitMask == PLANET) {
         //TODO : BANG BANG KA-BOOOOOOM!
+        [self shake:5];
         contact.bodyA.velocity = CGVectorMake(0.0, 0.0);
         [contact.bodyA.node removeFromParent];
     }
+}
+
+-(void)shake:(NSInteger)times {
+    CGPoint initialPoint = _planet.position;
+    NSInteger amplitudeX = 10;
+    NSInteger amplitudeY = 10;
+    NSMutableArray *randomActions = [NSMutableArray array];
+    for (int i=0; i<times; i++) {
+        NSInteger randX = self.position.x+(arc4random() % amplitudeX);
+        NSInteger randY = self.position.y+(arc4random() % amplitudeY);
+        SKAction *action = [SKAction moveByX:randX y:randY duration:0.01];
+        [randomActions addObject:action];
+    }
+    
+    SKAction *rep = [SKAction sequence:randomActions];
+    
+    [_planet runAction:rep completion:^{
+        _planet.position = initialPoint;
+    }];
 }
 
 

@@ -97,7 +97,7 @@ static const uint32_t DEBRIS    = 0x1 << 2;
     
     CGFloat radius =  sqrt((self.size.width/2.0 * self.size.width/2.0) + (self.size.height/2.0*self.size.height/2.0));
     float angle = _satellite.zRotation + SK_DEGREES_TO_RADIANS(-90.0f);
-    CGPoint satelliteStart = CGPointMake(_satellite.position.x + _satellite.frame.size.width * 0.5, _satellite.position.y + _satellite.frame.size.height * 0.5);
+    CGPoint satelliteStart = CGPointMake(_satellite.position.x, _satellite.position.y);
     CGPoint satelliteEnd = CGPointMake(radius*cos(angle)+satelliteStart.x, radius*sin(angle)+satelliteStart.y);
     
     CGMutablePathRef pathToDraw = CGPathCreateMutable();
@@ -105,9 +105,9 @@ static const uint32_t DEBRIS    = 0x1 << 2;
     CGPathAddLineToPoint(pathToDraw, NULL, satelliteEnd.x, satelliteEnd.y);
     _yourline.path = pathToDraw;
     
-    
     SKPhysicsBody *body = [self.physicsWorld bodyAlongRayStart:satelliteStart end:satelliteEnd];
     if (body.categoryBitMask == DEBRIS) {
+        body.angularVelocity = 0.0;
         body.velocity = CGVectorMake(0.0, 0.0);
     }
 }
@@ -141,7 +141,7 @@ static const uint32_t DEBRIS    = 0x1 << 2;
     _debris = [SKShapeNode shapeNodeWithRectOfSize:CGSizeMake(13.0, 7.0)];
     //NSLog(@"radian = %f",radian);
     CGFloat radius =  sqrt((self.size.width/2.0 * self.size.width/2.0) + (self.size.height/2.0*self.size.height/2.0));
-    _debris.position = CGPointMake(radius*cos(radian)+self.size.width/3.0, radius*sin(radian)+self.size.height/2.0);
+    _debris.position = CGPointMake(radius*cos(radian)+self.size.width*0.5, radius*sin(radian)+self.size.height*0.5);
     [_debris setFillColor:[UIColor brownColor]];
     
     _debris.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:_debris.frame.size];

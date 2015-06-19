@@ -88,7 +88,17 @@ static const uint32_t DEBRIS    = 0x1 << 2;
     /* Called before each frame is rendered */
     _planet.physicsBody.angularVelocity = 1.0;
     _planet.position = CGPointMake(self.size.width * 0.5, self.size.height * 0.5 );
+    
+    CGFloat radius =  sqrt((self.size.width/2.0 * self.size.width/2.0) + (self.size.height/2.0*self.size.height/2.0));
+    CGPoint satelliteStart = CGPointMake(_satellite.position.x + _satellite.frame.size.width * 0.5, _satellite.position.y + _satellite.frame.size.height * 0.5);
+    CGPoint satelliteEnd = CGPointMake(radius*cos(_satellite.zRotation)+self.size.width/3.0, radius*sin(_satellite.zRotation)+self.size.height/2.0);
+    
+    SKPhysicsBody *body = [self.physicsWorld bodyAlongRayStart:satelliteStart end:satelliteEnd];
+    if (body.categoryBitMask == DEBRIS) {
+        body.velocity = CGVectorMake(0.0, 0.0);
+    }
 }
+
 
 -(void)initPlanet {
     CGPoint centerPos = CGPointMake(self.size.width * 0.5, self.size.height * 0.5 );

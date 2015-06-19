@@ -218,13 +218,13 @@ static const uint32_t DEBRIS    = 0x1 << 2;
     NSLog(@"collison impulse : %f, contact normal vector.dx : %f , dy : %f",contact.collisionImpulse, contact.contactNormal.dx, contact.contactNormal.dy);
     if (contact.bodyA.categoryBitMask == DEBRIS && contact.bodyB.categoryBitMask == PLANET) {
         //TODO : BANG BANG KA-BOOOOOOM!
-        [self shake:5];
+        [self shakePlanet:5];
         contact.bodyA.velocity = CGVectorMake(0.0, 0.0);
         [contact.bodyA.node removeFromParent];
     }
 }
 
--(void)shake:(NSInteger)times {
+-(void)shakePlanet:(NSInteger)times {
     CGPoint initialPoint = _planet.position;
     NSInteger amplitudeX = 10;
     NSInteger amplitudeY = 10;

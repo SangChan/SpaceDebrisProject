@@ -19,6 +19,7 @@ static const uint32_t DEBRIS    = 0x1 << 2;
     SKShapeNode *_planet;
     SKSpriteNode *_satellite;
     SKShapeNode *_debris;
+    SKShapeNode *_yourline;
     CFTimeInterval _startTime;
     CFTimeInterval _currentTime;
     BOOL _isTracking;
@@ -42,6 +43,11 @@ static const uint32_t DEBRIS    = 0x1 << 2;
     [self runAction:perform];
     
     _planet.physicsBody.angularVelocity = 1.0;
+    
+    _yourline = [SKShapeNode node];
+    [_yourline setStrokeColor:[UIColor redColor]];
+    [self addChild:_yourline];
+
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
@@ -90,8 +96,15 @@ static const uint32_t DEBRIS    = 0x1 << 2;
     _planet.position = CGPointMake(self.size.width * 0.5, self.size.height * 0.5 );
     
     CGFloat radius =  sqrt((self.size.width/2.0 * self.size.width/2.0) + (self.size.height/2.0*self.size.height/2.0));
+    float angle = _satellite.zRotation + SK_DEGREES_TO_RADIANS(-90.0f);
     CGPoint satelliteStart = CGPointMake(_satellite.position.x + _satellite.frame.size.width * 0.5, _satellite.position.y + _satellite.frame.size.height * 0.5);
-    CGPoint satelliteEnd = CGPointMake(radius*cos(_satellite.zRotation)+self.size.width/3.0, radius*sin(_satellite.zRotation)+self.size.height/2.0);
+    CGPoint satelliteEnd = CGPointMake(radius*cos(angle)+satelliteStart.x, radius*sin(angle)+satelliteStart.y);
+    
+    CGMutablePathRef pathToDraw = CGPathCreateMutable();
+    CGPathMoveToPoint(pathToDraw, NULL, satelliteStart.x,satelliteStart.y);
+    CGPathAddLineToPoint(pathToDraw, NULL, satelliteEnd.x, satelliteEnd.y);
+    _yourline.path = pathToDraw;
+    
     
     SKPhysicsBody *body = [self.physicsWorld bodyAlongRayStart:satelliteStart end:satelliteEnd];
     if (body.categoryBitMask == DEBRIS) {
@@ -142,7 +155,7 @@ static const uint32_t DEBRIS    = 0x1 << 2;
     [self addChild:_debris];
     //NSLog(@"planet x= %f, y= %f. debris x= %f, y =%f", _planet.position.x, _planet.position.y, _debris.position.x, _debris.position.y);
     
-    CGVector throwVector = CGVectorMake((_planet.position.x - _debris.position.x) *0.5, (_planet.position.y - _debris.position.y) *0.5);
+    CGVector throwVector = CGVectorMake((_planet.position.x - _debris.position.x) *0.25, (_planet.position.y - _debris.position.y) *0.25);
     //NSLog(@"vector = %f,%f", throwVector.dx, throwVector.dy);
     [_debris.physicsBody applyForce:throwVector];
     

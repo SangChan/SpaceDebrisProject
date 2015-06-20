@@ -149,8 +149,8 @@ static const uint32_t DEBRIS    = 0x1 << 2;
     _debris.physicsBody.density = 1;
     _debris.physicsBody.usesPreciseCollisionDetection = YES;
     _debris.physicsBody.categoryBitMask = DEBRIS;
-    _debris.physicsBody.collisionBitMask = PLANET | SATELLITE;
-    _debris.physicsBody.contactTestBitMask = PLANET | SATELLITE;
+    _debris.physicsBody.collisionBitMask = PLANET | SATELLITE | DEBRIS;
+    _debris.physicsBody.contactTestBitMask = PLANET | SATELLITE | DEBRIS;
 
     [self addChild:_debris];
     //NSLog(@"planet x= %f, y= %f. debris x= %f, y =%f", _planet.position.x, _planet.position.y, _debris.position.x, _debris.position.y);

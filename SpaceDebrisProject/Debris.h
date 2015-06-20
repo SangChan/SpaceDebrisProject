@@ -8,6 +8,9 @@
 
 #import <SpriteKit/SpriteKit.h>
 
-@interface Debris : SKSpriteNode
+@interface Debris : SKSpriteNode {
+}
+
+@property (nonatomic) BOOL isStop;
 
 @end

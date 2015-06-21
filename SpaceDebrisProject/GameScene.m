@@ -19,7 +19,9 @@ static const uint32_t DEBRIS    = 0x1 << 2;
     SKShapeNode *_planet;
     SKSpriteNode *_satellite;
     SKShapeNode *_debris;
-    SKShapeNode *_yourline;
+    SKShapeNode *_yourline1;
+    SKShapeNode *_yourline2;
+    SKShapeNode *_yourline3;
     CFTimeInterval _startTime;
     CFTimeInterval _currentTime;
     BOOL _isTracking;
@@ -44,9 +46,15 @@ static const uint32_t DEBRIS    = 0x1 << 2;
     
     _planet.physicsBody.angularVelocity = 1.0;
     
-    _yourline = [SKShapeNode node];
-    [_yourline setStrokeColor:[UIColor redColor]];
-    [self addChild:_yourline];
+    _yourline1 = [SKShapeNode node];
+    [_yourline1 setStrokeColor:[UIColor redColor]];
+    [self addChild:_yourline1];
+    _yourline2 = [SKShapeNode node];
+    [_yourline2 setStrokeColor:[UIColor redColor]];
+    [self addChild:_yourline2];
+    _yourline3 = [SKShapeNode node];
+    [_yourline3 setStrokeColor:[UIColor redColor]];
+    [self addChild:_yourline3];
 
 }
 
@@ -103,7 +111,19 @@ static const uint32_t DEBRIS    = 0x1 << 2;
     CGMutablePathRef pathToDraw = CGPathCreateMutable();
     CGPathMoveToPoint(pathToDraw, NULL, satelliteStart.x,satelliteStart.y);
     CGPathAddLineToPoint(pathToDraw, NULL, satelliteEnd.x, satelliteEnd.y);
-    _yourline.path = pathToDraw;
+    _yourline1.path = pathToDraw;
+    
+    angle = _satellite.zRotation + SK_DEGREES_TO_RADIANS(-87.5f);
+    satelliteEnd = CGPointMake(radius*cos(angle)+satelliteStart.x, radius*sin(angle)+satelliteStart.y);
+    CGPathMoveToPoint(pathToDraw, NULL, satelliteStart.x,satelliteStart.y);
+    CGPathAddLineToPoint(pathToDraw, NULL, satelliteEnd.x, satelliteEnd.y);
+    _yourline2.path = pathToDraw;
+    
+    angle = _satellite.zRotation + SK_DEGREES_TO_RADIANS(-92.5f);
+    satelliteEnd = CGPointMake(radius*cos(angle)+satelliteStart.x, radius*sin(angle)+satelliteStart.y);
+    CGPathMoveToPoint(pathToDraw, NULL, satelliteStart.x,satelliteStart.y);
+    CGPathAddLineToPoint(pathToDraw, NULL, satelliteEnd.x, satelliteEnd.y);
+    _yourline3.path = pathToDraw;
     
     SKPhysicsBody *body = [self.physicsWorld bodyAlongRayStart:satelliteStart end:satelliteEnd];
     if (body.categoryBitMask == DEBRIS) {

@@ -103,12 +103,12 @@ static const uint32_t DEBRIS    = 0x1 << 2;
     _planet.physicsBody.angularVelocity = 1.0;
     _planet.position = CGPointMake(self.size.width * 0.5, self.size.height * 0.5 );
     
-    CGFloat radius =  sqrt((self.size.width/2.0 * self.size.width/2.0) + (self.size.height/2.0*self.size.height/2.0));
-    float angle = _satellite.zRotation + SK_DEGREES_TO_RADIANS(-90.0f);
-    CGPoint satelliteStart = CGPointMake(_satellite.position.x, _satellite.position.y);
-    CGPoint satelliteEnd = CGPointMake(radius*cos(angle)+satelliteStart.x, radius*sin(angle)+satelliteStart.y);
+//    CGFloat radius =  sqrt((self.size.width/2.0 * self.size.width/2.0) + (self.size.height/2.0*self.size.height/2.0));
+//    float angle = _satellite.zRotation + SK_DEGREES_TO_RADIANS(-80.0f);
+//    CGPoint satelliteStart = CGPointMake(_satellite.position.x, _satellite.position.y);
+//    CGPoint satelliteEnd = CGPointMake(radius*cos(angle)+satelliteStart.x, radius*sin(angle)+satelliteStart.y);
     
-    CGMutablePathRef pathToDraw = CGPathCreateMutable();
+    /*CGMutablePathRef pathToDraw = CGPathCreateMutable();
     CGPathMoveToPoint(pathToDraw, NULL, satelliteStart.x,satelliteStart.y);
     CGPathAddLineToPoint(pathToDraw, NULL, satelliteEnd.x, satelliteEnd.y);
     _yourline1.path = pathToDraw;
@@ -129,6 +129,34 @@ static const uint32_t DEBRIS    = 0x1 << 2;
     if (body.categoryBitMask == DEBRIS) {
         body.angularVelocity = 0.0;
         body.velocity = CGVectorMake(0.0, 0.0);
+    }*/
+    
+    CGFloat radius =  sqrt((self.size.width/10.0 * self.size.width/10.0) + (self.size.height/10.0*self.size.height/10.0));
+    CGPoint satelliteStart = CGPointMake(_satellite.position.x, _satellite.position.y);
+    for (int i = 0; i < 90; i++) {
+        float angle = _satellite.zRotation + SK_DEGREES_TO_RADIANS(-45.0f-i);
+        CGPoint satelliteEnd = CGPointMake(radius*cos(angle)+satelliteStart.x, radius*sin(angle)+satelliteStart.y);
+        
+        SKPhysicsBody *body = [self.physicsWorld bodyAlongRayStart:satelliteStart end:satelliteEnd];
+        if (body.categoryBitMask == DEBRIS) {
+            body.angularVelocity = 0.0;
+            body.velocity = CGVectorMake(0.0, 0.0);
+        }
+        
+        if (i == 0) {
+            CGMutablePathRef pathToDraw = CGPathCreateMutable();
+            CGPathMoveToPoint(pathToDraw, NULL, satelliteStart.x,satelliteStart.y);
+            CGPathAddLineToPoint(pathToDraw, NULL, satelliteEnd.x, satelliteEnd.y);
+            _yourline1.path = pathToDraw;
+        }
+        
+        if (i == 89) {
+            CGMutablePathRef pathToDraw = CGPathCreateMutable();
+            CGPathMoveToPoint(pathToDraw, NULL, satelliteStart.x,satelliteStart.y);
+            CGPathAddLineToPoint(pathToDraw, NULL, satelliteEnd.x, satelliteEnd.y);
+            _yourline2.path = pathToDraw;
+        }
+
     }
 }
 

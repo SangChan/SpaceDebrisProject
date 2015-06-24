@@ -10,5 +10,8 @@
 
 @implementation Satellite
 
+-(void)update {
+    
+}
 
 @end

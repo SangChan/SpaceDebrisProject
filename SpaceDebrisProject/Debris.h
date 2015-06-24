@@ -11,6 +11,6 @@
 @interface Debris : SKSpriteNode {
 }
 
-@property (nonatomic) BOOL isStop;
+@property (nonatomic) BOOL active;
 
 @end

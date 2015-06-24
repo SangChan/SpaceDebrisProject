@@ -7,7 +7,10 @@
 //
 
 #import <SpriteKit/SpriteKit.h>
+#import "MyNode.h"
 
-@interface Satellite : SKSpriteNode
+@interface Satellite : SKSpriteNode <MyNode>
 
+@property (nonatomic) BOOL shoot;
+@property (nonatomic) int battery;
 @end

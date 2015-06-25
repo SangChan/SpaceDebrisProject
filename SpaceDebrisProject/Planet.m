@@ -21,6 +21,9 @@
     self.fixedPosition = position;
     [self addChild:planet];
     
+    self.maxHealthPoint = 100.0;
+    self.healthPoint = 100.0;
+    
     [self addAnchorPoint];
     
     self.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:radius];
@@ -45,6 +48,30 @@
     self.physicsBody.angularVelocity = 1.0;
     self.position = self.fixedPosition;
     //self.position = CGPointMake(self.size.width * 0.5, self.size.height * 0.5 );
+}
+
+-(void)getDamage:(CGFloat)damage {
+    self.healthPoint -= damage;
+    [self shake:5];
+}
+
+-(void)shake:(NSInteger)times {
+    CGPoint initialPoint = self.position;
+    NSInteger amplitudeX = 10;
+    NSInteger amplitudeY = 10;
+    NSMutableArray *randomActions = [NSMutableArray array];
+    for (int i=0; i<times; i++) {
+        NSInteger randX = (arc4random() % amplitudeX);
+        NSInteger randY = (arc4random() % amplitudeY);
+        SKAction *action = [SKAction moveByX:randX y:randY duration:0.01];
+        [randomActions addObject:action];
+    }
+    
+    SKAction *rep = [SKAction sequence:randomActions];
+    
+    [self runAction:rep completion:^{
+        self.position = initialPoint;
+    }];
 }
 
 @end

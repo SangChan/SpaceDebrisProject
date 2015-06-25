@@ -11,9 +11,12 @@
 #import "MyConst.h"
 
 @interface Planet : SKNode<MyNode>
+@property (nonatomic) CGFloat healthPoint;
+@property (nonatomic) CGFloat maxHealthPoint;
 @property (nonatomic) CGPoint fixedPosition;
 @property (nonatomic) CGFloat fixedRadius;
 
 -(instancetype)initWithPosition:(CGPoint)position Radius:(CGFloat)radius;
+-(void)getDamage:(CGFloat)damage;
 
 @end

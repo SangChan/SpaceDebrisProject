@@ -103,34 +103,6 @@
         }
     }
     
-//    CGFloat radius =  sqrt((self.size.width/2.0 * self.size.width/2.0) + (self.size.height/2.0*self.size.height/2.0));
-//    float angle = _satellite.zRotation + SK_DEGREES_TO_RADIANS(-80.0f);
-//    CGPoint satelliteStart = CGPointMake(_satellite.position.x, _satellite.position.y);
-//    CGPoint satelliteEnd = CGPointMake(radius*cos(angle)+satelliteStart.x, radius*sin(angle)+satelliteStart.y);
-    
-    /*CGMutablePathRef pathToDraw = CGPathCreateMutable();
-    CGPathMoveToPoint(pathToDraw, NULL, satelliteStart.x,satelliteStart.y);
-    CGPathAddLineToPoint(pathToDraw, NULL, satelliteEnd.x, satelliteEnd.y);
-    _yourline1.path = pathToDraw;
-    
-    angle = _satellite.zRotation + SK_DEGREES_TO_RADIANS(-87.5f);
-    satelliteEnd = CGPointMake(radius*cos(angle)+satelliteStart.x, radius*sin(angle)+satelliteStart.y);
-    CGPathMoveToPoint(pathToDraw, NULL, satelliteStart.x,satelliteStart.y);
-    CGPathAddLineToPoint(pathToDraw, NULL, satelliteEnd.x, satelliteEnd.y);
-    _yourline2.path = pathToDraw;
-    
-    angle = _satellite.zRotation + SK_DEGREES_TO_RADIANS(-92.5f);
-    satelliteEnd = CGPointMake(radius*cos(angle)+satelliteStart.x, radius*sin(angle)+satelliteStart.y);
-    CGPathMoveToPoint(pathToDraw, NULL, satelliteStart.x,satelliteStart.y);
-    CGPathAddLineToPoint(pathToDraw, NULL, satelliteEnd.x, satelliteEnd.y);
-    _yourline3.path = pathToDraw;
-    
-    SKPhysicsBody *body = [self.physicsWorld bodyAlongRayStart:satelliteStart end:satelliteEnd];
-    if (body.categoryBitMask == DEBRIS) {
-        body.angularVelocity = 0.0;
-        body.velocity = CGVectorMake(0.0, 0.0);
-    }*/
-    
     CGFloat radius =  sqrt((self.size.width/10.0 * self.size.width/10.0) + (self.size.height/10.0*self.size.height/10.0));
     CGPoint satelliteStart = CGPointMake(_satellite.position.x, _satellite.position.y);
     for (int i = 0; i < 90; i++) {
@@ -251,29 +223,10 @@
     NSLog(@"collison impulse : %f, contact normal vector.dx : %f , dy : %f",contact.collisionImpulse, contact.contactNormal.dx, contact.contactNormal.dy);
     if (contact.bodyA.categoryBitMask == DEBRIS && contact.bodyB.categoryBitMask == PLANET) {
         //TODO : BANG BANG KA-BOOOOOOM!
-        [self shakePlanet:5];
+        [_planet getDamage:contact.bodyA.mass];
         contact.bodyA.velocity = CGVectorMake(0.0, 0.0);
         [contact.bodyA.node removeFromParent];
     }
-}
-
--(void)shakePlanet:(NSInteger)times {
-    CGPoint initialPoint = _planet.position;
-    NSInteger amplitudeX = 10;
-    NSInteger amplitudeY = 10;
-    NSMutableArray *randomActions = [NSMutableArray array];
-    for (int i=0; i<times; i++) {
-        NSInteger randX = self.position.x+(arc4random() % amplitudeX);
-        NSInteger randY = self.position.y+(arc4random() % amplitudeY);
-        SKAction *action = [SKAction moveByX:randX y:randY duration:0.01];
-        [randomActions addObject:action];
-    }
-    
-    SKAction *rep = [SKAction sequence:randomActions];
-    
-    [_planet runAction:rep completion:^{
-        _planet.position = initialPoint;
-    }];
 }
 
 

@@ -7,7 +7,12 @@
 //
 
 #import <SpriteKit/SpriteKit.h>
+#import "MyNode.h"
+#import "MyConst.h"
 
-@interface Planet : SKShapeNode
+@interface Planet : SKShapeNode<MyNode>
+@property (nonatomic) CGPoint fixedPosition;
+
+-(instancetype)initWithPosition:(CGPoint)position;
 
 @end

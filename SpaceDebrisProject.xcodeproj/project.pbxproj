@@ -51,6 +51,7 @@
 		63BDC3E91B23FB0800CA99E5 /* SpaceDebrisProjectTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceDebrisProjectTests.swift; sourceTree = "<group>"; };
 		63D1A66F1B37FD2F0062073B /* veranda_ci.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = veranda_ci.png; sourceTree = "<group>"; };
 		63D1A6711B3AA7580062073B /* MyNode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyNode.h; sourceTree = "<group>"; };
+		63D1A6721B3BD8820062073B /* MyConst.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyConst.h; sourceTree = "<group>"; };
 		63DAD0301B2FF7D60082F8FE /* Satellite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Satellite.h; sourceTree = "<group>"; };
 		63DAD0311B2FF7D60082F8FE /* Satellite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Satellite.m; sourceTree = "<group>"; };
 		63DAD0331B2FF8BB0082F8FE /* Planet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Planet.h; sourceTree = "<group>"; };
@@ -87,6 +88,7 @@
 				63DAD0361B2FF8CA0082F8FE /* Debris.h */,
 				63DAD0371B2FF8CA0082F8FE /* Debris.m */,
 				63D1A6711B3AA7580062073B /* MyNode.h */,
+				63D1A6721B3BD8820062073B /* MyConst.h */,
 			);
 			name = Model;
 			sourceTree = "<group>";

@@ -13,7 +13,7 @@
 #define SK_DEGREES_TO_RADIANS(__ANGLE__) ((__ANGLE__) * 0.01745329252f)
 
 @interface GameScene () {
-    SKShapeNode *_planet;
+    Planet *_planet;
     SKSpriteNode *_satellite;
     SKShapeNode *_debris;
     SKShapeNode *_yourline1;
@@ -97,8 +97,11 @@
 
 -(void)update:(CFTimeInterval)currentTime {
     /* Called before each frame is rendered */
-    _planet.physicsBody.angularVelocity = 1.0;
-    _planet.position = CGPointMake(self.size.width * 0.5, self.size.height * 0.5 );
+    for (SKNode *childNode in [self children]) {
+        if ([childNode respondsToSelector:@selector(update)]) {
+            [childNode performSelector:@selector(update)];
+        }
+    }
     
 //    CGFloat radius =  sqrt((self.size.width/2.0 * self.size.width/2.0) + (self.size.height/2.0*self.size.height/2.0));
 //    float angle = _satellite.zRotation + SK_DEGREES_TO_RADIANS(-80.0f);
@@ -160,23 +163,8 @@
 
 -(void)initPlanet {
     CGPoint centerPos = CGPointMake(self.size.width * 0.5, self.size.height * 0.5 );
-    _planet = [SKShapeNode shapeNodeWithCircleOfRadius:50.0];
-    [_planet setFillColor:[UIColor blueColor]];
+    _planet = [[Planet alloc]initWithPosition:centerPos Radius:50.0];
     
-    _planet.position = CGPointMake(centerPos.x,centerPos.y);
-    
-    SKShapeNode *point = [SKShapeNode shapeNodeWithCircleOfRadius:5.0];
-    [point setFillColor:[UIColor whiteColor]];
-    point.position = CGPointMake(0,_planet.frame.size.height/2 - 9.0);
-    [_planet addChild:point];
-    
-    _planet.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:50.0];
-    _planet.physicsBody.dynamic = YES;
-    _planet.physicsBody.density = 100;
-    _planet.physicsBody.usesPreciseCollisionDetection = YES;
-    _planet.physicsBody.categoryBitMask = PLANET;
-    _planet.physicsBody.collisionBitMask = DEBRIS;
-    _planet.physicsBody.contactTestBitMask = DEBRIS;
     [self addChild:_planet];
 }
 
@@ -214,7 +202,7 @@
 -(void)initSatellite {
     CGPoint centerPos = CGPointMake(self.size.width * 0.5, self.size.height * 0.5 );
     _satellite = [[Satellite alloc]initWithColor:[UIColor redColor] size:CGSizeMake(10.0,10.0)];
-    _satellite.position = CGPointMake(centerPos.x, centerPos.y - _planet.frame.size.width/2 - 45);
+    _satellite.position = CGPointMake(centerPos.x, centerPos.y - 50 - 45);
     _satellite.anchorPoint = CGPointMake(0.5, 0.5);
     
     SKShapeNode *point = [SKShapeNode shapeNodeWithCircleOfRadius:2.0];

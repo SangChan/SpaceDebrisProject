@@ -10,19 +10,35 @@
 
 @implementation Planet
 
--(instancetype)initWithPosition:(CGPoint)position {
-    self = [super init];
+-(instancetype)initWithPosition:(CGPoint)position Radius:(CGFloat)radius{
+    self = [self init];
     if (!self) return nil;
     
+    SKShapeNode *planet = [SKShapeNode shapeNodeWithCircleOfRadius:radius];
+    self.fixedRadius = radius;
+    [planet setFillColor:[UIColor blueColor]];
+    self.position = position;
+    self.fixedPosition = position;
+    [self addChild:planet];
     
-    self.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:50.0];
+    [self addAnchorPoint];
+    
+    self.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:radius];
     self.physicsBody.dynamic = YES;
     self.physicsBody.density = 100;
     self.physicsBody.usesPreciseCollisionDetection = YES;
     self.physicsBody.categoryBitMask = PLANET;
     self.physicsBody.collisionBitMask = DEBRIS;
     self.physicsBody.contactTestBitMask = DEBRIS;
+
     return self;
+}
+
+-(void)addAnchorPoint {
+    SKShapeNode *point = [SKShapeNode shapeNodeWithCircleOfRadius:5.0];
+    [point setFillColor:[UIColor whiteColor]];
+    point.position = CGPointMake(0,self.fixedRadius - 9.0);
+    [self addChild:point];
 }
 
 -(void)update {

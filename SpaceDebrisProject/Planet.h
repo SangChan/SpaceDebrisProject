@@ -10,9 +10,10 @@
 #import "MyNode.h"
 #import "MyConst.h"
 
-@interface Planet : SKShapeNode<MyNode>
+@interface Planet : SKNode<MyNode>
 @property (nonatomic) CGPoint fixedPosition;
+@property (nonatomic) CGFloat fixedRadius;
 
--(instancetype)initWithPosition:(CGPoint)position;
+-(instancetype)initWithPosition:(CGPoint)position Radius:(CGFloat)radius;
 
 @end

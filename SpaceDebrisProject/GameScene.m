@@ -57,6 +57,7 @@
         if (_isTracking == NO) {
             _isTracking = YES;
             _satellite.shoot = YES;
+            _beamShape.hidden = NO;
             float deltaX = location.x - _satellite.position.x;
             float deltaY = location.y - _satellite.position.y;
             _satellite.physicsBody.angularVelocity = 0.0;
@@ -71,6 +72,7 @@
         CGPoint location = [touch locationInNode:self];
         if (_isTracking == YES) {
             _satellite.shoot = YES;
+            _beamShape.hidden = NO;
             float deltaX = location.x - _satellite.position.x;
             float deltaY = location.y - _satellite.position.y;
             _satellite.physicsBody.angularVelocity = 0.0;
@@ -98,11 +100,18 @@
         }
     }
     
+    if (_satellite.shoot) {
+        [self satelliteShootTheBeam];
+    }
+}
+
+-(void)satelliteShootTheBeam {
+    
     CGFloat radius =  sqrt(pow(self.size.width/10.0,2.0) + pow(self.size.height/10.0,2.0));
     CGPoint satelliteStart = CGPointMake(_satellite.position.x, _satellite.position.y);
     CGMutablePathRef arcPath = CGPathCreateMutable();
-    for (int i = 0; i < 90; i++) {
-        float angle = _satellite.zRotation + SK_DEGREES_TO_RADIANS(-45.0f-i);
+    for (int i = 0; i < 30; i++) {
+        float angle = _satellite.zRotation + SK_DEGREES_TO_RADIANS(-45.0f-i*3);
         CGPoint satelliteEnd = CGPointMake(radius*cos(angle)+satelliteStart.x, radius*sin(angle)+satelliteStart.y);
         
         SKPhysicsBody *body = [self.physicsWorld bodyAlongRayStart:satelliteStart end:satelliteEnd];
@@ -112,6 +121,10 @@
             body.resting = YES;
             body.angularVelocity = 0.0;
             body.velocity = CGVectorMake(0.0, 0.0);
+        }
+        else if (body.categoryBitMask == PLANET) {
+            CGFloat newRadius =  sqrt(pow(self.size.width/30.0,2.0) + pow(self.size.height/30.0,2.0));
+            satelliteEnd = CGPointMake(newRadius*cos(angle)+satelliteStart.x, newRadius*sin(angle)+satelliteStart.y);
         }
         
         if (i == 0) {
@@ -126,13 +139,14 @@
         else {
             CGPathAddLineToPoint(arcPath, NULL, satelliteEnd.x, satelliteEnd.y);
         }
-
+        
     }
-
+    
     _beamShape.path = arcPath;
     [_beamShape setFillColor:[UIColor cyanColor]];
     [_beamShape setAlpha:0.3];
     CGPathRelease(arcPath);
+
 }
 
 
@@ -165,6 +179,7 @@
 -(void)resetController {
     _isTracking = NO;
     _satellite.shoot = NO;
+    _beamShape.hidden = YES;
     _satellite.physicsBody.angularVelocity = 0.0;
 }
 

@@ -131,7 +131,7 @@
             CGPathMoveToPoint(arcPath, NULL, satelliteStart.x,satelliteStart.y);
             CGPathAddLineToPoint(arcPath, NULL, satelliteEnd.x, satelliteEnd.y);
         }
-        else if (i == 89) {
+        else if (i == 29) {
             CGPathAddLineToPoint(arcPath, NULL, satelliteEnd.x, satelliteEnd.y);
             CGPathAddLineToPoint(arcPath, NULL, satelliteStart.x, satelliteStart.y);
         }

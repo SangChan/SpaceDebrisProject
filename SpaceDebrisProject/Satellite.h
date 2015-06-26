@@ -11,8 +11,10 @@
 
 @interface Satellite : SKNode <MyNode>
 
+@property (nonatomic) CGFloat beamLength;
 @property (nonatomic) BOOL shoot;
-@property (nonatomic) int battery;
+@property (nonatomic) CGFloat battery;
+@property (nonatomic) CGFloat energyDrain;
 
 -(instancetype)initWithPosition:(CGPoint)position;
 

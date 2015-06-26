@@ -9,13 +9,14 @@
 #import "GameScene.h"
 #import "Satellite.h"
 #import "Planet.h"
+#import "Debris.h"
 #import "MyConst.h"
-#define SK_DEGREES_TO_RADIANS(__ANGLE__) ((__ANGLE__) * 0.01745329252f)
+
 
 @interface GameScene () {
     Planet *_planet;
     Satellite *_satellite;
-    SKShapeNode *_debris;
+    Debris *_debris;
     SKShapeNode *_yourline1;
     SKShapeNode *_yourline2;
     SKShapeNode *_yourline3;
@@ -60,7 +61,7 @@
         CGPoint location = [touch locationInNode:self];
         if (_isTracking == NO) {
             _isTracking = YES;
-            
+            _satellite.shoot = YES;
             float deltaX = location.x - _satellite.position.x;
             float deltaY = location.y - _satellite.position.y;
             _satellite.physicsBody.angularVelocity = 0.0;
@@ -74,6 +75,7 @@
     for (UITouch *touch in touches) {
         CGPoint location = [touch locationInNode:self];
         if (_isTracking == YES) {
+            _satellite.shoot = YES;
             float deltaX = location.x - _satellite.position.x;
             float deltaY = location.y - _satellite.position.y;
             _satellite.physicsBody.angularVelocity = 0.0;
@@ -101,7 +103,7 @@
         }
     }
     
-    CGFloat radius =  sqrt((self.size.width/10.0 * self.size.width/10.0) + (self.size.height/10.0*self.size.height/10.0));
+    CGFloat radius =  sqrt(pow(self.size.width/10.0,2.0) + pow(self.size.height/10.0,2.0));
     CGPoint satelliteStart = CGPointMake(_satellite.position.x, _satellite.position.y);
     for (int i = 0; i < 90; i++) {
         float angle = _satellite.zRotation + SK_DEGREES_TO_RADIANS(-45.0f-i);
@@ -109,6 +111,9 @@
         
         SKPhysicsBody *body = [self.physicsWorld bodyAlongRayStart:satelliteStart end:satelliteEnd];
         if (body.categoryBitMask == DEBRIS) {
+            Debris *targetDebris = (Debris *)body.node;
+            targetDebris.active = NO;
+            body.resting = YES;
             body.angularVelocity = 0.0;
             body.velocity = CGVectorMake(0.0, 0.0);
         }
@@ -141,36 +146,31 @@
 
 -(void)initDebris {
     float radian = [self randomFromMin:0.0 toMax:M_PI];
-    _debris = [SKShapeNode shapeNodeWithRectOfSize:CGSizeMake(13.0, 7.0)];
-    //NSLog(@"radian = %f",radian);
-    CGFloat radius =  sqrt((self.size.width/2.0 * self.size.width/2.0) + (self.size.height/2.0*self.size.height/2.0));
-    _debris.position = CGPointMake(radius*cos(radian)+self.size.width*0.5, radius*sin(radian)+self.size.height*0.5);
-    [_debris setFillColor:[UIColor brownColor]];
     
-    _debris.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:_debris.frame.size];
-    _debris.physicsBody.dynamic = YES;
-    _debris.physicsBody.density = 1;
-    _debris.physicsBody.usesPreciseCollisionDetection = YES;
-    _debris.physicsBody.categoryBitMask = DEBRIS;
-    _debris.physicsBody.collisionBitMask = PLANET | SATELLITE | DEBRIS;
-    _debris.physicsBody.contactTestBitMask = PLANET | SATELLITE | DEBRIS;
-
+    NSLog(@"radian = %f",radian);
+    
+    CGFloat radius =  sqrt(pow(self.size.width * 0.5, 2.0) + pow(self.size.height * 0.5, 2.0));
+    
+    _debris = [[Debris alloc]initWithPosition:CGPointMake(radius*cos(radian)+self.size.width*0.5, radius*sin(radian)+self.size.height*0.5)];
+   
     [self addChild:_debris];
     //NSLog(@"planet x= %f, y= %f. debris x= %f, y =%f", _planet.position.x, _planet.position.y, _debris.position.x, _debris.position.y);
     
     CGVector throwVector = CGVectorMake((_planet.position.x - _debris.position.x) *0.25, (_planet.position.y - _debris.position.y) *0.25);
-    //NSLog(@"vector = %f,%f", throwVector.dx, throwVector.dy);
+    NSLog(@"vector = %f,%f", throwVector.dx, throwVector.dy);
     [_debris.physicsBody applyForce:throwVector];
     
 }
 
 -(void)resetController {
     _isTracking = NO;
+    _satellite.shoot = NO;
     _satellite.physicsBody.angularVelocity = 0.0;
 }
 
 -(void)initSatellite {
     _satellite = [[Satellite alloc]initWithPosition:CGPointMake(_planet.fixedPosition.x, _planet.fixedPosition.y - _planet.fixedRadius - 45)];
+    _satellite.beamLength = sqrt(pow(self.size.width/10.0,2.0) + pow(self.size.height/10.0,2.0));
     [self addChild:_satellite];
 }
 

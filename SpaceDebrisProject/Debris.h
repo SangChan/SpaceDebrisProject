@@ -7,10 +7,13 @@
 //
 
 #import <SpriteKit/SpriteKit.h>
+#import "MyNode.h"
 
-@interface Debris : SKSpriteNode {
+@interface Debris : SKNode<MyNode> {
 }
 
 @property (nonatomic) BOOL active;
+
+-(instancetype)initWithPosition:(CGPoint)position;
 
 @end

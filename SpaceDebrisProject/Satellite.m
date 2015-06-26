@@ -21,6 +21,9 @@
     self = [self init];
     if (!self) return nil;
     
+    self.shoot = NO;
+    self.battery = 100.0;
+    self.energyDrain = 1.0;
     self.position = position;
     
     CGSize satelliteSize = CGSizeMake(10.0,10.0);
@@ -43,7 +46,18 @@
 }
 
 -(void)update {
-    
+    /*CGPoint satelliteStart = CGPointMake(0,0);
+    for (int i = 0; i < 90; i++) {
+        float angle = self.zRotation + SK_DEGREES_TO_RADIANS(-45.0f-i);
+        CGPoint satelliteEnd = CGPointMake(self.beamLength*cos(angle)+satelliteStart.x, self.beamLength*sin(angle)+satelliteStart.y);
+        
+        SKShapeNode *line = [SKShapeNode node];
+        [line setStrokeColor:[UIColor cyanColor]];
+        CGMutablePathRef pathToDraw = CGPathCreateMutable();
+        CGPathMoveToPoint(pathToDraw, NULL, satelliteStart.x,satelliteStart.y);
+        CGPathAddLineToPoint(pathToDraw, NULL, satelliteEnd.x, satelliteEnd.y);
+        [self addChild:line];
+    }*/
 }
 
 @end

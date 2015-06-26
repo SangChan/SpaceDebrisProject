@@ -17,9 +17,7 @@
     Planet *_planet;
     Satellite *_satellite;
     Debris *_debris;
-    SKShapeNode *_yourline1;
-    SKShapeNode *_yourline2;
-    SKShapeNode *_yourline3;
+    SKShapeNode *_beamShape;
     CFTimeInterval _startTime;
     CFTimeInterval _currentTime;
     BOOL _isTracking;
@@ -46,12 +44,9 @@
     
     _planet.physicsBody.angularVelocity = 1.0;
     
-    _yourline1 = [SKShapeNode node];
-    [_yourline1 setStrokeColor:[UIColor cyanColor]];
-    [self addChild:_yourline1];
-    _yourline2 = [SKShapeNode node];
-    [_yourline2 setStrokeColor:[UIColor cyanColor]];
-    [self addChild:_yourline2];
+    _beamShape = [SKShapeNode node];
+    [_beamShape setStrokeColor:[UIColor cyanColor]];
+    [self addChild:_beamShape];
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
@@ -105,6 +100,7 @@
     
     CGFloat radius =  sqrt(pow(self.size.width/10.0,2.0) + pow(self.size.height/10.0,2.0));
     CGPoint satelliteStart = CGPointMake(_satellite.position.x, _satellite.position.y);
+    CGMutablePathRef arcPath = CGPathCreateMutable();
     for (int i = 0; i < 90; i++) {
         float angle = _satellite.zRotation + SK_DEGREES_TO_RADIANS(-45.0f-i);
         CGPoint satelliteEnd = CGPointMake(radius*cos(angle)+satelliteStart.x, radius*sin(angle)+satelliteStart.y);
@@ -119,20 +115,24 @@
         }
         
         if (i == 0) {
-            CGMutablePathRef pathToDraw = CGPathCreateMutable();
-            CGPathMoveToPoint(pathToDraw, NULL, satelliteStart.x,satelliteStart.y);
-            CGPathAddLineToPoint(pathToDraw, NULL, satelliteEnd.x, satelliteEnd.y);
-            _yourline1.path = pathToDraw;
+            CGPathMoveToPoint(arcPath, NULL, satelliteStart.x,satelliteStart.y);
+            CGPathAddLineToPoint(arcPath, NULL, satelliteEnd.x, satelliteEnd.y);
+        }
+        else if (i == 89) {
+            CGPathAddLineToPoint(arcPath, NULL, satelliteEnd.x, satelliteEnd.y);
+            CGPathAddLineToPoint(arcPath, NULL, satelliteStart.x, satelliteStart.y);
         }
         
-        if (i == 89) {
-            CGMutablePathRef pathToDraw = CGPathCreateMutable();
-            CGPathMoveToPoint(pathToDraw, NULL, satelliteStart.x,satelliteStart.y);
-            CGPathAddLineToPoint(pathToDraw, NULL, satelliteEnd.x, satelliteEnd.y);
-            _yourline2.path = pathToDraw;
+        else {
+            CGPathAddLineToPoint(arcPath, NULL, satelliteEnd.x, satelliteEnd.y);
         }
 
     }
+
+    _beamShape.path = arcPath;
+    [_beamShape setFillColor:[UIColor cyanColor]];
+    [_beamShape setAlpha:0.3];
+    CGPathRelease(arcPath);
 }
 
 

@@ -14,7 +14,7 @@
 
 @interface GameScene () {
     Planet *_planet;
-    SKSpriteNode *_satellite;
+    Satellite *_satellite;
     SKShapeNode *_debris;
     SKShapeNode *_yourline1;
     SKShapeNode *_yourline2;
@@ -35,6 +35,8 @@
     _startTime = 0.0;
     [self initPlanet];
     [self initSatellite];
+    
+    [self initJointWithNodeA:_planet NodeB:_satellite];
     _isTracking = NO;
     SKAction *wait = [SKAction waitForDuration:1.0];
     SKAction *creatDebris = [SKAction performSelector:@selector(initDebris) onTarget:self];
@@ -44,15 +46,11 @@
     _planet.physicsBody.angularVelocity = 1.0;
     
     _yourline1 = [SKShapeNode node];
-    [_yourline1 setStrokeColor:[UIColor redColor]];
+    [_yourline1 setStrokeColor:[UIColor cyanColor]];
     [self addChild:_yourline1];
     _yourline2 = [SKShapeNode node];
-    [_yourline2 setStrokeColor:[UIColor redColor]];
+    [_yourline2 setStrokeColor:[UIColor cyanColor]];
     [self addChild:_yourline2];
-    _yourline3 = [SKShapeNode node];
-    [_yourline3 setStrokeColor:[UIColor redColor]];
-    [self addChild:_yourline3];
-
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
@@ -172,45 +170,19 @@
 }
 
 -(void)initSatellite {
-    CGPoint centerPos = CGPointMake(self.size.width * 0.5, self.size.height * 0.5 );
-    _satellite = [[Satellite alloc]initWithColor:[UIColor redColor] size:CGSizeMake(10.0,10.0)];
-    _satellite.position = CGPointMake(centerPos.x, centerPos.y - 50 - 45);
-    _satellite.anchorPoint = CGPointMake(0.5, 0.5);
-    
-    SKShapeNode *point = [SKShapeNode shapeNodeWithCircleOfRadius:2.0];
-    [point setFillColor:[UIColor whiteColor]];
-    point.position = CGPointMake(0,_satellite.frame.size.height/2 - 9.0);
-    [_satellite addChild:point];
-    
-    SKSpriteNode *line1 = [SKSpriteNode spriteNodeWithColor:[UIColor whiteColor] size:CGSizeMake(20.0, 1.0)];
-    line1.anchorPoint = CGPointMake(0, 0);
-    line1.position = CGPointMake(0, 0);
-    line1.zRotation = -M_PI * 0.25;
-    [_satellite addChild:line1];
-    SKSpriteNode *line2 = [SKSpriteNode spriteNodeWithColor:[UIColor whiteColor] size:CGSizeMake(20.0, 1.0)];
-    line2.anchorPoint = CGPointMake(0, 0);
-    line2.position = CGPointMake(0, 0);
-    line2.zRotation = -M_PI * 0.75;
-    [_satellite addChild:line2];
-    
-    _satellite.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(10.0, 10.0)];
-    _satellite.physicsBody.dynamic = YES;
-    _satellite.physicsBody.density = 1;
-    _satellite.physicsBody.usesPreciseCollisionDetection = YES;
-    _satellite.physicsBody.categoryBitMask = SATELLITE;
-    _satellite.physicsBody.collisionBitMask = PLANET | DEBRIS;
-    _satellite.physicsBody.contactTestBitMask = PLANET | DEBRIS;
+    _satellite = [[Satellite alloc]initWithPosition:CGPointMake(_planet.fixedPosition.x, _planet.fixedPosition.y - _planet.fixedRadius - 45)];
     [self addChild:_satellite];
+}
+
+-(void)initJointWithNodeA:(SKNode *)nodeA NodeB:(SKNode *)nodeB {
+    CGPoint middleOfNodeA = CGPointMake(nodeA.frame.origin.x + (nodeA.frame.size.width * 0.5),nodeA.frame.origin.y + (nodeA.frame.size.height * 0.5));
+    CGPoint middleOfNodeB = CGPointMake(nodeB.frame.origin.x + (nodeB.frame.size.width * 0.5),nodeB.frame.origin.y + (nodeB.frame.size.height * 0.5));
     
-    
-    CGPoint middleOfPlanet = CGPointMake(_planet.frame.origin.x + (_planet.frame.size.width * 0.5),_planet.frame.origin.y + (_planet.frame.size.height * 0.5));
-    CGPoint middleOfSatellite = CGPointMake(_satellite.frame.origin.x + (_satellite.frame.size.width * 0.5),_satellite.frame.origin.y + (_satellite.frame.size.height * 0.5));
-    
-    SKPhysicsJointLimit *limitJoint = [SKPhysicsJointLimit jointWithBodyA:_planet.physicsBody bodyB:_satellite.physicsBody anchorA:middleOfPlanet anchorB:middleOfSatellite];
+    SKPhysicsJointLimit *limitJoint = [SKPhysicsJointLimit jointWithBodyA:nodeA.physicsBody bodyB:nodeB.physicsBody anchorA:middleOfNodeA anchorB:middleOfNodeB];
     [limitJoint setMaxLength:1.0];
     [self.physicsWorld addJoint:limitJoint];
     
-    SKPhysicsJointPin *pinJoint = [SKPhysicsJointPin jointWithBodyA:_planet.physicsBody bodyB:_satellite.physicsBody anchor:middleOfSatellite];
+    SKPhysicsJointPin *pinJoint = [SKPhysicsJointPin jointWithBodyA:nodeA.physicsBody bodyB:nodeB.physicsBody anchor:middleOfNodeB];
     [self.physicsWorld addJoint:pinJoint];
 }
 

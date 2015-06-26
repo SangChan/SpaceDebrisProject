@@ -9,8 +9,11 @@
 #import <SpriteKit/SpriteKit.h>
 #import "MyNode.h"
 
-@interface Satellite : SKSpriteNode <MyNode>
+@interface Satellite : SKNode <MyNode>
 
 @property (nonatomic) BOOL shoot;
 @property (nonatomic) int battery;
+
+-(instancetype)initWithPosition:(CGPoint)position;
+
 @end

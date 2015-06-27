@@ -16,7 +16,6 @@
 @interface GameScene () {
     Planet *_planet;
     Satellite *_satellite;
-    Debris *_debris;
     SKShapeNode *_beamShape;
     CFTimeInterval _startTime;
     CFTimeInterval _currentTime;
@@ -165,14 +164,14 @@
     
     CGFloat radius =  sqrt(pow(self.size.width * 0.5, 2.0) + pow(self.size.height * 0.5, 2.0));
     
-    _debris = [[Debris alloc]initWithPosition:CGPointMake(radius*cos(radian)+self.size.width*0.5, radius*sin(radian)+self.size.height*0.5)];
+    Debris *debris = [[Debris alloc]initWithPosition:CGPointMake(radius*cos(radian)+self.size.width*0.5, radius*sin(radian)+self.size.height*0.5)];
    
-    [self addChild:_debris];
+    [self addChild:debris];
     //NSLog(@"planet x= %f, y= %f. debris x= %f, y =%f", _planet.position.x, _planet.position.y, _debris.position.x, _debris.position.y);
     
-    CGVector throwVector = CGVectorMake((_planet.position.x - _debris.position.x) *0.25, (_planet.position.y - _debris.position.y) *0.25);
+    CGVector throwVector = CGVectorMake((_planet.position.x - debris.position.x) *0.25, (_planet.position.y - debris.position.y) *0.25);
     NSLog(@"vector = %f,%f", throwVector.dx, throwVector.dy);
-    [_debris.physicsBody applyForce:throwVector];
+    [debris.physicsBody applyForce:throwVector];
     
 }
 

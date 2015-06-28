@@ -47,7 +47,6 @@
 -(void)update {
     self.physicsBody.angularVelocity = 1.0;
     self.position = self.fixedPosition;
-    //self.position = CGPointMake(self.size.width * 0.5, self.size.height * 0.5 );
 }
 
 -(void)getDamage:(CGFloat)damage {

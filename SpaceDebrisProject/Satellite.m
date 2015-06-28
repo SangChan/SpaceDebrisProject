@@ -17,6 +17,15 @@
 @implementation Satellite
 
 
+static Satellite *sharedMySatellite = nil;
++ (instancetype)sharedInstanceWithPosition:(CGPoint)position {
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        sharedMySatellite = [[super alloc] initWithPosition:position];
+    });
+    return sharedMySatellite;
+}
+
 -(instancetype)initWithPosition:(CGPoint)position {
     self = [self init];
     if (!self) return nil;
@@ -46,18 +55,7 @@
 }
 
 -(void)update {
-    /*CGPoint satelliteStart = CGPointMake(0,0);
-    for (int i = 0; i < 90; i++) {
-        float angle = self.zRotation + SK_DEGREES_TO_RADIANS(-45.0f-i);
-        CGPoint satelliteEnd = CGPointMake(self.beamLength*cos(angle)+satelliteStart.x, self.beamLength*sin(angle)+satelliteStart.y);
-        
-        SKShapeNode *line = [SKShapeNode node];
-        [line setStrokeColor:[UIColor cyanColor]];
-        CGMutablePathRef pathToDraw = CGPathCreateMutable();
-        CGPathMoveToPoint(pathToDraw, NULL, satelliteStart.x,satelliteStart.y);
-        CGPathAddLineToPoint(pathToDraw, NULL, satelliteEnd.x, satelliteEnd.y);
-        [self addChild:line];
-    }*/
+    
 }
 
 @end

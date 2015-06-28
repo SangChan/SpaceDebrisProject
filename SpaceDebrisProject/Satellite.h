@@ -16,6 +16,6 @@
 @property (nonatomic) CGFloat battery;
 @property (nonatomic) CGFloat energyDrain;
 
--(instancetype)initWithPosition:(CGPoint)position;
++ (instancetype)sharedInstanceWithPosition:(CGPoint)position;
 
 @end

@@ -21,8 +21,8 @@
     self.fixedPosition = position;
     [self addChild:planet];
     
-    self.maxHealthPoint = 100.0;
-    self.healthPoint = 100.0;
+    self.maxHealthPoint = 1000.0;
+    self.healthPoint = 1000.0;
     
     [self addAnchorPoint];
     
@@ -47,10 +47,16 @@
 -(void)update {
     self.physicsBody.angularVelocity = 1.0;
     self.position = self.fixedPosition;
+    self.alpha = self.healthPoint / self.maxHealthPoint;
 }
 
 -(void)getDamage:(CGFloat)damage {
     self.healthPoint -= damage;
+    if (self.healthPoint <= 0.0) {
+        // TODO : APOCALYPSE NOW !!!!!!
+        NSLog(@"game over!");
+    }
+    NSLog(@"planet hp : %f",self.healthPoint);
     [self shake:5];
 }
 

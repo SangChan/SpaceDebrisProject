@@ -17,7 +17,9 @@
     
     self.position = position;
     
-    CGSize debrisSize = CGSizeMake(7.0 + (arc4random() % 10), 7.0 + (arc4random()%10));
+    CGSize debrisSize = CGSizeMake(10.0 + (arc4random() % 10), 10.0 + (arc4random()%10));
+    
+    self.attackPoint = (debrisSize.width * debrisSize.height)/10;
     
     SKSpriteNode *debris = [[SKSpriteNode alloc]initWithColor:[UIColor brownColor] size:debrisSize];
     

@@ -13,6 +13,7 @@
 }
 
 @property (nonatomic) BOOL active;
+@property (nonatomic) CGFloat attackPoint;
 
 -(instancetype)initWithPosition:(CGPoint)position;
 

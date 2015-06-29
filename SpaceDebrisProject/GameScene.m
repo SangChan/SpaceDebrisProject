@@ -159,20 +159,19 @@
 
 -(void)initDebris {
     float radian = [self randomFromMin:0.0 toMax:M_PI];
-    
     NSLog(@"radian = %f",radian);
-    
     CGFloat radius =  sqrt(pow(self.size.width * 0.5, 2.0) + pow(self.size.height * 0.5, 2.0));
-    
     Debris *debris = [[Debris alloc]initWithPosition:CGPointMake(radius*cos(radian)+self.size.width*0.5, radius*sin(radian)+self.size.height*0.5)];
    
     [self addChild:debris];
-    //NSLog(@"planet x= %f, y= %f. debris x= %f, y =%f", _planet.position.x, _planet.position.y, _debris.position.x, _debris.position.y);
     
-    CGVector throwVector = CGVectorMake((_planet.position.x - debris.position.x) *0.25, (_planet.position.y - debris.position.y) *0.25);
-    NSLog(@"vector = %f,%f", throwVector.dx, throwVector.dy);
+    int i = 5;
+    CGPoint distance = ccpSub(_planet.position, debris.position);
+    CGPoint magneticForce = ccpMult(ccpNormalize(distance), radius / i);
+    CGVector throwVector = CGVectorMake(magneticForce.x,magneticForce.y);
+    
+    NSLog(@"vector = %f,%f. length = %f. radius = %f", throwVector.dx, throwVector.dy, ccpLength(magneticForce), radius);
     [debris.physicsBody applyForce:throwVector];
-    
 }
 
 -(void)resetController {
@@ -209,7 +208,8 @@
     NSLog(@"collison impulse : %f, contact normal vector.dx : %f , dy : %f",contact.collisionImpulse, contact.contactNormal.dx, contact.contactNormal.dy);
     if (contact.bodyA.categoryBitMask == DEBRIS && contact.bodyB.categoryBitMask == PLANET) {
         //TODO : BANG BANG KA-BOOOOOOM!
-        [_planet getDamage:contact.bodyA.mass];
+        Debris *debris = (Debris *)contact.bodyA.node;
+        [_planet getDamage:debris.attackPoint];
         contact.bodyA.velocity = CGVectorMake(0.0, 0.0);
         [contact.bodyA.node removeFromParent];
     }

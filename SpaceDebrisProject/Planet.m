@@ -10,6 +10,16 @@
 
 @implementation Planet
 
+static Planet *sharedMyPlanet = nil;
++ (instancetype)sharedInstanceWithPosition:(CGPoint)position Radius:(CGFloat)radius{
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        sharedMyPlanet = [[super alloc] initWithPosition:(CGPoint)position Radius:(CGFloat)radius];
+    });
+    return sharedMyPlanet;
+}
+
+
 -(instancetype)initWithPosition:(CGPoint)position Radius:(CGFloat)radius{
     self = [self init];
     if (!self) return nil;

@@ -16,7 +16,7 @@
 @property (nonatomic) CGPoint fixedPosition;
 @property (nonatomic) CGFloat fixedRadius;
 
--(instancetype)initWithPosition:(CGPoint)position Radius:(CGFloat)radius;
++ (instancetype)sharedInstanceWithPosition:(CGPoint)position Radius:(CGFloat)radius;
 -(void)getDamage:(CGFloat)damage;
 
 @end

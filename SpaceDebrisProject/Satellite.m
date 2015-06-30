@@ -17,15 +17,6 @@
 @implementation Satellite
 
 
-static Satellite *sharedMySatellite = nil;
-+ (instancetype)sharedInstanceWithPosition:(CGPoint)position {
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        sharedMySatellite = [[super alloc] initWithPosition:position];
-    });
-    return sharedMySatellite;
-}
-
 -(instancetype)initWithPosition:(CGPoint)position {
     self = [self init];
     if (!self) return nil;

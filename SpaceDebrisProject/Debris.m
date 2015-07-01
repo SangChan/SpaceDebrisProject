@@ -40,4 +40,11 @@
     
 }
 
+-(void)boom_boom_kaboom {
+    NSString *myParticlePath = [[NSBundle mainBundle] pathForResource:@"MyParticle" ofType:@"sks"];
+    SKEmitterNode *emitterNode = [NSKeyedUnarchiver unarchiveObjectWithFile:myParticlePath];
+    emitterNode.position = CGPointMake(0.0, 0.0);
+    [self addChild:emitterNode];
+}
+
 @end

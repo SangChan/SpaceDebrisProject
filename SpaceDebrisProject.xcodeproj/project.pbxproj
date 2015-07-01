@@ -11,6 +11,8 @@
 		631497B81B2585AE0068A0FF /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 631497B71B2585AE0068A0FF /* GameScene.m */; };
 		631497BB1B2585BC0068A0FF /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 631497BA1B2585BC0068A0FF /* GameViewController.m */; };
 		631497BD1B2586390068A0FF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 631497BC1B2586390068A0FF /* main.m */; };
+		63289F5C1B43D7D000B46457 /* MyParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = 63289F5A1B43D7D000B46457 /* MyParticle.sks */; };
+		63289F5D1B43D7D000B46457 /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 63289F5B1B43D7D000B46457 /* spark.png */; };
 		63BDC3D21B23FB0800CA99E5 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 63BDC3D11B23FB0800CA99E5 /* GameScene.sks */; };
 		63BDC3D91B23FB0800CA99E5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63BDC3D71B23FB0800CA99E5 /* Main.storyboard */; };
 		63BDC3DB1B23FB0800CA99E5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63BDC3DA1B23FB0800CA99E5 /* Images.xcassets */; };
@@ -40,6 +42,8 @@
 		631497B91B2585BC0068A0FF /* GameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
 		631497BA1B2585BC0068A0FF /* GameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
 		631497BC1B2586390068A0FF /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		63289F5A1B43D7D000B46457 /* MyParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MyParticle.sks; sourceTree = "<group>"; };
+		63289F5B1B43D7D000B46457 /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
 		63BDC3CA1B23FB0800CA99E5 /* SpaceDebrisProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpaceDebrisProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63BDC3CE1B23FB0800CA99E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		63BDC3D11B23FB0800CA99E5 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -121,6 +125,7 @@
 				631497B61B2585AE0068A0FF /* GameScene.h */,
 				631497B71B2585AE0068A0FF /* GameScene.m */,
 				63BDC3D11B23FB0800CA99E5 /* GameScene.sks */,
+				63289F5A1B43D7D000B46457 /* MyParticle.sks */,
 				631497B91B2585BC0068A0FF /* GameViewController.h */,
 				631497BA1B2585BC0068A0FF /* GameViewController.m */,
 				63BDC3D71B23FB0800CA99E5 /* Main.storyboard */,
@@ -161,6 +166,7 @@
 			isa = PBXGroup;
 			children = (
 				63D1A66F1B37FD2F0062073B /* veranda_ci.png */,
+				63289F5B1B43D7D000B46457 /* spark.png */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -247,7 +253,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				63BDC3DE1B23FB0800CA99E5 /* LaunchScreen.xib in Resources */,
+				63289F5C1B43D7D000B46457 /* MyParticle.sks in Resources */,
 				63BDC3DB1B23FB0800CA99E5 /* Images.xcassets in Resources */,
+				63289F5D1B43D7D000B46457 /* spark.png in Resources */,
 				63BDC3D21B23FB0800CA99E5 /* GameScene.sks in Resources */,
 				63BDC3D91B23FB0800CA99E5 /* Main.storyboard in Resources */,
 				63D1A6701B37FD2F0062073B /* veranda_ci.png in Resources */,

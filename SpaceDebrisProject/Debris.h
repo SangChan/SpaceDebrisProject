@@ -16,5 +16,6 @@
 @property (nonatomic) CGFloat attackPoint;
 
 -(instancetype)initWithPosition:(CGPoint)position;
+-(void)boom_boom_kaboom;
 
 @end

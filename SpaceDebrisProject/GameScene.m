@@ -32,6 +32,8 @@
     self.physicsWorld.contactDelegate = self;
     _startTime = 0.0;
     [self initPlanet];
+    
+    
     [self initSatellite];
     
     [self initJointWithNodeA:_planet NodeB:_satellite];
@@ -210,7 +212,7 @@
         //TODO : BANG BANG KA-BOOOOOOM!
         Debris *debris = (Debris *)contact.bodyA.node;
         [_planet getDamage:debris.attackPoint];
-        contact.bodyA.velocity = CGVectorMake(0.0, 0.0);
+        //[debris boom_boom_kaboom];
         [contact.bodyA.node removeFromParent];
     }
 }

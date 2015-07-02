@@ -12,10 +12,11 @@
 @interface Debris : SKNode<MyNode> {
 }
 
+@property (nonatomic) CGFloat radian;
 @property (nonatomic) BOOL active;
 @property (nonatomic) CGFloat attackPoint;
 
--(instancetype)initWithPosition:(CGPoint)position;
+-(instancetype)initWithPosition:(CGPoint)position Radian:(CGFloat)radian;
 -(void)boom_boom_kaboom;
 
 @end

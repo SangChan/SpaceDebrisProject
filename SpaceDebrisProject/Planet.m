@@ -24,11 +24,12 @@ static Planet *sharedMyPlanet = nil;
     self = [self init];
     if (!self) return nil;
     
-    SKShapeNode *planet = [SKShapeNode shapeNodeWithCircleOfRadius:radius];
     self.fixedRadius = radius;
-    [planet setFillColor:[UIColor blueColor]];
     self.position = position;
     self.fixedPosition = position;
+    
+    SKShapeNode *planet = [SKShapeNode shapeNodeWithCircleOfRadius:radius];
+    [planet setFillColor:[UIColor blueColor]];
     [self addChild:planet];
     
     self.maxHealthPoint = 1000.0;

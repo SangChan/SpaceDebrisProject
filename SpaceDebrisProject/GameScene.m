@@ -163,7 +163,7 @@
     float radian = [self randomFromMin:0.0 toMax:M_PI];
     NSLog(@"radian = %f",radian);
     CGFloat radius =  sqrt(pow(self.size.width * 0.5, 2.0) + pow(self.size.height * 0.5, 2.0));
-    Debris *debris = [[Debris alloc]initWithPosition:CGPointMake(radius*cos(radian)+self.size.width*0.5, radius*sin(radian)+self.size.height*0.5)];
+    Debris *debris = [[Debris alloc]initWithPosition:CGPointMake(radius*cos(radian)+self.size.width*0.5, radius*sin(radian)+self.size.height*0.5) Radian:radian];
    
     [self addChild:debris];
     
@@ -212,8 +212,8 @@
         //TODO : BANG BANG KA-BOOOOOOM!
         Debris *debris = (Debris *)contact.bodyA.node;
         [_planet getDamage:debris.attackPoint];
-        //[debris boom_boom_kaboom];
-        [contact.bodyA.node removeFromParent];
+        [debris boom_boom_kaboom];
+        //[contact.bodyA.node removeFromParent];
     }
 }
 

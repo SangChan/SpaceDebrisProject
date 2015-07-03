@@ -67,6 +67,8 @@
     self.physicsBody.categoryBitMask = GOLD;
     self.physicsBody.collisionBitMask = NO_ONE;
     self.physicsBody.contactTestBitMask = NO_ONE;
+    
+    [self boom_boom_kaboom];
 }
 
 @end

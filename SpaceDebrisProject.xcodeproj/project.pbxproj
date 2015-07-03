@@ -13,11 +13,11 @@
 		631497BD1B2586390068A0FF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 631497BC1B2586390068A0FF /* main.m */; };
 		63289F5C1B43D7D000B46457 /* MyParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = 63289F5A1B43D7D000B46457 /* MyParticle.sks */; };
 		63289F5D1B43D7D000B46457 /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 63289F5B1B43D7D000B46457 /* spark.png */; };
+		63298C011B465C7A00578911 /* SpaceDebrisTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 63298C001B465C7A00578911 /* SpaceDebrisTests.m */; };
 		63BDC3D21B23FB0800CA99E5 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 63BDC3D11B23FB0800CA99E5 /* GameScene.sks */; };
 		63BDC3D91B23FB0800CA99E5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63BDC3D71B23FB0800CA99E5 /* Main.storyboard */; };
 		63BDC3DB1B23FB0800CA99E5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63BDC3DA1B23FB0800CA99E5 /* Images.xcassets */; };
 		63BDC3DE1B23FB0800CA99E5 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63BDC3DC1B23FB0800CA99E5 /* LaunchScreen.xib */; };
-		63BDC3EA1B23FB0800CA99E5 /* SpaceDebrisProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BDC3E91B23FB0800CA99E5 /* SpaceDebrisProjectTests.swift */; };
 		63D1A6701B37FD2F0062073B /* veranda_ci.png in Resources */ = {isa = PBXBuildFile; fileRef = 63D1A66F1B37FD2F0062073B /* veranda_ci.png */; };
 		63DAD0321B2FF7D60082F8FE /* Satellite.m in Sources */ = {isa = PBXBuildFile; fileRef = 63DAD0311B2FF7D60082F8FE /* Satellite.m */; };
 		63DAD0351B2FF8BB0082F8FE /* Planet.m in Sources */ = {isa = PBXBuildFile; fileRef = 63DAD0341B2FF8BB0082F8FE /* Planet.m */; };
@@ -44,6 +44,8 @@
 		631497BC1B2586390068A0FF /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		63289F5A1B43D7D000B46457 /* MyParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MyParticle.sks; sourceTree = "<group>"; };
 		63289F5B1B43D7D000B46457 /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
+		63298BFF1B465C7A00578911 /* SpaceDebrisProjectTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SpaceDebrisProjectTests-Bridging-Header.h"; sourceTree = "<group>"; };
+		63298C001B465C7A00578911 /* SpaceDebrisTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpaceDebrisTests.m; sourceTree = "<group>"; };
 		63BDC3CA1B23FB0800CA99E5 /* SpaceDebrisProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpaceDebrisProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63BDC3CE1B23FB0800CA99E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		63BDC3D11B23FB0800CA99E5 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -52,7 +54,6 @@
 		63BDC3DD1B23FB0800CA99E5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		63BDC3E31B23FB0800CA99E5 /* SpaceDebrisProjectTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpaceDebrisProjectTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		63BDC3E81B23FB0800CA99E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		63BDC3E91B23FB0800CA99E5 /* SpaceDebrisProjectTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceDebrisProjectTests.swift; sourceTree = "<group>"; };
 		63D1A66F1B37FD2F0062073B /* veranda_ci.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = veranda_ci.png; sourceTree = "<group>"; };
 		63D1A6711B3AA7580062073B /* MyNode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyNode.h; sourceTree = "<group>"; };
 		63D1A6721B3BD8820062073B /* MyConst.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyConst.h; sourceTree = "<group>"; };
@@ -148,8 +149,9 @@
 		63BDC3E61B23FB0800CA99E5 /* SpaceDebrisProjectTests */ = {
 			isa = PBXGroup;
 			children = (
-				63BDC3E91B23FB0800CA99E5 /* SpaceDebrisProjectTests.swift */,
 				63BDC3E71B23FB0800CA99E5 /* Supporting Files */,
+				63298C001B465C7A00578911 /* SpaceDebrisTests.m */,
+				63298BFF1B465C7A00578911 /* SpaceDebrisProjectTests-Bridging-Header.h */,
 			);
 			path = SpaceDebrisProjectTests;
 			sourceTree = "<group>";
@@ -290,7 +292,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				63BDC3EA1B23FB0800CA99E5 /* SpaceDebrisProjectTests.swift in Sources */,
+				63298C011B465C7A00578911 /* SpaceDebrisTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -444,6 +446,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -455,6 +458,8 @@
 				INFOPLIST_FILE = SpaceDebrisProjectTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "SpaceDebrisProjectTests/SpaceDebrisProjectTests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SpaceDebrisProject.app/SpaceDebrisProject";
 			};
 			name = Debug;
@@ -463,6 +468,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -470,6 +476,7 @@
 				INFOPLIST_FILE = SpaceDebrisProjectTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "SpaceDebrisProjectTests/SpaceDebrisProjectTests-Bridging-Header.h";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SpaceDebrisProject.app/SpaceDebrisProject";
 			};
 			name = Release;

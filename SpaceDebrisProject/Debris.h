@@ -18,5 +18,6 @@
 
 -(instancetype)initWithPosition:(CGPoint)position Radian:(CGFloat)radian;
 -(void)boom_boom_kaboom;
+-(void)becomeGold;
 
 @end

@@ -14,6 +14,7 @@ static const uint32_t NO_ONE    = 0x1 << 0;
 static const uint32_t PLANET    = 0x1 << 1;
 static const uint32_t SATELLITE = 0x1 << 2;
 static const uint32_t DEBRIS    = 0x1 << 3;
+static const uint32_t GOLD      = 0x1 << 4;
 
 
 #endif

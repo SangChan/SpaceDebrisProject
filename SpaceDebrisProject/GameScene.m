@@ -118,10 +118,11 @@
         SKPhysicsBody *body = [self.physicsWorld bodyAlongRayStart:satelliteStart end:satelliteEnd];
         if (body.categoryBitMask == DEBRIS) {
             Debris *targetDebris = (Debris *)body.node;
-            targetDebris.active = NO;
-            body.resting = YES;
-            body.angularVelocity = 0.0;
-            body.velocity = CGVectorMake(0.0, 0.0);
+            [targetDebris becomeGold];
+            //targetDebris.active = NO;
+            //body.resting = YES;
+            //body.angularVelocity = 0.0;
+            //body.velocity = CGVectorMake(0.0, 0.0);
         }
         else if (body.categoryBitMask == PLANET) {
             CGFloat newRadius =  sqrt(pow(self.size.width/30.0,2.0) + pow(self.size.height/30.0,2.0));
@@ -214,6 +215,9 @@
         [_planet getDamage:debris.attackPoint];
         [debris boom_boom_kaboom];
         //[contact.bodyA.node removeFromParent];
+    }
+    else if (contact.bodyA.categoryBitMask == DEBRIS && contact.bodyB.categoryBitMask == SATELLITE) {
+        //TODO : Satellite get stunned
     }
 }
 

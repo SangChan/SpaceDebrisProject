@@ -58,5 +58,15 @@
     }];
     [self runAction:[SKAction sequence:@[wait,changeAlpha,wait,destruction]]];
 }
+-(void)becomeGold {
+    self.active = NO;
+    self.physicsBody.resting = YES;
+    self.physicsBody.angularVelocity = 0.0;
+    self.physicsBody.velocity = CGVectorMake(0.0, 0.0);
+    self.physicsBody.usesPreciseCollisionDetection = NO;
+    self.physicsBody.categoryBitMask = GOLD;
+    self.physicsBody.collisionBitMask = NO_ONE;
+    self.physicsBody.contactTestBitMask = NO_ONE;
+}
 
 @end

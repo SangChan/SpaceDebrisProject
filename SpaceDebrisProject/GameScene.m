@@ -202,7 +202,7 @@
 }
 
 -(float)randomFromMin:(float)min toMax:(float)max{
-    return (float) rand()/RAND_MAX * (max - min) + min;
+    return (float) arc4random()/RAND_MAX * (max - min) + min;
 }
 
 -(void)didBeginContact:(SKPhysicsContact *)contact

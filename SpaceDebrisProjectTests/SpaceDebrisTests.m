@@ -85,6 +85,8 @@
     
     testResultFloat = ccpDistance(testPoint2, testPoint1);
     XCTAssertEqual((int)testResultFloat,70);
+    
+    // TODO : add test case for ccpNormalize
 }
 
 @end

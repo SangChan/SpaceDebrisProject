@@ -10,6 +10,7 @@
 #import <XCTest/XCTest.h>
 
 #import "Satellite.h"
+#import "MyConst.h"
 
 @interface SpaceDebrisTests : XCTestCase
 
@@ -51,6 +52,39 @@
     XCTAssertEqual(satellite.beamLength, 100);
     XCTAssertEqual(satellite.energyDrain, 100);
     XCTAssertTrue(satellite.shoot);
+}
+
+- (void)testMyConst {
+    CGPoint testResultPoint = ccp(0.0,0.0);
+    CGFloat testResultFloat = 0.0;
+    CGPoint testPoint1 = ccp(100.0, 100.0);
+    CGPoint testPoint2 = ccp(50.0, 50.0);
+    XCTAssertEqual(testPoint1.x, 100.0);
+    XCTAssertEqual(testPoint1.y, 100.0);
+
+    testResultPoint = ccpSub(testPoint1, testPoint2);
+    XCTAssertEqual(testResultPoint.x, 50.0);
+    XCTAssertEqual(testResultPoint.y, 50.0);
+    
+    testResultPoint = ccpSub(testPoint2, testPoint1);
+    XCTAssertEqual(testResultPoint.x, -50.0);
+    XCTAssertEqual(testResultPoint.y, -50.0);
+    
+    testResultPoint = ccpMult(testPoint2, 2.0);
+    XCTAssertEqual(testResultPoint.x, 100.0);
+    XCTAssertEqual(testResultPoint.y, 100.0);
+    
+    testResultFloat = ccpDot(testPoint1, testPoint2);
+    XCTAssertEqual(testResultFloat, 10000.0);
+    
+    testResultFloat = ccpLengthSQ(testPoint2);
+    XCTAssertEqual(testResultFloat, 5000.0);
+    
+    testResultFloat = ccpLength(ccp(3.0, 4.0));
+    XCTAssertEqual(testResultFloat,5.0);
+    
+    testResultFloat = ccpDistance(testPoint2, testPoint1);
+    XCTAssertEqual((int)testResultFloat,70);
 }
 
 @end

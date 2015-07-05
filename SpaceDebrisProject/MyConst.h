@@ -65,3 +65,8 @@ static inline CGPoint ccpNormalize(CGPoint vector)
     return vector;
 }
 
+static inline float randomFromMinToMax(float min, float max)
+{
+    return (float) arc4random()/RAND_MAX * (max - min) + min;
+}
+

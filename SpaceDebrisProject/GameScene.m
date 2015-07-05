@@ -161,7 +161,7 @@
 
 
 -(void)initDebris {
-    float radian = [self randomFromMin:0.0 toMax:M_PI];
+    float radian = randomFromMinToMax(0, M_PI);
     NSLog(@"radian = %f",radian);
     CGFloat radius =  sqrt(pow(self.size.width * 0.5, 2.0) + pow(self.size.height * 0.5, 2.0));
     Debris *debris = [[Debris alloc]initWithPosition:CGPointMake(radius*cos(radian)+self.size.width*0.5, radius*sin(radian)+self.size.height*0.5) Radian:radian];
@@ -200,10 +200,6 @@
     
     SKPhysicsJointPin *pinJoint = [SKPhysicsJointPin jointWithBodyA:nodeA.physicsBody bodyB:nodeB.physicsBody anchor:middleOfNodeB];
     [self.physicsWorld addJoint:pinJoint];
-}
-
--(float)randomFromMin:(float)min toMax:(float)max{
-    return (float) arc4random()/RAND_MAX * (max - min) + min;
 }
 
 -(void)didBeginContact:(SKPhysicsContact *)contact

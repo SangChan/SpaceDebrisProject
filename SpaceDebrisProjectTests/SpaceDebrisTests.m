@@ -11,6 +11,7 @@
 
 #import "Satellite.h"
 #import "MyConst.h"
+#import "Planet.h"
 
 @interface SpaceDebrisTests : XCTestCase
 
@@ -87,6 +88,20 @@
     XCTAssertEqual((int)testResultFloat,70);
     
     // TODO : add test case for ccpNormalize
+}
+
+- (void)testPlanet {
+    Planet *planet = [Planet sharedInstanceWithPosition:CGPointMake(0.0, 0.0) Radius:50.0];
+    planet.name = @"onlyOnePlanet";
+    Planet *testPlanet = [Planet sharedInstanceWithPosition:CGPointMake(5.0, 5.0) Radius:20.0];
+    XCTAssertEqual(testPlanet.name, planet.name);
+}
+
+- (void)testMyConstRandomRaidian {
+    for (int i = 0; i < 10000; i++) {
+        float result = randomFromMinToMax(0, M_PI);
+        NSLog(@"case#%d : %f",i,result);
+    }
 }
 
 @end

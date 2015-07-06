@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
 
+#import "Debris.h"
 #import "Satellite.h"
 #import "MyConst.h"
 #import "Planet.h"
@@ -102,6 +103,15 @@
         float result = randomFromMinToMax(0, M_PI);
         NSLog(@"case#%d : %f",i,result);
     }
+}
+
+- (void)testDebris {
+    float radian = randomFromMinToMax(0, M_PI);
+    CGFloat radius =  sqrt(pow(1024 * 0.5, 2.0) + pow(768 * 0.5, 2.0));
+    Debris *debris = [[Debris alloc]initWithPosition:CGPointMake(radius*cos(radian)+1024*0.5, radius*sin(radian)+768*0.5) Radian:radian];
+    debris.active = YES;
+    
+    XCTAssertNotNil(debris);
 }
 
 @end

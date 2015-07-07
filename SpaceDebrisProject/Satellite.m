@@ -46,7 +46,18 @@
 }
 
 -(void)update {
-    
+    NSLog(@"satellite energy = %f",self.battery);
 }
+
+-(void)usePower {
+    self.battery -= self.energyDrain;
+}
+-(void)chargePower {
+    self.battery += self.energyDrain * 5.0;
+    if (self.battery > 100.0) {
+        self.battery = 100.0;
+    }
+}
+
 
 @end

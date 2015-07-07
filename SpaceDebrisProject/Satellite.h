@@ -17,5 +17,7 @@
 @property (nonatomic) CGFloat energyDrain;
 
 -(instancetype)initWithPosition:(CGPoint)position;
+-(void)usePower;
+-(void)chargePower;
 
 @end

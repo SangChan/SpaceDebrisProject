@@ -119,7 +119,7 @@
         float angle = _satellite.zRotation + SK_DEGREES_TO_RADIANS(-45.0f-i*3);
         CGPoint satelliteEnd = CGPointMake(radius*cos(angle)+satelliteStart.x, radius*sin(angle)+satelliteStart.y);
         
-        /*SKPhysicsBody *body = [self.physicsWorld bodyAlongRayStart:satelliteStart end:satelliteEnd];
+        SKPhysicsBody *body = [self.physicsWorld bodyAlongRayStart:satelliteStart end:satelliteEnd];
         if (body.categoryBitMask == DEBRIS) {
             Debris *targetDebris = (Debris *)body.node;
             [targetDebris becomeGold];
@@ -127,7 +127,7 @@
         else if (body.categoryBitMask == PLANET) {
             CGFloat newRadius =  sqrt(pow(self.size.width/30.0,2.0) + pow(self.size.height/30.0,2.0));
             satelliteEnd = CGPointMake(newRadius*cos(angle)+satelliteStart.x, newRadius*sin(angle)+satelliteStart.y);
-        }*/
+        }
         
         if (i == 0) {
             CGPathMoveToPoint(arcPath, NULL, satelliteStart.x,satelliteStart.y);

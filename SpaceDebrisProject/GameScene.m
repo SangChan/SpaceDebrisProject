@@ -210,6 +210,9 @@
         Debris *debris = (Debris *)contact.bodyA.node;
         [_planet getDamage:debris.attackPoint];
         [debris boom_boom_kaboom];
+        if ([_planet healthPoint] <= 0) {
+            //TODO : game over!
+        }
         //[contact.bodyA.node removeFromParent];
     }
     else if (contact.bodyA.categoryBitMask == DEBRIS && contact.bodyB.categoryBitMask == SATELLITE) {

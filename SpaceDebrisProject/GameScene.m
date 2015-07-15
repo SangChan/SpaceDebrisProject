@@ -212,8 +212,8 @@
         [debris boom_boom_kaboom];
         if ([_planet healthPoint] <= 0) {
             //TODO : game over!
+            [self loadBlur];
         }
-        //[contact.bodyA.node removeFromParent];
     }
     else if (contact.bodyA.categoryBitMask == DEBRIS && contact.bodyB.categoryBitMask == SATELLITE) {
         //TODO : Satellite get stunned

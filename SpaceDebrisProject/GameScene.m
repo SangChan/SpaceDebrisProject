@@ -247,7 +247,8 @@
     rect.size = ss.size;
     CGImageRef cgimg = [context createCGImage:outputImage fromRect:rect];
     UIImage *image = [UIImage imageWithCGImage:cgimg];
-    CGImageRelease(cgimg); return image;
+    CGImageRelease(cgimg);
+    return image;
 }
 
 

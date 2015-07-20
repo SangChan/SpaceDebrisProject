@@ -212,7 +212,7 @@
         [debris boom_boom_kaboom];
         if ([_planet healthPoint] <= 0) {
             //TODO : game over!
-            [self loadBlur];
+            [self gameOver];
         }
     }
     else if (contact.bodyA.categoryBitMask == DEBRIS && contact.bodyB.categoryBitMask == SATELLITE) {
@@ -221,8 +221,15 @@
     }
 }
 
--(void)loadBlur {
-    SKSpriteNode *pauseBG = [SKSpriteNode spriteNodeWithTexture:[SKTexture textureWithImage:[self getBluredScreenshot]]];
+-(void)gameOver {
+    UIImage *screenShot = [self getBluredScreenshot];
+    [self removeAllActions];
+    [self removeAllChildren];
+    [self loadBlurWithImage:screenShot];
+}
+
+-(void)loadBlurWithImage:(UIImage*)image {
+    SKSpriteNode *pauseBG = [SKSpriteNode spriteNodeWithTexture:[SKTexture textureWithImage:image]];
     pauseBG.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame));
     pauseBG.alpha = 0;
     pauseBG.zPosition = 2;

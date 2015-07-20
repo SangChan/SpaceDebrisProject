@@ -30,6 +30,10 @@
     /* Setup your scene here */
     self.physicsWorld.gravity =  CGVectorMake(0.0, 0.0);
     self.physicsWorld.contactDelegate = self;
+    [self gameStart];
+}
+
+-(void)gameStart {
     _startTime = 0.0;
     [self initPlanet];
     

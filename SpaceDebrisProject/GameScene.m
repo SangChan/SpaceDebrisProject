@@ -11,6 +11,7 @@
 #import "Planet.h"
 #import "Debris.h"
 #import "MyConst.h"
+#import "AGSpriteButton.h"
 
 
 @interface GameScene () {
@@ -232,13 +233,29 @@
     [self loadBlurWithImage:screenShot];
 }
 
+-(void)gameRestart {
+    [[self childNodeWithName:@"pauseBG"] removeFromParent];
+    [[self childNodeWithName:@"retryButton"] removeFromParent];
+    
+    [self gameStart];
+}
+
 -(void)loadBlurWithImage:(UIImage*)image {
     SKSpriteNode *pauseBG = [SKSpriteNode spriteNodeWithTexture:[SKTexture textureWithImage:image]];
+    pauseBG.name = @"pauseBG";
     pauseBG.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame));
     pauseBG.alpha = 0;
     pauseBG.zPosition = 2;
     [pauseBG runAction:[SKAction fadeAlphaTo:1 duration:0.5]];
     [self addChild:pauseBG];
+    
+    AGSpriteButton *retryButton = [AGSpriteButton buttonWithColor:[UIColor darkGrayColor] andSize:CGSizeMake(100, 100)];
+    retryButton.name = @"retryButton";
+    [retryButton setLabelWithText:@"Retry!" andFont:nil withColor:[UIColor whiteColor]];
+    retryButton.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame));
+    retryButton.zPosition = 3;
+    [self addChild:retryButton];
+    [retryButton addTarget:self selector:@selector(gameRestart) withObject:nil forControlEvent:AGButtonControlEventTouchUpInside];
 }
 
 - (UIImage *)getBluredScreenshot {

@@ -14,6 +14,7 @@
 		63289F5C1B43D7D000B46457 /* MyParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = 63289F5A1B43D7D000B46457 /* MyParticle.sks */; };
 		63289F5D1B43D7D000B46457 /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 63289F5B1B43D7D000B46457 /* spark.png */; };
 		63298C011B465C7A00578911 /* SpaceDebrisTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 63298C001B465C7A00578911 /* SpaceDebrisTests.m */; };
+		633A76521B5DFFF000C15C3C /* AGSpriteButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 633A76511B5DFFF000C15C3C /* AGSpriteButton.m */; };
 		63BDC3D21B23FB0800CA99E5 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 63BDC3D11B23FB0800CA99E5 /* GameScene.sks */; };
 		63BDC3D91B23FB0800CA99E5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63BDC3D71B23FB0800CA99E5 /* Main.storyboard */; };
 		63BDC3DB1B23FB0800CA99E5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63BDC3DA1B23FB0800CA99E5 /* Images.xcassets */; };
@@ -46,6 +47,8 @@
 		63289F5B1B43D7D000B46457 /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
 		63298BFF1B465C7A00578911 /* SpaceDebrisProjectTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SpaceDebrisProjectTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		63298C001B465C7A00578911 /* SpaceDebrisTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpaceDebrisTests.m; sourceTree = "<group>"; };
+		633A76501B5DFFF000C15C3C /* AGSpriteButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGSpriteButton.h; sourceTree = "<group>"; };
+		633A76511B5DFFF000C15C3C /* AGSpriteButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGSpriteButton.m; sourceTree = "<group>"; };
 		63BDC3CA1B23FB0800CA99E5 /* SpaceDebrisProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpaceDebrisProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63BDC3CE1B23FB0800CA99E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		63BDC3D11B23FB0800CA99E5 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -123,6 +126,8 @@
 				6314976F1B2550AA0068A0FF /* Model */,
 				631497B31B25859D0068A0FF /* AppDelegate.h */,
 				631497B41B25859D0068A0FF /* AppDelegate.m */,
+				633A76501B5DFFF000C15C3C /* AGSpriteButton.h */,
+				633A76511B5DFFF000C15C3C /* AGSpriteButton.m */,
 				631497B61B2585AE0068A0FF /* GameScene.h */,
 				631497B71B2585AE0068A0FF /* GameScene.m */,
 				63BDC3D11B23FB0800CA99E5 /* GameScene.sks */,
@@ -284,6 +289,7 @@
 				63DAD0381B2FF8CA0082F8FE /* Debris.m in Sources */,
 				631497BD1B2586390068A0FF /* main.m in Sources */,
 				631497B81B2585AE0068A0FF /* GameScene.m in Sources */,
+				633A76521B5DFFF000C15C3C /* AGSpriteButton.m in Sources */,
 				63DAD0351B2FF8BB0082F8FE /* Planet.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

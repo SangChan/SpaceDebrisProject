@@ -48,8 +48,8 @@ static Planet *sharedMyPlanet = nil;
 }
 
 -(void)resetDamege {
-    self.maxHealthPoint = 1000.0;
-    self.healthPoint = 1000.0;
+    self.maxHealthPoint = 500.0;
+    self.healthPoint = 500.0;
 }
 
 -(void)addAnchorPoint {

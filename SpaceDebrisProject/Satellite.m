@@ -46,7 +46,7 @@
 }
 
 -(void)update {
-    NSLog(@"satellite energy = %f",self.battery);
+    //NSLog(@"satellite energy = %f",self.battery);
 }
 
 -(void)usePower {

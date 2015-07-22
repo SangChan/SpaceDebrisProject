@@ -51,9 +51,11 @@
 
 -(void)usePower {
     self.battery -= self.energyDrain;
+    if(self.battery < 10.0)
+        self.shoot = NO;
 }
 -(void)chargePower {
-    self.battery += self.energyDrain * 5.0;
+    self.battery += self.energyDrain;
     if (self.battery > 100.0) {
         self.battery = 100.0;
     }

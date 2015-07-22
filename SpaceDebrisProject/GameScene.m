@@ -37,10 +37,7 @@
 -(void)gameStart {
     _startTime = 0.0;
     [self initPlanet];
-    
-    
     [self initSatellite];
-    
     [self initJointWithNodeA:_planet NodeB:_satellite];
     _isTracking = NO;
     SKAction *wait = [SKAction waitForDuration:1.0];
@@ -53,6 +50,10 @@
     _beamShape = [SKShapeNode node];
     [_beamShape setStrokeColor:[UIColor cyanColor]];
     [self addChild:_beamShape];
+}
+
+-(void)resetScore {
+    [_planet resetDamege];
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
@@ -111,6 +112,7 @@
         [_satellite usePower];
     }
     else if(!_satellite.shoot) {
+        [self resetController];
         [_satellite chargePower];
     }
 }
@@ -151,7 +153,8 @@
     
     _beamShape.path = arcPath;
     [_beamShape setFillColor:[UIColor cyanColor]];
-    [_beamShape setAlpha:0.3];
+    
+    [_beamShape setAlpha:0.3 * (_satellite.battery / 100.0)];
     CGPathRelease(arcPath);
 
 }
@@ -230,6 +233,7 @@
     UIImage *screenShot = [self getBluredScreenshot];
     [self removeAllActions];
     [self removeAllChildren];
+    [self.physicsWorld removeAllJoints];
     [self loadBlurWithImage:screenShot];
 }
 
@@ -268,7 +272,7 @@
     CIFilter *gaussianBlurFilter = [CIFilter filterWithName:@"CIGaussianBlur"];
     [gaussianBlurFilter setDefaults];
     [gaussianBlurFilter setValue:[CIImage imageWithCGImage:[ss CGImage]] forKey:kCIInputImageKey];
-    [gaussianBlurFilter setValue:@10 forKey:kCIInputRadiusKey];
+    [gaussianBlurFilter setValue:@5 forKey:kCIInputRadiusKey];
     CIImage *outputImage = [gaussianBlurFilter outputImage];
     CIContext *context = [CIContext contextWithOptions:nil];
     CGRect rect = [outputImage extent];

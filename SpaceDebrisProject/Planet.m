@@ -32,8 +32,7 @@ static Planet *sharedMyPlanet = nil;
     [planet setFillColor:[UIColor blueColor]];
     [self addChild:planet];
     
-    self.maxHealthPoint = 1000.0;
-    self.healthPoint = 1000.0;
+    [self resetDamege];
     
     [self addAnchorPoint];
     
@@ -46,6 +45,11 @@ static Planet *sharedMyPlanet = nil;
     self.physicsBody.contactTestBitMask = DEBRIS;
 
     return self;
+}
+
+-(void)resetDamege {
+    self.maxHealthPoint = 1000.0;
+    self.healthPoint = 1000.0;
 }
 
 -(void)addAnchorPoint {

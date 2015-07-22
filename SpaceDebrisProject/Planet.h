@@ -18,5 +18,6 @@
 
 + (instancetype)sharedInstanceWithPosition:(CGPoint)position Radius:(CGFloat)radius;
 -(void)getDamage:(CGFloat)damage;
+-(void)resetDamege;
 
 @end

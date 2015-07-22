@@ -58,6 +58,26 @@
     }];
     [self runAction:[SKAction sequence:@[wait,changeAlpha,wait,destruction]]];
 }
+
+-(void)boom_boom_kaboom2 {
+    self.physicsBody = nil;
+    NSString *myParticlePath = [[NSBundle mainBundle] pathForResource:@"MyParticle" ofType:@"sks"];
+    SKEmitterNode *emitterNode = [NSKeyedUnarchiver unarchiveObjectWithFile:myParticlePath];
+    emitterNode.particleColor = [UIColor darkGrayColor];
+    emitterNode.position = CGPointMake(0.0, 0.0);
+    emitterNode.zRotation = self.radian+SK_DEGREES_TO_RADIANS(-90.0f);
+    [self addChild:emitterNode];
+    
+    SKAction *wait = [SKAction waitForDuration:0.10];
+    SKAction *destruction = [SKAction runBlock:^{
+        [self removeFromParent];
+    }];
+    SKAction *changeAlpha = [SKAction runBlock:^{
+        self.alpha = 0.2;
+    }];
+    [self runAction:[SKAction sequence:@[wait,changeAlpha,wait,destruction]]];
+}
+
 -(void)becomeGold {
     self.active = NO;
     self.physicsBody.resting = YES;
@@ -68,7 +88,7 @@
     self.physicsBody.collisionBitMask = NO_ONE;
     self.physicsBody.contactTestBitMask = NO_ONE;
     
-    [self boom_boom_kaboom];
+    [self boom_boom_kaboom2];
 }
 
 @end

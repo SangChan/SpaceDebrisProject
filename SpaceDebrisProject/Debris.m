@@ -41,7 +41,7 @@
     
 }
 
--(void)boom_boom_kaboom {
+-(void)boomWithFire {
     self.physicsBody = nil;
     NSString *myParticlePath = [[NSBundle mainBundle] pathForResource:@"MyParticle" ofType:@"sks"];
     SKEmitterNode *emitterNode = [NSKeyedUnarchiver unarchiveObjectWithFile:myParticlePath];
@@ -59,7 +59,7 @@
     [self runAction:[SKAction sequence:@[wait,changeAlpha,wait,destruction]]];
 }
 
--(void)boom_boom_kaboom2 {
+-(void)boomWithSmoke {
     self.physicsBody = nil;
     NSString *myParticlePath = [[NSBundle mainBundle] pathForResource:@"MyParticle" ofType:@"sks"];
     SKEmitterNode *emitterNode = [NSKeyedUnarchiver unarchiveObjectWithFile:myParticlePath];
@@ -88,7 +88,7 @@
     self.physicsBody.collisionBitMask = NO_ONE;
     self.physicsBody.contactTestBitMask = NO_ONE;
     
-    [self boom_boom_kaboom2];
+    [self boomWithSmoke];
 }
 
 @end

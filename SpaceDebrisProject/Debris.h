@@ -17,7 +17,7 @@
 @property (nonatomic) CGFloat attackPoint;
 
 -(instancetype)initWithPosition:(CGPoint)position Radian:(CGFloat)radian;
--(void)boom_boom_kaboom;
+-(void)boomWithFire;
 -(void)becomeGold;
 
 @end

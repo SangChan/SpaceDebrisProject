@@ -213,7 +213,7 @@
         //TODO : BANG BANG KA-BOOOOOOM!
         Debris *debris = (Debris *)contact.bodyA.node;
         [_planet getDamage:debris.attackPoint];
-        [debris boom_boom_kaboom];
+        [debris boomWithFire];
         if ([_planet healthPoint] <= 0) {
             //TODO : game over!
             [self gameOver];

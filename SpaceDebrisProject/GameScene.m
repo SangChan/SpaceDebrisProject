@@ -18,9 +18,8 @@
     Planet *_planet;
     Satellite *_satellite;
     SKShapeNode *_beamShape;
-    CFTimeInterval _startTime;
-    CFTimeInterval _currentTime;
     BOOL _isTracking;
+    int timer;
 }
 
 @end
@@ -35,7 +34,7 @@
 }
 
 -(void)gameStart {
-    _startTime = 0.0;
+    timer = 0;
     [self initPlanet];
     [self initSatellite];
     [self initJointWithNodeA:_planet NodeB:_satellite];
@@ -111,6 +110,9 @@
         [self resetController];
         [_satellite chargePower];
     }
+    
+    //Maybe 1 second per 30 count.
+    timer++;
 }
 
 -(void)satelliteShootTheBeam {

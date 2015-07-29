@@ -15,6 +15,8 @@
 		63289F5D1B43D7D000B46457 /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 63289F5B1B43D7D000B46457 /* spark.png */; };
 		63298C011B465C7A00578911 /* SpaceDebrisTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 63298C001B465C7A00578911 /* SpaceDebrisTests.m */; };
 		633A76521B5DFFF000C15C3C /* AGSpriteButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 633A76511B5DFFF000C15C3C /* AGSpriteButton.m */; };
+		638ED0DD1B687C030080A8A9 /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 638ED0DC1B687C030080A8A9 /* FontAwesome.ttf */; };
+		638ED0E01B687C0D0080A8A9 /* NSString+FontAwesome.m in Sources */ = {isa = PBXBuildFile; fileRef = 638ED0DF1B687C0D0080A8A9 /* NSString+FontAwesome.m */; };
 		63BDC3D21B23FB0800CA99E5 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 63BDC3D11B23FB0800CA99E5 /* GameScene.sks */; };
 		63BDC3D91B23FB0800CA99E5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63BDC3D71B23FB0800CA99E5 /* Main.storyboard */; };
 		63BDC3DB1B23FB0800CA99E5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63BDC3DA1B23FB0800CA99E5 /* Images.xcassets */; };
@@ -49,6 +51,9 @@
 		63298C001B465C7A00578911 /* SpaceDebrisTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpaceDebrisTests.m; sourceTree = "<group>"; };
 		633A76501B5DFFF000C15C3C /* AGSpriteButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGSpriteButton.h; sourceTree = "<group>"; };
 		633A76511B5DFFF000C15C3C /* AGSpriteButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGSpriteButton.m; sourceTree = "<group>"; };
+		638ED0DC1B687C030080A8A9 /* FontAwesome.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.ttf; sourceTree = "<group>"; };
+		638ED0DE1B687C0D0080A8A9 /* NSString+FontAwesome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+FontAwesome.h"; sourceTree = "<group>"; };
+		638ED0DF1B687C0D0080A8A9 /* NSString+FontAwesome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+FontAwesome.m"; sourceTree = "<group>"; };
 		63BDC3CA1B23FB0800CA99E5 /* SpaceDebrisProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpaceDebrisProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63BDC3CE1B23FB0800CA99E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		63BDC3D11B23FB0800CA99E5 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -126,6 +131,8 @@
 				6314976F1B2550AA0068A0FF /* Model */,
 				631497B31B25859D0068A0FF /* AppDelegate.h */,
 				631497B41B25859D0068A0FF /* AppDelegate.m */,
+				638ED0DE1B687C0D0080A8A9 /* NSString+FontAwesome.h */,
+				638ED0DF1B687C0D0080A8A9 /* NSString+FontAwesome.m */,
 				633A76501B5DFFF000C15C3C /* AGSpriteButton.h */,
 				633A76511B5DFFF000C15C3C /* AGSpriteButton.m */,
 				631497B61B2585AE0068A0FF /* GameScene.h */,
@@ -173,6 +180,7 @@
 			isa = PBXGroup;
 			children = (
 				63D1A66F1B37FD2F0062073B /* veranda_ci.png */,
+				638ED0DC1B687C030080A8A9 /* FontAwesome.ttf */,
 				63289F5B1B43D7D000B46457 /* spark.png */,
 			);
 			name = Resources;
@@ -262,6 +270,7 @@
 				63BDC3DE1B23FB0800CA99E5 /* LaunchScreen.xib in Resources */,
 				63289F5C1B43D7D000B46457 /* MyParticle.sks in Resources */,
 				63BDC3DB1B23FB0800CA99E5 /* Images.xcassets in Resources */,
+				638ED0DD1B687C030080A8A9 /* FontAwesome.ttf in Resources */,
 				63289F5D1B43D7D000B46457 /* spark.png in Resources */,
 				63BDC3D21B23FB0800CA99E5 /* GameScene.sks in Resources */,
 				63BDC3D91B23FB0800CA99E5 /* Main.storyboard in Resources */,
@@ -285,6 +294,7 @@
 			files = (
 				631497BB1B2585BC0068A0FF /* GameViewController.m in Sources */,
 				631497B51B25859D0068A0FF /* AppDelegate.m in Sources */,
+				638ED0E01B687C0D0080A8A9 /* NSString+FontAwesome.m in Sources */,
 				63DAD0321B2FF7D60082F8FE /* Satellite.m in Sources */,
 				63DAD0381B2FF8CA0082F8FE /* Debris.m in Sources */,
 				631497BD1B2586390068A0FF /* main.m in Sources */,

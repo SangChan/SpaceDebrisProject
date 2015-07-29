@@ -12,6 +12,7 @@
 #import "Debris.h"
 #import "MyConst.h"
 #import "AGSpriteButton.h"
+#import "NSString+FontAwesome.h"
 
 
 @interface GameScene () {
@@ -251,9 +252,9 @@
     [pauseBG runAction:[SKAction fadeAlphaTo:1 duration:0.5]];
     [self addChild:pauseBG];
     
-    AGSpriteButton *retryButton = [AGSpriteButton buttonWithColor:[UIColor darkGrayColor] andSize:CGSizeMake(100, 100)];
+    AGSpriteButton *retryButton = [AGSpriteButton buttonWithColor:[UIColor clearColor] andSize:CGSizeMake(100, 100)];
     retryButton.name = @"retryButton";
-    [retryButton setLabelWithText:@"Retry!" andFont:nil withColor:[UIColor whiteColor]];
+    [retryButton setLabelWithText:[NSString fontAwesomeIconStringForEnum:FARepeat] andFont:[UIFont fontWithName:kFontAwesomeFamilyName size:50.0] withColor:[UIColor whiteColor]];
     retryButton.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame));
     retryButton.alpha = 0;
     retryButton.zPosition = 3;

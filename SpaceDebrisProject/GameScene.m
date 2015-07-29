@@ -247,18 +247,18 @@
     SKSpriteNode *pauseBG = [SKSpriteNode spriteNodeWithTexture:[SKTexture textureWithImage:image] size:self.size];
     pauseBG.name = @"pauseBG";
     pauseBG.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame));
-    pauseBG.alpha = 0;
+    pauseBG.alpha = 0.1;
     pauseBG.zPosition = 2;
-    [pauseBG runAction:[SKAction fadeAlphaTo:1 duration:0.5]];
+    [pauseBG runAction:[SKAction fadeAlphaTo:1 duration:0.3]];
     [self addChild:pauseBG];
     
     AGSpriteButton *retryButton = [AGSpriteButton buttonWithColor:[UIColor clearColor] andSize:CGSizeMake(100, 100)];
     retryButton.name = @"retryButton";
     [retryButton setLabelWithText:[NSString fontAwesomeIconStringForEnum:FARepeat] andFont:[UIFont fontWithName:kFontAwesomeFamilyName size:50.0] withColor:[UIColor whiteColor]];
     retryButton.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame));
-    retryButton.alpha = 0;
+    retryButton.alpha = 0.1;
     retryButton.zPosition = 3;
-    [retryButton runAction:[SKAction fadeAlphaTo:1 duration:1.0]];
+    [retryButton runAction:[SKAction fadeAlphaTo:1 duration:0.5]];
     [self addChild:retryButton];
     [retryButton addTarget:self selector:@selector(gameRestart) withObject:nil forControlEvent:AGButtonControlEventTouchUpInside];
 }

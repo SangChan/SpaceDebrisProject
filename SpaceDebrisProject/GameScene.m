@@ -252,6 +252,20 @@
     [pauseBG runAction:[SKAction fadeAlphaTo:1 duration:0.3]];
     [self addChild:pauseBG];
     
+    SKLabelNode *wordLabel = [[SKLabelNode alloc]initWithFontNamed:@"Chalkduster"];
+    wordLabel.text = @"Game Over";
+    wordLabel.fontSize = 36;
+    wordLabel.fontColor = [UIColor whiteColor];
+    wordLabel.position = CGPointMake(0.0, 100.0);
+    [pauseBG addChild:wordLabel];
+    
+    SKLabelNode *timeLabel = [[SKLabelNode alloc]initWithFontNamed:@"Chalkduster"];
+    timeLabel.text = [NSString stringWithFormat:@"You saved earth for %d seconds!",timer/60];
+    timeLabel.fontSize = 36;
+    timeLabel.fontColor = [UIColor whiteColor];
+    timeLabel.position = CGPointMake(0.0, -100.0);
+    [pauseBG addChild:timeLabel];
+    
     AGSpriteButton *retryButton = [AGSpriteButton buttonWithColor:[UIColor clearColor] andSize:CGSizeMake(100, 100)];
     retryButton.name = @"retryButton";
     [retryButton setLabelWithText:[NSString fontAwesomeIconStringForEnum:FARepeat] andFont:[UIFont fontWithName:kFontAwesomeFamilyName size:50.0] withColor:[UIColor whiteColor]];

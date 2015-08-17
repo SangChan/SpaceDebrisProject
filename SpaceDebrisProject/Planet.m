@@ -28,8 +28,12 @@ static Planet *sharedMyPlanet = nil;
     self.position = position;
     self.fixedPosition = position;
     
-    SKShapeNode *planet = [SKShapeNode shapeNodeWithCircleOfRadius:radius];
-    [planet setFillColor:[UIColor blueColor]];
+    SKSpriteNode *planet = [SKSpriteNode spriteNodeWithImageNamed:@"planet.png"];
+    planet.xScale = 0.4;
+    planet.yScale = 0.4;
+    
+    //SKShapeNode *planet = [SKShapeNode shapeNodeWithCircleOfRadius:radius];
+    //[planet setFillColor:[UIColor blueColor]];
     [self addChild:planet];
     
     [self resetDamege];

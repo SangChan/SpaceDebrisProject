@@ -15,6 +15,14 @@
 		63289F5D1B43D7D000B46457 /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 63289F5B1B43D7D000B46457 /* spark.png */; };
 		63298C011B465C7A00578911 /* SpaceDebrisTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 63298C001B465C7A00578911 /* SpaceDebrisTests.m */; };
 		633A76521B5DFFF000C15C3C /* AGSpriteButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 633A76511B5DFFF000C15C3C /* AGSpriteButton.m */; };
+		63434A171B82299B00F2CDB0 /* 1_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 63434A0F1B82299B00F2CDB0 /* 1_background.png */; };
+		63434A181B82299B00F2CDB0 /* 2_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 63434A101B82299B00F2CDB0 /* 2_background.png */; };
+		63434A191B82299B00F2CDB0 /* 3_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 63434A111B82299B00F2CDB0 /* 3_background.png */; };
+		63434A1A1B82299B00F2CDB0 /* planet.png in Resources */ = {isa = PBXBuildFile; fileRef = 63434A121B82299B00F2CDB0 /* planet.png */; };
+		63434A1B1B82299B00F2CDB0 /* satellite.png in Resources */ = {isa = PBXBuildFile; fileRef = 63434A131B82299B00F2CDB0 /* satellite.png */; };
+		63434A1C1B82299B00F2CDB0 /* trash1_soju.png in Resources */ = {isa = PBXBuildFile; fileRef = 63434A141B82299B00F2CDB0 /* trash1_soju.png */; };
+		63434A1D1B82299B00F2CDB0 /* trash2_milk.png in Resources */ = {isa = PBXBuildFile; fileRef = 63434A151B82299B00F2CDB0 /* trash2_milk.png */; };
+		63434A1E1B82299B00F2CDB0 /* trash3_news.png in Resources */ = {isa = PBXBuildFile; fileRef = 63434A161B82299B00F2CDB0 /* trash3_news.png */; };
 		638ED0DD1B687C030080A8A9 /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 638ED0DC1B687C030080A8A9 /* FontAwesome.ttf */; };
 		638ED0E01B687C0D0080A8A9 /* NSString+FontAwesome.m in Sources */ = {isa = PBXBuildFile; fileRef = 638ED0DF1B687C0D0080A8A9 /* NSString+FontAwesome.m */; };
 		63BDC3D21B23FB0800CA99E5 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 63BDC3D11B23FB0800CA99E5 /* GameScene.sks */; };
@@ -51,6 +59,14 @@
 		63298C001B465C7A00578911 /* SpaceDebrisTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpaceDebrisTests.m; sourceTree = "<group>"; };
 		633A76501B5DFFF000C15C3C /* AGSpriteButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGSpriteButton.h; sourceTree = "<group>"; };
 		633A76511B5DFFF000C15C3C /* AGSpriteButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGSpriteButton.m; sourceTree = "<group>"; };
+		63434A0F1B82299B00F2CDB0 /* 1_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 1_background.png; path = Resources/1_background.png; sourceTree = "<group>"; };
+		63434A101B82299B00F2CDB0 /* 2_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 2_background.png; path = Resources/2_background.png; sourceTree = "<group>"; };
+		63434A111B82299B00F2CDB0 /* 3_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 3_background.png; path = Resources/3_background.png; sourceTree = "<group>"; };
+		63434A121B82299B00F2CDB0 /* planet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = planet.png; path = Resources/planet.png; sourceTree = "<group>"; };
+		63434A131B82299B00F2CDB0 /* satellite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = satellite.png; path = Resources/satellite.png; sourceTree = "<group>"; };
+		63434A141B82299B00F2CDB0 /* trash1_soju.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = trash1_soju.png; path = Resources/trash1_soju.png; sourceTree = "<group>"; };
+		63434A151B82299B00F2CDB0 /* trash2_milk.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = trash2_milk.png; path = Resources/trash2_milk.png; sourceTree = "<group>"; };
+		63434A161B82299B00F2CDB0 /* trash3_news.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = trash3_news.png; path = Resources/trash3_news.png; sourceTree = "<group>"; };
 		638ED0DC1B687C030080A8A9 /* FontAwesome.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.ttf; sourceTree = "<group>"; };
 		638ED0DE1B687C0D0080A8A9 /* NSString+FontAwesome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+FontAwesome.h"; sourceTree = "<group>"; };
 		638ED0DF1B687C0D0080A8A9 /* NSString+FontAwesome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+FontAwesome.m"; sourceTree = "<group>"; };
@@ -179,6 +195,14 @@
 		63D1A66E1B37FD230062073B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				63434A0F1B82299B00F2CDB0 /* 1_background.png */,
+				63434A101B82299B00F2CDB0 /* 2_background.png */,
+				63434A111B82299B00F2CDB0 /* 3_background.png */,
+				63434A121B82299B00F2CDB0 /* planet.png */,
+				63434A131B82299B00F2CDB0 /* satellite.png */,
+				63434A141B82299B00F2CDB0 /* trash1_soju.png */,
+				63434A151B82299B00F2CDB0 /* trash2_milk.png */,
+				63434A161B82299B00F2CDB0 /* trash3_news.png */,
 				63D1A66F1B37FD2F0062073B /* veranda_ci.png */,
 				638ED0DC1B687C030080A8A9 /* FontAwesome.ttf */,
 				63289F5B1B43D7D000B46457 /* spark.png */,
@@ -267,14 +291,22 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63434A171B82299B00F2CDB0 /* 1_background.png in Resources */,
 				63BDC3DE1B23FB0800CA99E5 /* LaunchScreen.xib in Resources */,
 				63289F5C1B43D7D000B46457 /* MyParticle.sks in Resources */,
+				63434A1E1B82299B00F2CDB0 /* trash3_news.png in Resources */,
+				63434A1D1B82299B00F2CDB0 /* trash2_milk.png in Resources */,
 				63BDC3DB1B23FB0800CA99E5 /* Images.xcassets in Resources */,
 				638ED0DD1B687C030080A8A9 /* FontAwesome.ttf in Resources */,
 				63289F5D1B43D7D000B46457 /* spark.png in Resources */,
+				63434A191B82299B00F2CDB0 /* 3_background.png in Resources */,
+				63434A181B82299B00F2CDB0 /* 2_background.png in Resources */,
 				63BDC3D21B23FB0800CA99E5 /* GameScene.sks in Resources */,
+				63434A1A1B82299B00F2CDB0 /* planet.png in Resources */,
 				63BDC3D91B23FB0800CA99E5 /* Main.storyboard in Resources */,
+				63434A1B1B82299B00F2CDB0 /* satellite.png in Resources */,
 				63D1A6701B37FD2F0062073B /* veranda_ci.png in Resources */,
+				63434A1C1B82299B00F2CDB0 /* trash1_soju.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

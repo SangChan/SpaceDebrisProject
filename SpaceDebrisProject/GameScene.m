@@ -36,6 +36,7 @@
 
 -(void)gameStart {
     timer = 0;
+    [self initBackGround];
     [self initPlanet];
     [self initSatellite];
     [self initJointWithNodeA:_planet NodeB:_satellite];
@@ -156,6 +157,25 @@
     [_beamShape setAlpha:0.3 * (_satellite.battery / 100.0)];
     CGPathRelease(arcPath);
 
+}
+
+-(void)initBackGround {
+    SKSpriteNode *deepBG = [SKSpriteNode spriteNodeWithImageNamed:@"1_background.png"];
+    [deepBG setAnchorPoint:CGPointMake(0.0 , 0.0)];
+    deepBG.xScale = 0.5;
+    deepBG.yScale = 0.5;
+    SKSpriteNode *middleBG = [SKSpriteNode spriteNodeWithImageNamed:@"2_background.png"];
+    [middleBG setAnchorPoint:CGPointMake(0.0 , 0.0)];
+    middleBG.xScale = 0.5;
+    middleBG.yScale = 0.5;
+    SKSpriteNode *frontBG = [SKSpriteNode spriteNodeWithImageNamed:@"3_background.png"];
+    [frontBG setAnchorPoint:CGPointMake(0.0 , 0.0)];
+    frontBG.xScale = 0.5;
+    frontBG.yScale = 0.5;
+    
+    //[self addChild:deepBG];
+    //[self addChild:middleBG];
+    [self addChild:frontBG];
 }
 
 

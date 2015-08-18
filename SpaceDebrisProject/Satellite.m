@@ -28,8 +28,10 @@
     
     CGSize satelliteSize = CGSizeMake(10.0,10.0);
     
-    SKSpriteNode *satellite = [[SKSpriteNode alloc]initWithColor:[UIColor redColor] size:satelliteSize];
+    SKSpriteNode *satellite = [SKSpriteNode spriteNodeWithImageNamed:@"satellite.png"];
     satellite.anchorPoint = CGPointMake(0.5, 0.5);
+    satellite.xScale = 0.2;
+    satellite.yScale = 0.2;
     
     [self addChild:satellite];
     

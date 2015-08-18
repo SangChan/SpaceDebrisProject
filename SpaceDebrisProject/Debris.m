@@ -22,7 +22,10 @@
     self.attackPoint = (debrisSize.width * debrisSize.height)/10;
     self.radian = radian;
     
-    SKSpriteNode *debris = [[SKSpriteNode alloc]initWithColor:[UIColor brownColor] size:debrisSize];
+    SKSpriteNode *debris = [SKSpriteNode spriteNodeWithImageNamed:@"trash1_soju.png"];
+    debris.xScale = 0.2;
+    debris.yScale = 0.2;
+    //[[SKSpriteNode alloc]initWithColor:[UIColor brownColor] size:debrisSize];
     
     self.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:debrisSize];
     self.physicsBody.dynamic = YES;

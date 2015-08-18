@@ -22,7 +22,7 @@
     if (!self) return nil;
     
     self.shoot = NO;
-    self.battery = 100.0;
+    self.battery = 500.0;
     self.energyDrain = 1.0;
     self.position = position;
     

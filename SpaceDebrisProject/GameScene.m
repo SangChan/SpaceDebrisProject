@@ -147,6 +147,25 @@
 
 #pragma mark - initialize
 
+-(void)initBackGround {
+    SKSpriteNode *deepBG = [SKSpriteNode spriteNodeWithImageNamed:@"1_background.png"];
+    [deepBG setAnchorPoint:CGPointMake(0.0 , 0.0)];
+    deepBG.xScale = 0.5;
+    deepBG.yScale = 0.5;
+    SKSpriteNode *middleBG = [SKSpriteNode spriteNodeWithImageNamed:@"2_background.png"];
+    [middleBG setAnchorPoint:CGPointMake(0.0 , 0.0)];
+    middleBG.xScale = 0.5;
+    middleBG.yScale = 0.5;
+    SKSpriteNode *frontBG = [SKSpriteNode spriteNodeWithImageNamed:@"3_background.png"];
+    [frontBG setAnchorPoint:CGPointMake(0.0 , 0.0)];
+    frontBG.xScale = 0.5;
+    frontBG.yScale = 0.5;
+    
+    //[self addChild:deepBG];
+    //[self addChild:middleBG];
+    [self addChild:frontBG];
+}
+
 -(void)initPlanet {
     CGPoint centerPos = CGPointMake(self.size.width * 0.5, self.size.height * 0.5 );
     _planet =[Planet sharedInstanceWithPosition:centerPos Radius:50.0];
@@ -216,6 +235,7 @@
 
 -(void)gameStart {
     timer = 0;
+    [self initBackGround];
     [self initPlanet];
     [self initSatellite];
     [self initJointWithNodeA:_planet NodeB:_satellite];

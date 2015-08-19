@@ -27,30 +27,15 @@
 
 @implementation GameScene
 
+#pragma mark - setup scene
+
 -(void)didMoveToView:(SKView *)view {
-    /* Setup your scene here */
     self.physicsWorld.gravity =  CGVectorMake(0.0, 0.0);
     self.physicsWorld.contactDelegate = self;
     [self gameStart];
 }
 
--(void)gameStart {
-    timer = 0;
-    [self initPlanet];
-    [self initSatellite];
-    [self initJointWithNodeA:_planet NodeB:_satellite];
-    _isTracking = NO;
-    SKAction *wait = [SKAction waitForDuration:1.0];
-    SKAction *creatDebris = [SKAction performSelector:@selector(initDebris) onTarget:self];
-    SKAction *perform = [SKAction repeatActionForever:[SKAction sequence:@[wait,creatDebris]]];
-    [self runAction:perform];
-    
-    _planet.physicsBody.angularVelocity = 1.0;
-    
-    _beamShape = [SKShapeNode node];
-    [_beamShape setStrokeColor:[UIColor cyanColor]];
-    [self addChild:_beamShape];
-}
+#pragma mark - touch events
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     /* Called when a touch begins */
@@ -93,7 +78,7 @@
     [self resetController];
 }
 
-
+#pragma mark - update frame
 
 -(void)update:(CFTimeInterval)currentTime {
     /* Called before each frame is rendered */
@@ -115,6 +100,8 @@
     //Maybe 1 second per 30 count.
     timer++;
 }
+
+#pragma mark - satellite
 
 -(void)satelliteShootTheBeam {
     
@@ -158,6 +145,7 @@
 
 }
 
+#pragma mark - initialize
 
 -(void)initPlanet {
     CGPoint centerPos = CGPointMake(self.size.width * 0.5, self.size.height * 0.5 );
@@ -184,12 +172,6 @@
     [debris.physicsBody applyForce:throwVector];
 }
 
--(void)resetController {
-    _isTracking = NO;
-    _satellite.shoot = NO;
-    _beamShape.hidden = YES;
-    _satellite.physicsBody.angularVelocity = 0.0;
-}
 
 -(void)initSatellite {
     _satellite = [[Satellite alloc]initWithPosition:CGPointMake(_planet.fixedPosition.x, _planet.fixedPosition.y - _planet.fixedRadius - 45)];
@@ -208,6 +190,8 @@
     SKPhysicsJointPin *pinJoint = [SKPhysicsJointPin jointWithBodyA:nodeA.physicsBody bodyB:nodeB.physicsBody anchor:middleOfNodeB];
     [self.physicsWorld addJoint:pinJoint];
 }
+
+#pragma mark - physics delegate
 
 -(void)didBeginContact:(SKPhysicsContact *)contact
 {
@@ -228,6 +212,26 @@
     }
 }
 
+#pragma mark - game life cycle
+
+-(void)gameStart {
+    timer = 0;
+    [self initPlanet];
+    [self initSatellite];
+    [self initJointWithNodeA:_planet NodeB:_satellite];
+    _isTracking = NO;
+    SKAction *wait = [SKAction waitForDuration:1.0];
+    SKAction *creatDebris = [SKAction performSelector:@selector(initDebris) onTarget:self];
+    SKAction *perform = [SKAction repeatActionForever:[SKAction sequence:@[wait,creatDebris]]];
+    [self runAction:perform];
+    
+    _planet.physicsBody.angularVelocity = 1.0;
+    
+    _beamShape = [SKShapeNode node];
+    [_beamShape setStrokeColor:[UIColor cyanColor]];
+    [self addChild:_beamShape];
+}
+
 -(void)gameOver {
     UIImage *screenShot = [self getBluredScreenshot];
     [self removeAllActions];
@@ -241,6 +245,15 @@
     [[self childNodeWithName:@"retryButton"] removeFromParent];
     
     [self gameStart];
+}
+
+#pragma mark - private methods
+
+-(void)resetController {
+    _isTracking = NO;
+    _satellite.shoot = NO;
+    _beamShape.hidden = YES;
+    _satellite.physicsBody.angularVelocity = 0.0;
 }
 
 -(void)loadBlurWithImage:(UIImage*)image {

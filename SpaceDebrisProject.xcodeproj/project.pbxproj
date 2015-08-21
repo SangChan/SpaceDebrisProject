@@ -11,6 +11,12 @@
 		631497B81B2585AE0068A0FF /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 631497B71B2585AE0068A0FF /* GameScene.m */; };
 		631497BB1B2585BC0068A0FF /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 631497BA1B2585BC0068A0FF /* GameViewController.m */; };
 		631497BD1B2586390068A0FF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 631497BC1B2586390068A0FF /* main.m */; };
+		631BB8561B86FE590095B0C7 /* planet_d1.png in Resources */ = {isa = PBXBuildFile; fileRef = 631BB8501B86FE590095B0C7 /* planet_d1.png */; };
+		631BB8571B86FE590095B0C7 /* planet_d2.png in Resources */ = {isa = PBXBuildFile; fileRef = 631BB8511B86FE590095B0C7 /* planet_d2.png */; };
+		631BB8581B86FE590095B0C7 /* planet_d3.png in Resources */ = {isa = PBXBuildFile; fileRef = 631BB8521B86FE590095B0C7 /* planet_d3.png */; };
+		631BB8591B86FE590095B0C7 /* planet_d4.png in Resources */ = {isa = PBXBuildFile; fileRef = 631BB8531B86FE590095B0C7 /* planet_d4.png */; };
+		631BB85A1B86FE590095B0C7 /* re_1_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 631BB8541B86FE590095B0C7 /* re_1_background.png */; };
+		631BB85B1B86FE590095B0C7 /* re_2_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 631BB8551B86FE590095B0C7 /* re_2_background.png */; };
 		63289F5C1B43D7D000B46457 /* MyParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = 63289F5A1B43D7D000B46457 /* MyParticle.sks */; };
 		63289F5D1B43D7D000B46457 /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 63289F5B1B43D7D000B46457 /* spark.png */; };
 		63298C011B465C7A00578911 /* SpaceDebrisTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 63298C001B465C7A00578911 /* SpaceDebrisTests.m */; };
@@ -53,6 +59,12 @@
 		631497B91B2585BC0068A0FF /* GameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
 		631497BA1B2585BC0068A0FF /* GameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
 		631497BC1B2586390068A0FF /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		631BB8501B86FE590095B0C7 /* planet_d1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = planet_d1.png; path = Resources/planet_d1.png; sourceTree = "<group>"; };
+		631BB8511B86FE590095B0C7 /* planet_d2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = planet_d2.png; path = Resources/planet_d2.png; sourceTree = "<group>"; };
+		631BB8521B86FE590095B0C7 /* planet_d3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = planet_d3.png; path = Resources/planet_d3.png; sourceTree = "<group>"; };
+		631BB8531B86FE590095B0C7 /* planet_d4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = planet_d4.png; path = Resources/planet_d4.png; sourceTree = "<group>"; };
+		631BB8541B86FE590095B0C7 /* re_1_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = re_1_background.png; path = Resources/re_1_background.png; sourceTree = "<group>"; };
+		631BB8551B86FE590095B0C7 /* re_2_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = re_2_background.png; path = Resources/re_2_background.png; sourceTree = "<group>"; };
 		63289F5A1B43D7D000B46457 /* MyParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MyParticle.sks; sourceTree = "<group>"; };
 		63289F5B1B43D7D000B46457 /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
 		63298BFF1B465C7A00578911 /* SpaceDebrisProjectTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SpaceDebrisProjectTests-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -195,6 +207,12 @@
 		63D1A66E1B37FD230062073B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				631BB8501B86FE590095B0C7 /* planet_d1.png */,
+				631BB8511B86FE590095B0C7 /* planet_d2.png */,
+				631BB8521B86FE590095B0C7 /* planet_d3.png */,
+				631BB8531B86FE590095B0C7 /* planet_d4.png */,
+				631BB8541B86FE590095B0C7 /* re_1_background.png */,
+				631BB8551B86FE590095B0C7 /* re_2_background.png */,
 				63434A0F1B82299B00F2CDB0 /* 1_background.png */,
 				63434A101B82299B00F2CDB0 /* 2_background.png */,
 				63434A111B82299B00F2CDB0 /* 3_background.png */,
@@ -294,11 +312,16 @@
 				63434A171B82299B00F2CDB0 /* 1_background.png in Resources */,
 				63BDC3DE1B23FB0800CA99E5 /* LaunchScreen.xib in Resources */,
 				63289F5C1B43D7D000B46457 /* MyParticle.sks in Resources */,
+				631BB85B1B86FE590095B0C7 /* re_2_background.png in Resources */,
+				631BB8571B86FE590095B0C7 /* planet_d2.png in Resources */,
 				63434A1E1B82299B00F2CDB0 /* trash3_news.png in Resources */,
+				631BB8581B86FE590095B0C7 /* planet_d3.png in Resources */,
 				63434A1D1B82299B00F2CDB0 /* trash2_milk.png in Resources */,
 				63BDC3DB1B23FB0800CA99E5 /* Images.xcassets in Resources */,
 				638ED0DD1B687C030080A8A9 /* FontAwesome.ttf in Resources */,
 				63289F5D1B43D7D000B46457 /* spark.png in Resources */,
+				631BB8561B86FE590095B0C7 /* planet_d1.png in Resources */,
+				631BB85A1B86FE590095B0C7 /* re_1_background.png in Resources */,
 				63434A191B82299B00F2CDB0 /* 3_background.png in Resources */,
 				63434A181B82299B00F2CDB0 /* 2_background.png in Resources */,
 				63BDC3D21B23FB0800CA99E5 /* GameScene.sks in Resources */,
@@ -307,6 +330,7 @@
 				63434A1B1B82299B00F2CDB0 /* satellite.png in Resources */,
 				63D1A6701B37FD2F0062073B /* veranda_ci.png in Resources */,
 				63434A1C1B82299B00F2CDB0 /* trash1_soju.png in Resources */,
+				631BB8591B86FE590095B0C7 /* planet_d4.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

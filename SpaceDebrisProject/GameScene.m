@@ -193,7 +193,7 @@
 
 
 -(void)initSatellite {
-    _satellite = [[Satellite alloc]initWithPosition:CGPointMake(_planet.fixedPosition.x, _planet.fixedPosition.y - _planet.fixedRadius - 45)];
+    _satellite = [[Satellite alloc]initWithPosition:CGPointMake(_planet.fixedPosition.x, _planet.fixedPosition.y - _planet.fixedRadius - 70)];
     _satellite.beamLength = sqrt(pow(self.size.width/10.0,2.0) + pow(self.size.height/10.0,2.0));
     [self addChild:_satellite];
 }

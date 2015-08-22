@@ -22,8 +22,8 @@
     if (!self) return nil;
     
     self.shoot = NO;
-    self.battery = 500.0;
-    self.energyDrain = 1.0;
+    self.battery = 100.0;
+    self.energyDrain = 0.5;
     self.position = position;
     
     CGSize satelliteSize = CGSizeMake(10.0,10.0);
@@ -57,7 +57,7 @@
         self.shoot = NO;
 }
 -(void)chargePower {
-    self.battery += self.energyDrain;
+    self.battery += self.energyDrain * 2;
     if (self.battery > 100.0) {
         self.battery = 100.0;
     }

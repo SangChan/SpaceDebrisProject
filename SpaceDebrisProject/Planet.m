@@ -8,6 +8,14 @@
 
 #import "Planet.h"
 
+@interface Planet () {
+    SKSpriteNode *_planet;
+    SKSpriteNode *_nextPlanet;
+}
+
+@end
+
+
 @implementation Planet
 
 static Planet *sharedMyPlanet = nil;
@@ -28,13 +36,20 @@ static Planet *sharedMyPlanet = nil;
     self.position = position;
     self.fixedPosition = position;
     
-    SKSpriteNode *planet = [SKSpriteNode spriteNodeWithImageNamed:@"planet.png"];
-    planet.xScale = 0.45;
-    planet.yScale = 0.45;
+    _planet = [SKSpriteNode spriteNodeWithImageNamed:@"planet.png"];
+    _planet.xScale = 0.45;
+    _planet.yScale = 0.45;
+    
+    [self addChild:_planet];
+    
+    _nextPlanet = [SKSpriteNode spriteNodeWithImageNamed:@"planet_d1.png"];
+    _nextPlanet.xScale = 0.45;
+    _nextPlanet.yScale = 0.45;
     
     //SKShapeNode *planet = [SKShapeNode shapeNodeWithCircleOfRadius:radius];
     //[planet setFillColor:[UIColor blueColor]];
-    [self addChild:planet];
+    
+    [self addChild:_nextPlanet];
     
     [self resetDamege];
     
@@ -66,7 +81,8 @@ static Planet *sharedMyPlanet = nil;
 -(void)update {
     self.physicsBody.angularVelocity = 1.0;
     self.position = self.fixedPosition;
-    self.alpha = self.healthPoint / self.maxHealthPoint;
+    _planet.alpha = self.healthPoint / self.maxHealthPoint;
+    _nextPlanet.alpha = 1.0 - _planet.alpha;
 }
 
 -(void)getDamage:(CGFloat)damage {

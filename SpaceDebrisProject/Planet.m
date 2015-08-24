@@ -11,6 +11,7 @@
 @interface Planet () {
     SKSpriteNode *_planet;
     SKSpriteNode *_nextPlanet;
+    NSArray *planetList;
 }
 
 @end
@@ -32,17 +33,19 @@ static Planet *sharedMyPlanet = nil;
     self = [self init];
     if (!self) return nil;
     
+    planetList = @[@"planet.png",@"planet_d1.png",@"planet_d2.png",@"planet_d3.png",@"planet_d4.png"];
+    
     self.fixedRadius = radius;
     self.position = position;
     self.fixedPosition = position;
     
-    _planet = [SKSpriteNode spriteNodeWithImageNamed:@"planet.png"];
+    _planet = [SKSpriteNode spriteNodeWithImageNamed:[planetList objectAtIndex:3]];
     _planet.xScale = 0.45;
     _planet.yScale = 0.45;
     
     [self addChild:_planet];
     
-    _nextPlanet = [SKSpriteNode spriteNodeWithImageNamed:@"planet_d1.png"];
+    _nextPlanet = [SKSpriteNode spriteNodeWithImageNamed:[planetList objectAtIndex:4]];
     _nextPlanet.xScale = 0.45;
     _nextPlanet.yScale = 0.45;
     

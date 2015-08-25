@@ -39,13 +39,13 @@ static Planet *sharedMyPlanet = nil;
     self.position = position;
     self.fixedPosition = position;
     
-    _planet = [SKSpriteNode spriteNodeWithImageNamed:[planetList objectAtIndex:3]];
+    _planet = [SKSpriteNode spriteNodeWithImageNamed:[planetList objectAtIndex:0]];
     _planet.xScale = 0.45;
     _planet.yScale = 0.45;
     
     [self addChild:_planet];
     
-    _nextPlanet = [SKSpriteNode spriteNodeWithImageNamed:[planetList objectAtIndex:4]];
+    _nextPlanet = [SKSpriteNode spriteNodeWithImageNamed:[planetList objectAtIndex:1]];
     _nextPlanet.xScale = 0.45;
     _nextPlanet.yScale = 0.45;
     

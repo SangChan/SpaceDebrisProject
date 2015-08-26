@@ -9,8 +9,8 @@
 #import "Planet.h"
 
 @interface Planet () {
-    SKSpriteNode *_planet;
-    SKSpriteNode *_nextPlanet;
+    SKSpriteNode *_frontShape;
+    SKSpriteNode *_backShape;
     NSArray *planetList;
 }
 
@@ -39,20 +39,17 @@ static Planet *sharedMyPlanet = nil;
     self.position = position;
     self.fixedPosition = position;
     
-    _planet = [SKSpriteNode spriteNodeWithImageNamed:[planetList objectAtIndex:0]];
-    _planet.xScale = 0.45;
-    _planet.yScale = 0.45;
+    _frontShape = [SKSpriteNode spriteNodeWithImageNamed:[planetList objectAtIndex:0]];
+    _frontShape.xScale = 0.45;
+    _frontShape.yScale = 0.45;
     
-    [self addChild:_planet];
+    _backShape = [SKSpriteNode spriteNodeWithImageNamed:[planetList objectAtIndex:1]];
+    _backShape.xScale = 0.45;
+    _backShape.yScale = 0.45;
     
-    _nextPlanet = [SKSpriteNode spriteNodeWithImageNamed:[planetList objectAtIndex:1]];
-    _nextPlanet.xScale = 0.45;
-    _nextPlanet.yScale = 0.45;
+    [self addChild:_backShape];
+    [self addChild:_frontShape];
     
-    //SKShapeNode *planet = [SKShapeNode shapeNodeWithCircleOfRadius:radius];
-    //[planet setFillColor:[UIColor blueColor]];
-    
-    [self addChild:_nextPlanet];
     
     [self resetDamege];
     
@@ -84,8 +81,8 @@ static Planet *sharedMyPlanet = nil;
 -(void)update {
     self.physicsBody.angularVelocity = 1.0;
     self.position = self.fixedPosition;
-    _planet.alpha = self.healthPoint / self.maxHealthPoint;
-    _nextPlanet.alpha = 1.0 - _planet.alpha;
+    _frontShape.alpha = self.healthPoint / self.maxHealthPoint;
+    _backShape.alpha = 1.0 - _frontShape.alpha;
 }
 
 -(void)getDamage:(CGFloat)damage {

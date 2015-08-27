@@ -170,6 +170,7 @@
     CGPoint centerPos = CGPointMake(self.size.width * 0.5, self.size.height * 0.5 );
     _planet =[Planet sharedInstanceWithPosition:centerPos Radius:50.0];
     [_planet resetDamege];
+    NSLog(@"_planet = %@",_planet);
     [self addChild:_planet];
 }
 

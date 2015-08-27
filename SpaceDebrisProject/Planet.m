@@ -19,8 +19,8 @@
 
 @implementation Planet
 
-static Planet *sharedMyPlanet = nil;
 + (instancetype)sharedInstanceWithPosition:(CGPoint)position Radius:(CGFloat)radius{
+    static Planet *sharedMyPlanet = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         sharedMyPlanet = [[super alloc] initWithPosition:(CGPoint)position Radius:(CGFloat)radius];
@@ -49,7 +49,6 @@ static Planet *sharedMyPlanet = nil;
     
     [self addChild:_backShape];
     [self addChild:_frontShape];
-    
     
     [self resetDamege];
     

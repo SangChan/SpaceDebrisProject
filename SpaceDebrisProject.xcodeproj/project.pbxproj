@@ -35,6 +35,7 @@
 		63BDC3D91B23FB0800CA99E5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63BDC3D71B23FB0800CA99E5 /* Main.storyboard */; };
 		63BDC3DB1B23FB0800CA99E5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63BDC3DA1B23FB0800CA99E5 /* Images.xcassets */; };
 		63BDC3DE1B23FB0800CA99E5 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63BDC3DC1B23FB0800CA99E5 /* LaunchScreen.xib */; };
+		63C6C8461B933626003D0BE7 /* Space.m in Sources */ = {isa = PBXBuildFile; fileRef = 63C6C8451B933626003D0BE7 /* Space.m */; };
 		63D1A6701B37FD2F0062073B /* veranda_ci.png in Resources */ = {isa = PBXBuildFile; fileRef = 63D1A66F1B37FD2F0062073B /* veranda_ci.png */; };
 		63DAD0321B2FF7D60082F8FE /* Satellite.m in Sources */ = {isa = PBXBuildFile; fileRef = 63DAD0311B2FF7D60082F8FE /* Satellite.m */; };
 		63DAD0351B2FF8BB0082F8FE /* Planet.m in Sources */ = {isa = PBXBuildFile; fileRef = 63DAD0341B2FF8BB0082F8FE /* Planet.m */; };
@@ -90,6 +91,8 @@
 		63BDC3DD1B23FB0800CA99E5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		63BDC3E31B23FB0800CA99E5 /* SpaceDebrisProjectTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpaceDebrisProjectTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		63BDC3E81B23FB0800CA99E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		63C6C8441B933626003D0BE7 /* Space.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Space.h; sourceTree = "<group>"; };
+		63C6C8451B933626003D0BE7 /* Space.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Space.m; sourceTree = "<group>"; };
 		63D1A66F1B37FD2F0062073B /* veranda_ci.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = veranda_ci.png; sourceTree = "<group>"; };
 		63D1A6711B3AA7580062073B /* MyNode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyNode.h; sourceTree = "<group>"; };
 		63D1A6721B3BD8820062073B /* MyConst.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyConst.h; sourceTree = "<group>"; };
@@ -130,6 +133,8 @@
 				63DAD0371B2FF8CA0082F8FE /* Debris.m */,
 				63D1A6711B3AA7580062073B /* MyNode.h */,
 				63D1A6721B3BD8820062073B /* MyConst.h */,
+				63C6C8441B933626003D0BE7 /* Space.h */,
+				63C6C8451B933626003D0BE7 /* Space.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -348,6 +353,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63C6C8461B933626003D0BE7 /* Space.m in Sources */,
 				631497BB1B2585BC0068A0FF /* GameViewController.m in Sources */,
 				631497B51B25859D0068A0FF /* AppDelegate.m in Sources */,
 				638ED0E01B687C0D0080A8A9 /* NSString+FontAwesome.m in Sources */,

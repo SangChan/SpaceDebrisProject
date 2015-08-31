@@ -10,12 +10,14 @@
 #import "Satellite.h"
 #import "Planet.h"
 #import "Debris.h"
+#import "Space.h"
 #import "MyConst.h"
 #import "AGSpriteButton.h"
 #import "NSString+FontAwesome.h"
 
 
 @interface GameScene () {
+    Space *_space;
     Planet *_planet;
     Satellite *_satellite;
     SKShapeNode *_beamShape;
@@ -148,6 +150,9 @@
 #pragma mark - initialize
 
 -(void)initBackGround {
+    _space = [Space sharedInstance];
+    [self addChild:_space];
+    
     SKSpriteNode *deepBG = [SKSpriteNode spriteNodeWithImageNamed:@"1_background.png"];
     [deepBG setAnchorPoint:CGPointMake(0.0 , 0.0)];
     deepBG.xScale = 0.5;

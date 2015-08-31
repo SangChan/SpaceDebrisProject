@@ -6,8 +6,10 @@
 //  Copyright (c) 2015년 LeeSangchan. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <SpriteKit/SpriteKit.h>
 
-@interface Space : NSObject
+@interface Space : SKNode
+
++ (instancetype)sharedInstance;
 
 @end

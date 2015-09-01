@@ -30,7 +30,15 @@
 -(instancetype)initSpace {
     self = [self init];
     if (!self) return nil;
-        
+    
+    _farBG = [SKSpriteNode spriteNodeWithImageNamed:@"1_background.png"];
+    _middleBG = [SKSpriteNode spriteNodeWithImageNamed:@"2_background.png"];
+    _nearBG = [SKSpriteNode spriteNodeWithImageNamed:@"3_background.png"];
+    
+    [self addChild:_farBG];
+    [self addChild:_middleBG];
+    [self addChild:_nearBG];
+    
     return self;
 }
 

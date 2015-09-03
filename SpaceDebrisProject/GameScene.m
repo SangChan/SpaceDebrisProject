@@ -145,6 +145,7 @@
         
     }
     
+    _beamShape.zPosition = 10000;
     _beamShape.path = arcPath;
     [_beamShape setFillColor:[UIColor cyanColor]];
     

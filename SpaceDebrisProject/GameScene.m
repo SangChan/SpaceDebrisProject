@@ -23,6 +23,7 @@
     SKShapeNode *_beamShape;
     BOOL _isTracking;
     int timer;
+    
 }
 
 @end
@@ -83,11 +84,15 @@
 #pragma mark - update frame
 
 -(void)update:(CFTimeInterval)currentTime {
+    static CGFloat currentRotation;
     /* Called before each frame is rendered */
     for (SKNode *childNode in [self children]) {
         if ([childNode respondsToSelector:@selector(update)]) {
             [childNode performSelector:@selector(update)];
         }
+    }
+    if(currentRotation != _satellite.zRotation) {
+        [_space setRotation:_satellite.zRotation];
     }
     
     if (_satellite.shoot && _satellite.battery > _satellite.energyDrain * 2.0) {
@@ -100,6 +105,7 @@
     }
     
     //Maybe 1 second per 30 count.
+    currentRotation = _satellite.zRotation;
     timer++;
 }
 
@@ -150,25 +156,9 @@
 #pragma mark - initialize
 
 -(void)initBackGround {
-    _space = [Space sharedInstance];
+    CGPoint centerPos = CGPointMake(self.size.width * 0.5, self.size.height * 0.5 );
+    _space = [Space sharedInstanceWithPosition:centerPos];
     [self addChild:_space];
-    
-    SKSpriteNode *deepBG = [SKSpriteNode spriteNodeWithImageNamed:@"1_background.png"];
-    [deepBG setAnchorPoint:CGPointMake(0.0 , 0.0)];
-    deepBG.xScale = 0.5;
-    deepBG.yScale = 0.5;
-    SKSpriteNode *middleBG = [SKSpriteNode spriteNodeWithImageNamed:@"2_background.png"];
-    [middleBG setAnchorPoint:CGPointMake(0.0 , 0.0)];
-    middleBG.xScale = 0.5;
-    middleBG.yScale = 0.5;
-    SKSpriteNode *frontBG = [SKSpriteNode spriteNodeWithImageNamed:@"3_background.png"];
-    [frontBG setAnchorPoint:CGPointMake(0.0 , 0.0)];
-    frontBG.xScale = 0.5;
-    frontBG.yScale = 0.5;
-    
-    //[self addChild:deepBG];
-    //[self addChild:middleBG];
-    [self addChild:frontBG];
 }
 
 -(void)initPlanet {

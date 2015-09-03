@@ -10,6 +10,8 @@
 
 @interface Space : SKNode
 
-+ (instancetype)sharedInstance;
+@property(nonatomic) CGFloat rotation;
+
++ (instancetype)sharedInstanceWithPosition:(CGPoint)position;
 
 @end

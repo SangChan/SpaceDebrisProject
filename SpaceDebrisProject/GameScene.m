@@ -92,7 +92,7 @@
         }
     }
     if(currentRotation != _satellite.zRotation) {
-        [_space setRotation:_satellite.zRotation];
+        [_space setRotation:(_satellite.zRotation > currentRotation) ? (-1)*_satellite.zRotation : _satellite.zRotation];
     }
     
     if (_satellite.shoot && _satellite.battery > _satellite.energyDrain * 2.0) {

@@ -49,6 +49,7 @@
 }
 
 -(void)setRotation:(CGFloat)rotation {
+    _farBG.zRotation += rotation * 0.00005;
     _middleBG.zRotation += rotation * 0.0001;
     _nearBG.zRotation += rotation * 0.0005;
 }

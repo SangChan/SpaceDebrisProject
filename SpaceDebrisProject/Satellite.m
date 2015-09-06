@@ -10,6 +10,11 @@
 #import "MyConst.h"
 
 @interface Satellite () {
+    SKSpriteNode *_satellite100;
+    SKSpriteNode *_satellite80;
+    SKSpriteNode *_satellite60;
+    SKSpriteNode *_satellite40;
+    SKSpriteNode *_satellite20;
 }
 
 @end
@@ -28,12 +33,12 @@
     
     CGSize satelliteSize = CGSizeMake(10.0,10.0);
     
-    SKSpriteNode *satellite = [SKSpriteNode spriteNodeWithImageNamed:@"satellite.png"];
-    satellite.anchorPoint = CGPointMake(0.5, 0.5);
-    satellite.xScale = 0.2;
-    satellite.yScale = 0.2;
+    _satellite100 = [SKSpriteNode spriteNodeWithImageNamed:@"satellite.png"];
+    _satellite100.anchorPoint = CGPointMake(0.5, 0.5);
+    _satellite100.xScale = 0.2;
+    _satellite100.yScale = 0.2;
     
-    [self addChild:satellite];
+    [self addChild:_satellite100];
     
     self.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:satelliteSize];
     self.physicsBody.dynamic = YES;

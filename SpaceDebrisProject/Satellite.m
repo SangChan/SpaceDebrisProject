@@ -11,10 +11,6 @@
 
 @interface Satellite () {
     SKSpriteNode *_satellite100;
-    SKSpriteNode *_satellite80;
-    SKSpriteNode *_satellite60;
-    SKSpriteNode *_satellite40;
-    SKSpriteNode *_satellite20;
 }
 
 @end

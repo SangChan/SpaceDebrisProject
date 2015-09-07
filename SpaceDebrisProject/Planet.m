@@ -9,9 +9,11 @@
 #import "Planet.h"
 
 @interface Planet () {
-    SKSpriteNode *_frontShape;
-    SKSpriteNode *_backShape;
-    NSArray *planetList;
+    SKSpriteNode *_planet100;
+    SKSpriteNode *_planet80;
+    SKSpriteNode *_planet60;
+    SKSpriteNode *_planet40;
+    SKSpriteNode *_planet20;
 }
 
 @end
@@ -33,22 +35,36 @@
     self = [self init];
     if (!self) return nil;
     
-    planetList = @[@"planet.png",@"planet_d1.png",@"planet_d2.png",@"planet_d3.png",@"planet_d4.png"];
     
     self.fixedRadius = radius;
     self.position = position;
     self.fixedPosition = position;
     
-    _frontShape = [SKSpriteNode spriteNodeWithImageNamed:[planetList objectAtIndex:0]];
-    _frontShape.xScale = 0.45;
-    _frontShape.yScale = 0.45;
+    _planet100 = [SKSpriteNode spriteNodeWithImageNamed:@"planet.png"];
+    _planet100.xScale = 0.45;
+    _planet100.yScale = 0.45;
     
-    _backShape = [SKSpriteNode spriteNodeWithImageNamed:[planetList objectAtIndex:1]];
-    _backShape.xScale = 0.45;
-    _backShape.yScale = 0.45;
+    _planet80 = [SKSpriteNode spriteNodeWithImageNamed:@"planet_d1.png"];
+    _planet80.xScale = 0.45;
+    _planet80.yScale = 0.45;
     
-    [self addChild:_backShape];
-    [self addChild:_frontShape];
+    _planet60 = [SKSpriteNode spriteNodeWithImageNamed:@"planet_d2.png"];
+    _planet60.xScale = 0.45;
+    _planet60.yScale = 0.45;
+    
+    _planet40 = [SKSpriteNode spriteNodeWithImageNamed:@"planet_d3.png"];
+    _planet40.xScale = 0.45;
+    _planet40.yScale = 0.45;
+    
+    _planet20 = [SKSpriteNode spriteNodeWithImageNamed:@"planet_d4.png"];
+    _planet20.xScale = 0.45;
+    _planet20.yScale = 0.45;
+    
+    [self addChild:_planet20];
+    [self addChild:_planet40];
+    [self addChild:_planet60];
+    [self addChild:_planet80];
+    [self addChild:_planet100];
     
     [self resetDamege];
     
@@ -80,8 +96,21 @@
 -(void)update {
     self.physicsBody.angularVelocity = 1.0;
     self.position = self.fixedPosition;
-    _frontShape.alpha = self.healthPoint / self.maxHealthPoint;
-    _backShape.alpha = 1.0 - _frontShape.alpha;
+    if (self.healthPoint / self.maxHealthPoint <= 0.8) {
+        _planet100.hidden = YES;
+    }
+    if (self.healthPoint / self.maxHealthPoint <= 0.6) {
+        _planet80.hidden = YES;
+    }
+    if (self.healthPoint / self.maxHealthPoint <= 0.4) {
+        _planet60.hidden = YES;
+    }
+    if (self.healthPoint / self.maxHealthPoint <= 0.2) {
+        _planet40.hidden = YES;
+    }
+    
+    //_frontShape.alpha = self.healthPoint / self.maxHealthPoint;
+    //_backShape.alpha = 1.0 - _frontShape.alpha;
 }
 
 -(void)getDamage:(CGFloat)damage {

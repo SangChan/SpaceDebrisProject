@@ -43,22 +43,27 @@
     _planet100 = [SKSpriteNode spriteNodeWithImageNamed:@"planet.png"];
     _planet100.xScale = 0.45;
     _planet100.yScale = 0.45;
+    _planet100.hidden = NO;
     
     _planet80 = [SKSpriteNode spriteNodeWithImageNamed:@"planet_d1.png"];
     _planet80.xScale = 0.45;
     _planet80.yScale = 0.45;
+    _planet80.hidden = NO;
     
     _planet60 = [SKSpriteNode spriteNodeWithImageNamed:@"planet_d2.png"];
     _planet60.xScale = 0.45;
     _planet60.yScale = 0.45;
+    _planet60.hidden = YES;
     
     _planet40 = [SKSpriteNode spriteNodeWithImageNamed:@"planet_d3.png"];
     _planet40.xScale = 0.45;
     _planet40.yScale = 0.45;
+    _planet40.hidden = YES;
     
     _planet20 = [SKSpriteNode spriteNodeWithImageNamed:@"planet_d4.png"];
     _planet20.xScale = 0.45;
     _planet20.yScale = 0.45;
+    _planet20.hidden = YES;
     
     [self addChild:_planet20];
     [self addChild:_planet40];

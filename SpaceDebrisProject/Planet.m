@@ -103,12 +103,15 @@
     self.position = self.fixedPosition;
     if (self.healthPoint / self.maxHealthPoint <= 0.8) {
         _planet100.hidden = YES;
+        _planet60.hidden = NO;
     }
     if (self.healthPoint / self.maxHealthPoint <= 0.6) {
         _planet80.hidden = YES;
+        _planet40.hidden = NO;
     }
     if (self.healthPoint / self.maxHealthPoint <= 0.4) {
         _planet60.hidden = YES;
+        _planet20.hidden = NO;
     }
     if (self.healthPoint / self.maxHealthPoint <= 0.2) {
         _planet40.hidden = YES;

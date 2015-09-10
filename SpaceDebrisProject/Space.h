@@ -7,8 +7,9 @@
 //
 
 #import <SpriteKit/SpriteKit.h>
+#import "MyNode.h"
 
-@interface Space : SKNode
+@interface Space : SKNode<MyNode>
 
 @property(nonatomic) CGFloat rotation;
 

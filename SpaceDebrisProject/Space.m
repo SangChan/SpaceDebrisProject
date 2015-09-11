@@ -60,8 +60,15 @@
 }
 
 -(void)update {
+    //TODO : infinite scrolling
     _middleBG_1.position = CGPointMake(_middleBG_1.position.x-0.1, _middleBG_1.position.y);
+    if (_middleBG_1.position.x <= -_middleBG_1.size.width) {
+        [_middleBG_1 setPosition:CGPointMake(_middleBG_2.position.x+_middleBG_2.size.width, _middleBG_2.position.y)];
+    }
     _middleBG_2.position = CGPointMake(_middleBG_2.position.x-0.1, _middleBG_2.position.y);
+    if (_middleBG_2.position.x <= -_middleBG_2.size.width) {
+        [_middleBG_2 setPosition:CGPointMake(_middleBG_1.position.x+_middleBG_1.size.width, _middleBG_1.position.y)];
+    }
 }
 
 

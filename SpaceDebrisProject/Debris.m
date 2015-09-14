@@ -22,7 +22,7 @@
     self.attackPoint = (debrisSize.width * debrisSize.height)/10;
     self.radian = radian;
     
-    SKSpriteNode *debris = [SKSpriteNode spriteNodeWithImageNamed:[self generateRandomImage]];
+    SKSpriteNode *debris = [self generateRandomImage];
     debris.xScale = 0.2;
     debris.yScale = 0.2;
     //[[SKSpriteNode alloc]initWithColor:[UIColor brownColor] size:debrisSize];
@@ -40,15 +40,10 @@
     return self;
 }
 
--(NSString*)generateRandomImage {
+-(SKSpriteNode *)generateRandomImage {
+    NSArray *debrisName = @[@"trash1_soju.png",@"trash2_milk.png",@"trash3_news.png"];
     int randomNumber = arc4random()%3;
-    if (randomNumber == 1) {
-        return @"trash2_milk.png";
-    }
-    else if (randomNumber == 2) {
-        return @"trash3_news.png";
-    }
-    return @"trash1_soju.png";
+    return [SKSpriteNode spriteNodeWithImageNamed:[debrisName objectAtIndex:randomNumber]];
 }
 
 -(void)update {

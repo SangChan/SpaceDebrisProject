@@ -111,9 +111,6 @@
     if (self.healthPoint / self.maxHealthPoint <= 0.2) {
         _planet40.hidden = YES;
     }
-    
-    //_frontShape.alpha = self.healthPoint / self.maxHealthPoint;
-    //_backShape.alpha = 1.0 - _frontShape.alpha;
 }
 
 -(void)getDamage:(CGFloat)damage {

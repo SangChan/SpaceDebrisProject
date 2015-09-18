@@ -145,7 +145,7 @@
         
     }
     
-    _beamShape.zPosition = 10000;
+    _beamShape.zPosition = CG_BEAM;
     _beamShape.path = arcPath;
     [_beamShape setFillColor:[UIColor cyanColor]];
     
@@ -159,7 +159,7 @@
 -(void)initBackGround {
     CGPoint centerPos = CGPointMake(self.size.width * 0.5, self.size.height * 0.5 );
     _space = [Space sharedInstanceWithPosition:centerPos];
-    _space.zPosition = -1;
+    _space.zPosition = BG_ALL;
     [self addChild:_space];
 }
 
@@ -167,17 +167,16 @@
     CGPoint centerPos = CGPointMake(self.size.width * 0.5, self.size.height * 0.5 );
     _planet =[Planet sharedInstanceWithPosition:centerPos Radius:50.0];
     [_planet resetDamege];
-    NSLog(@"_planet = %@",_planet);
+    _planet.zPosition = CG_PLANET;
     [self addChild:_planet];
 }
 
 
 -(void)initDebris {
     float radian = randomFromMinToMax(0, M_PI);
-    NSLog(@"radian = %f",radian);
     CGFloat radius =  sqrt(pow(self.size.width * 0.5, 2.0) + pow(self.size.height * 0.5, 2.0));
     Debris *debris = [[Debris alloc]initWithPosition:CGPointMake(radius*cos(radian)+self.size.width*0.5, radius*sin(radian)+self.size.height*0.5) Radian:radian];
-   
+    debris.zPosition = CG_DEBRIS;
     [self addChild:debris];
     
     int i = 5;
@@ -193,6 +192,7 @@
 -(void)initSatellite {
     _satellite = [[Satellite alloc]initWithPosition:CGPointMake(_planet.fixedPosition.x, _planet.fixedPosition.y - _planet.fixedRadius - 70)];
     _satellite.beamLength = sqrt(pow(self.size.width/10.0,2.0) + pow(self.size.height/10.0,2.0));
+    _satellite.zPosition = CG_SATELLITE;
     [self addChild:_satellite];
 }
 

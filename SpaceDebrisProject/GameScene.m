@@ -159,6 +159,7 @@
 -(void)initBackGround {
     CGPoint centerPos = CGPointMake(self.size.width * 0.5, self.size.height * 0.5 );
     _space = [Space sharedInstanceWithPosition:centerPos];
+    _space.zPosition = -1;
     [self addChild:_space];
 }
 

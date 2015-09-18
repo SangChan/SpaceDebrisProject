@@ -17,6 +17,14 @@ static const uint32_t SATELLITE = 0x1 << 2;
 static const uint32_t DEBRIS    = 0x1 << 3;
 static const uint32_t GOLD      = 0x1 << 4;
 
+#define BG_FAR    1
+#define BG_MIDDLE 2
+#define BG_NEAR   3
+#define PLANET    10
+#define SATELLITE 11
+#define BEAM      12
+#define DEBRIS    100
+
 
 #endif
 

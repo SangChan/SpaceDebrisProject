@@ -35,15 +35,19 @@
     _farBG = [SKSpriteNode spriteNodeWithImageNamed:@"1_background.png"];
     [_farBG setPosition:position];
     [_farBG setScale:0.5];
+    _farBG.zPosition = 0;
     _middleBG_1 = [SKSpriteNode spriteNodeWithImageNamed:@"2_background.png"];
     [_middleBG_1 setPosition:position];
     [_middleBG_1 setScale:0.5];
+    _middleBG_1.zPosition = 1;
     _middleBG_2 = [SKSpriteNode spriteNodeWithImageNamed:@"2_background.png"];
     [_middleBG_2 setPosition:CGPointMake(_middleBG_1.position.x+_middleBG_1.size.width, _middleBG_1.position.y)];
     [_middleBG_2 setScale:0.5];
+    _middleBG_2.zPosition = 1;
     _nearBG = [SKSpriteNode spriteNodeWithImageNamed:@"3_background.png"];
     [_nearBG setPosition:position];
     [_nearBG setScale:0.5];
+    _nearBG.zPosition = 2;
     
     [self addChild:_farBG];
     [self addChild:_middleBG_1];

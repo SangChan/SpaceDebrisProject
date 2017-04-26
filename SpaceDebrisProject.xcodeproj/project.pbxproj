@@ -19,7 +19,6 @@
 		631BB85B1B86FE590095B0C7 /* re_2_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 631BB8551B86FE590095B0C7 /* re_2_background.png */; };
 		63289F5C1B43D7D000B46457 /* MyParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = 63289F5A1B43D7D000B46457 /* MyParticle.sks */; };
 		63289F5D1B43D7D000B46457 /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 63289F5B1B43D7D000B46457 /* spark.png */; };
-		63298C011B465C7A00578911 /* SpaceDebrisTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 63298C001B465C7A00578911 /* SpaceDebrisTests.m */; };
 		633A76521B5DFFF000C15C3C /* AGSpriteButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 633A76511B5DFFF000C15C3C /* AGSpriteButton.m */; };
 		63434A171B82299B00F2CDB0 /* 1_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 63434A0F1B82299B00F2CDB0 /* 1_background.png */; };
 		63434A181B82299B00F2CDB0 /* 2_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 63434A101B82299B00F2CDB0 /* 2_background.png */; };
@@ -42,16 +41,6 @@
 		63DAD0381B2FF8CA0082F8FE /* Debris.m in Sources */ = {isa = PBXBuildFile; fileRef = 63DAD0371B2FF8CA0082F8FE /* Debris.m */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		63BDC3E41B23FB0800CA99E5 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 63BDC3C21B23FB0800CA99E5 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 63BDC3C91B23FB0800CA99E5;
-			remoteInfo = SpaceDebrisProject;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
 		631497B31B25859D0068A0FF /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		631497B41B25859D0068A0FF /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -68,8 +57,6 @@
 		631BB8551B86FE590095B0C7 /* re_2_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = re_2_background.png; path = Resources/re_2_background.png; sourceTree = "<group>"; };
 		63289F5A1B43D7D000B46457 /* MyParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MyParticle.sks; sourceTree = "<group>"; };
 		63289F5B1B43D7D000B46457 /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
-		63298BFF1B465C7A00578911 /* SpaceDebrisProjectTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SpaceDebrisProjectTests-Bridging-Header.h"; sourceTree = "<group>"; };
-		63298C001B465C7A00578911 /* SpaceDebrisTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpaceDebrisTests.m; sourceTree = "<group>"; };
 		633A76501B5DFFF000C15C3C /* AGSpriteButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGSpriteButton.h; sourceTree = "<group>"; };
 		633A76511B5DFFF000C15C3C /* AGSpriteButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGSpriteButton.m; sourceTree = "<group>"; };
 		63434A0F1B82299B00F2CDB0 /* 1_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 1_background.png; path = Resources/1_background.png; sourceTree = "<group>"; };
@@ -89,8 +76,6 @@
 		63BDC3D81B23FB0800CA99E5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		63BDC3DA1B23FB0800CA99E5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		63BDC3DD1B23FB0800CA99E5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		63BDC3E31B23FB0800CA99E5 /* SpaceDebrisProjectTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpaceDebrisProjectTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		63BDC3E81B23FB0800CA99E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		63C6C8441B933626003D0BE7 /* Space.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Space.h; sourceTree = "<group>"; };
 		63C6C8451B933626003D0BE7 /* Space.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Space.m; sourceTree = "<group>"; };
 		63D1A66F1B37FD2F0062073B /* veranda_ci.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = veranda_ci.png; sourceTree = "<group>"; };
@@ -106,13 +91,6 @@
 
 /* Begin PBXFrameworksBuildPhase section */
 		63BDC3C71B23FB0800CA99E5 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		63BDC3E01B23FB0800CA99E5 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -143,7 +121,6 @@
 			isa = PBXGroup;
 			children = (
 				63BDC3CC1B23FB0800CA99E5 /* SpaceDebrisProject */,
-				63BDC3E61B23FB0800CA99E5 /* SpaceDebrisProjectTests */,
 				63BDC3CB1B23FB0800CA99E5 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -152,7 +129,6 @@
 			isa = PBXGroup;
 			children = (
 				63BDC3CA1B23FB0800CA99E5 /* SpaceDebrisProject.app */,
-				63BDC3E31B23FB0800CA99E5 /* SpaceDebrisProjectTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -187,24 +163,6 @@
 			children = (
 				63BDC3CE1B23FB0800CA99E5 /* Info.plist */,
 				631497BC1B2586390068A0FF /* main.m */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		63BDC3E61B23FB0800CA99E5 /* SpaceDebrisProjectTests */ = {
-			isa = PBXGroup;
-			children = (
-				63BDC3E71B23FB0800CA99E5 /* Supporting Files */,
-				63298C001B465C7A00578911 /* SpaceDebrisTests.m */,
-				63298BFF1B465C7A00578911 /* SpaceDebrisProjectTests-Bridging-Header.h */,
-			);
-			path = SpaceDebrisProjectTests;
-			sourceTree = "<group>";
-		};
-		63BDC3E71B23FB0800CA99E5 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				63BDC3E81B23FB0800CA99E5 /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -253,40 +211,18 @@
 			productReference = 63BDC3CA1B23FB0800CA99E5 /* SpaceDebrisProject.app */;
 			productType = "com.apple.product-type.application";
 		};
-		63BDC3E21B23FB0800CA99E5 /* SpaceDebrisProjectTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 63BDC3F01B23FB0800CA99E5 /* Build configuration list for PBXNativeTarget "SpaceDebrisProjectTests" */;
-			buildPhases = (
-				63BDC3DF1B23FB0800CA99E5 /* Sources */,
-				63BDC3E01B23FB0800CA99E5 /* Frameworks */,
-				63BDC3E11B23FB0800CA99E5 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				63BDC3E51B23FB0800CA99E5 /* PBXTargetDependency */,
-			);
-			name = SpaceDebrisProjectTests;
-			productName = SpaceDebrisProjectTests;
-			productReference = 63BDC3E31B23FB0800CA99E5 /* SpaceDebrisProjectTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		63BDC3C21B23FB0800CA99E5 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0700;
+				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = LeeSangchan;
 				TargetAttributes = {
 					63BDC3C91B23FB0800CA99E5 = {
 						CreatedOnToolsVersion = 6.3.2;
 						DevelopmentTeam = CBUJK8CFZ3;
-					};
-					63BDC3E21B23FB0800CA99E5 = {
-						CreatedOnToolsVersion = 6.3.2;
-						TestTargetID = 63BDC3C91B23FB0800CA99E5;
 					};
 				};
 			};
@@ -304,7 +240,6 @@
 			projectRoot = "";
 			targets = (
 				63BDC3C91B23FB0800CA99E5 /* SpaceDebrisProject */,
-				63BDC3E21B23FB0800CA99E5 /* SpaceDebrisProjectTests */,
 			);
 		};
 /* End PBXProject section */
@@ -339,13 +274,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		63BDC3E11B23FB0800CA99E5 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -366,23 +294,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		63BDC3DF1B23FB0800CA99E5 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				63298C011B465C7A00578911 /* SpaceDebrisTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		63BDC3E51B23FB0800CA99E5 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 63BDC3C91B23FB0800CA99E5 /* SpaceDebrisProject */;
-			targetProxy = 63BDC3E41B23FB0800CA99E5 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		63BDC3D71B23FB0800CA99E5 /* Main.storyboard */ = {
@@ -417,8 +329,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -463,8 +377,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -523,47 +439,6 @@
 			};
 			name = Release;
 		};
-		63BDC3F11B23FB0800CA99E5 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CLANG_ENABLE_MODULES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = SpaceDebrisProjectTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.veranda-studio.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "SpaceDebrisProjectTests/SpaceDebrisProjectTests-Bridging-Header.h";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SpaceDebrisProject.app/SpaceDebrisProject";
-			};
-			name = Debug;
-		};
-		63BDC3F21B23FB0800CA99E5 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CLANG_ENABLE_MODULES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = SpaceDebrisProjectTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.veranda-studio.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "SpaceDebrisProjectTests/SpaceDebrisProjectTests-Bridging-Header.h";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SpaceDebrisProject.app/SpaceDebrisProject";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -581,15 +456,6 @@
 			buildConfigurations = (
 				63BDC3EE1B23FB0800CA99E5 /* Debug */,
 				63BDC3EF1B23FB0800CA99E5 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		63BDC3F01B23FB0800CA99E5 /* Build configuration list for PBXNativeTarget "SpaceDebrisProjectTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				63BDC3F11B23FB0800CA99E5 /* Debug */,
-				63BDC3F21B23FB0800CA99E5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

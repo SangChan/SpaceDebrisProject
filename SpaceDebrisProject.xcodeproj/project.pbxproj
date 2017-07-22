@@ -19,6 +19,12 @@
 		631BB85B1B86FE590095B0C7 /* re_2_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 631BB8551B86FE590095B0C7 /* re_2_background.png */; };
 		63289F5C1B43D7D000B46457 /* MyParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = 63289F5A1B43D7D000B46457 /* MyParticle.sks */; };
 		63289F5D1B43D7D000B46457 /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 63289F5B1B43D7D000B46457 /* spark.png */; };
+		632F72FA1F23A39D0009F6BD /* Satellite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632F72F91F23A39D0009F6BD /* Satellite.swift */; };
+		632F72FC1F23A3C40009F6BD /* Planet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632F72FB1F23A3C40009F6BD /* Planet.swift */; };
+		632F72FE1F23A3D70009F6BD /* Debris.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632F72FD1F23A3D70009F6BD /* Debris.swift */; };
+		632F73001F23A3F70009F6BD /* MyNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632F72FF1F23A3F70009F6BD /* MyNode.swift */; };
+		632F73021F23A4070009F6BD /* MyConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632F73011F23A4070009F6BD /* MyConst.swift */; };
+		632F73041F23A4150009F6BD /* Space.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632F73031F23A4150009F6BD /* Space.swift */; };
 		633A76521B5DFFF000C15C3C /* AGSpriteButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 633A76511B5DFFF000C15C3C /* AGSpriteButton.m */; };
 		63434A171B82299B00F2CDB0 /* 1_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 63434A0F1B82299B00F2CDB0 /* 1_background.png */; };
 		63434A181B82299B00F2CDB0 /* 2_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 63434A101B82299B00F2CDB0 /* 2_background.png */; };
@@ -57,6 +63,12 @@
 		631BB8551B86FE590095B0C7 /* re_2_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = re_2_background.png; path = Resources/re_2_background.png; sourceTree = "<group>"; };
 		63289F5A1B43D7D000B46457 /* MyParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MyParticle.sks; sourceTree = "<group>"; };
 		63289F5B1B43D7D000B46457 /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
+		632F72F91F23A39D0009F6BD /* Satellite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Satellite.swift; sourceTree = "<group>"; };
+		632F72FB1F23A3C40009F6BD /* Planet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Planet.swift; sourceTree = "<group>"; };
+		632F72FD1F23A3D70009F6BD /* Debris.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Debris.swift; sourceTree = "<group>"; };
+		632F72FF1F23A3F70009F6BD /* MyNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyNode.swift; sourceTree = "<group>"; };
+		632F73011F23A4070009F6BD /* MyConst.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyConst.swift; sourceTree = "<group>"; };
+		632F73031F23A4150009F6BD /* Space.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Space.swift; sourceTree = "<group>"; };
 		633A76501B5DFFF000C15C3C /* AGSpriteButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGSpriteButton.h; sourceTree = "<group>"; };
 		633A76511B5DFFF000C15C3C /* AGSpriteButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGSpriteButton.m; sourceTree = "<group>"; };
 		63434A0F1B82299B00F2CDB0 /* 1_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 1_background.png; path = Resources/1_background.png; sourceTree = "<group>"; };
@@ -113,6 +125,12 @@
 				63D1A6721B3BD8820062073B /* MyConst.h */,
 				63C6C8441B933626003D0BE7 /* Space.h */,
 				63C6C8451B933626003D0BE7 /* Space.m */,
+				632F72F91F23A39D0009F6BD /* Satellite.swift */,
+				632F72FB1F23A3C40009F6BD /* Planet.swift */,
+				632F72FD1F23A3D70009F6BD /* Debris.swift */,
+				632F72FF1F23A3F70009F6BD /* MyNode.swift */,
+				632F73011F23A4070009F6BD /* MyConst.swift */,
+				632F73031F23A4150009F6BD /* Space.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -282,13 +300,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				63C6C8461B933626003D0BE7 /* Space.m in Sources */,
+				632F72FA1F23A39D0009F6BD /* Satellite.swift in Sources */,
+				632F73041F23A4150009F6BD /* Space.swift in Sources */,
 				631497BB1B2585BC0068A0FF /* GameViewController.m in Sources */,
+				632F72FC1F23A3C40009F6BD /* Planet.swift in Sources */,
 				631497B51B25859D0068A0FF /* AppDelegate.m in Sources */,
 				638ED0E01B687C0D0080A8A9 /* NSString+FontAwesome.m in Sources */,
 				63DAD0321B2FF7D60082F8FE /* Satellite.m in Sources */,
+				632F72FE1F23A3D70009F6BD /* Debris.swift in Sources */,
 				63DAD0381B2FF8CA0082F8FE /* Debris.m in Sources */,
 				631497BD1B2586390068A0FF /* main.m in Sources */,
 				631497B81B2585AE0068A0FF /* GameScene.m in Sources */,
+				632F73021F23A4070009F6BD /* MyConst.swift in Sources */,
+				632F73001F23A3F70009F6BD /* MyNode.swift in Sources */,
 				633A76521B5DFFF000C15C3C /* AGSpriteButton.m in Sources */,
 				63DAD0351B2FF8BB0082F8FE /* Planet.m in Sources */,
 			);

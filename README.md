@@ -1,7 +1,7 @@
 # Space Debris Project
 * Xcode 8.3.3
 * SpriteKit
-* SWIFT
+* Objective-C with Swift
 * Universial Application for iOS
 
 # TODO

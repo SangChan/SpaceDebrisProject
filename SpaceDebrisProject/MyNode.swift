@@ -7,3 +7,7 @@
 //
 
 import Foundation
+
+protocol MyNode {
+    func update()
+}

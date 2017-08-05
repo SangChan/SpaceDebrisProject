@@ -63,6 +63,7 @@
 		631BB8531B86FE590095B0C7 /* planet_d4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = planet_d4.png; path = Resources/planet_d4.png; sourceTree = "<group>"; };
 		631BB8541B86FE590095B0C7 /* re_1_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = re_1_background.png; path = Resources/re_1_background.png; sourceTree = "<group>"; };
 		631BB8551B86FE590095B0C7 /* re_2_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = re_2_background.png; path = Resources/re_2_background.png; sourceTree = "<group>"; };
+		631E0B891F35D2510074A1BF /* SpaceDebrisProject-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SpaceDebrisProject-Bridging-Header.h"; sourceTree = "<group>"; };
 		63289F5A1B43D7D000B46457 /* MyParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MyParticle.sks; sourceTree = "<group>"; };
 		63289F5B1B43D7D000B46457 /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
 		632F72F91F23A39D0009F6BD /* Satellite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Satellite.swift; sourceTree = "<group>"; };
@@ -187,6 +188,7 @@
 			children = (
 				63BDC3CE1B23FB0800CA99E5 /* Info.plist */,
 				631497BC1B2586390068A0FF /* main.m */,
+				631E0B891F35D2510074A1BF /* SpaceDebrisProject-Bridging-Header.h */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -247,6 +249,7 @@
 					63BDC3C91B23FB0800CA99E5 = {
 						CreatedOnToolsVersion = 6.3.2;
 						DevelopmentTeam = CBUJK8CFZ3;
+						LastSwiftMigration = 0830;
 					};
 				};
 			};
@@ -451,6 +454,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "SpaceDebrisProject/SpaceDebrisProject-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -467,6 +471,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.verandastudio.spacedebris;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "SpaceDebrisProject/SpaceDebrisProject-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

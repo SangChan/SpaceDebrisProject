@@ -9,7 +9,14 @@
 import Foundation
 
 extension GameScene {
-    func getBluredScreen() {
+    func getBluredScreen() -> UIImage {
+        guard let view = self.view else { return UIImage() }
+        UIGraphicsBeginImageContextWithOptions(view.bounds.size, false, 1)
+        view.drawHierarchy(in: view.frame, afterScreenUpdates: true)
+        let ss = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        
     }
     /*
  - (UIImage *)getBluredScreenshot {

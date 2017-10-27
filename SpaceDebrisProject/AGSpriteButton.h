@@ -52,7 +52,7 @@ typedef NS_OPTIONS(NSInteger, AGButtonControlEvent)
 
 //EXECUTE BLOCKS ON EVENTS
 
--(void)performBlock:(void (^)())block onEvent:(AGButtonControlEvent)event;
+-(void)performBlock:(void (^)(void))block onEvent:(AGButtonControlEvent)event;
 
 
 //EXECUTE ACTIONS ON EVENTS

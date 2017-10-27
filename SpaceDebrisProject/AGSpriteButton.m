@@ -361,7 +361,7 @@
 
 #pragma mark - CODE BLOCKS
 
--(void)performBlock:(void (^)())block onEvent:(AGButtonControlEvent)event
+-(void)performBlock:(void (^)(void))block onEvent:(AGButtonControlEvent)event
 {
     NSDictionary *dicBlock = [NSDictionary dictionaryWithObjectsAndKeys:block, @"block", [NSNumber numberWithInteger:event], @"controlEvent", nil];
     
@@ -433,7 +433,7 @@
     {
         if ([[dicBlock objectForKey:@"controlEvent"]integerValue] == controlEvent)
         {
-            void (^block)() = [dicBlock objectForKey:@"block"];
+            void (^block)(void) = [dicBlock objectForKey:@"block"];
             
             block();
         }
